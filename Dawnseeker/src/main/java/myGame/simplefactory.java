@@ -34,7 +34,7 @@ public class simplefactory implements EntityFactory {
     	
         return entityBuilder()
                 .type(EntityType.PLAYER)
-                .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
+                .viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .collidable()
                 .build();
@@ -42,14 +42,12 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
-        Circle circle = new Circle(20, 20, 20, Color.RED);
-        circle.setStroke(Color.BROWN);
-        circle.setStrokeWidth(2.0);
+     
 
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
-                .viewWithBBox(circle)
+                .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
                 //.at(Math.random(),Math.random())
                 .at(Math.random() *1000,Math.random() *1000)
