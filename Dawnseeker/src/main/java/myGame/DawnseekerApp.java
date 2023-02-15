@@ -47,7 +47,8 @@ public class DawnseekerApp extends GameApplication {
     public static void main(String[] args) {
         launch(args);
     }
-	
+	//stuff
+    
     @Override
     protected void initSettings(GameSettings settings) {
 		settings.setWidth(1024);
