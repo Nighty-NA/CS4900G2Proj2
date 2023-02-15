@@ -55,7 +55,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
-        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
+        settings.setIntroEnabled(false); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
@@ -97,8 +97,14 @@ public class DawnseekerApp extends GameApplication {
     @Override
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
-            bullet.removeFromWorld();
-            enemy.removeFromWorld();
+        	bullet.removeFromWorld();
+//        	enemy.setProperty("Health", Integer.valueOf(String.valueOf(enemy.getPropertyOptional("Health")))-5);
+        	enemy.setProperty("Health", enemy.getInt("Health")-5);
+
+            if(enemy.getInt("Health") == 0) {
+            	enemy.removeFromWorld();
+            }
+        		
         });
         
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {

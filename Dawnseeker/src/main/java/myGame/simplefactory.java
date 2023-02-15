@@ -51,6 +51,7 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.ENEMY)
                 .viewWithBBox(circle)
                 .collidable()
+                .with("Health", 10)
                 //.at(Math.random(),Math.random())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new RandomMoveComponent(new Rectangle2D(0, 0, getAppWidth(), getAppHeight()), 100))
