@@ -44,6 +44,10 @@ public class DawnseekerApp extends GameApplication {
 	
 	private Entity player;
 	
+	public Entity getPlayer() {
+		return player;
+	}
+	
     public static void main(String[] args) {
         launch(args);
     }
