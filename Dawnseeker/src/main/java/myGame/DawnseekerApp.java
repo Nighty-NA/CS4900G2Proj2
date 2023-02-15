@@ -55,7 +55,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
-        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
+//        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
