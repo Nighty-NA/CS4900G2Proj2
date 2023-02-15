@@ -19,9 +19,11 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.physics.CollisionHandler;
+import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 
 import Dawnseeker.simplefactory;
+import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
@@ -32,7 +34,6 @@ public class DawnseekerApp extends GameApplication {
     public enum EntityType {
         PLAYER, ENEMY, BULLET, WALL
     }
-
 	private AStarGrid grid;
 	
 	public AStarGrid getGrid() {
@@ -54,6 +55,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
+        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
@@ -98,11 +100,13 @@ public class DawnseekerApp extends GameApplication {
             bullet.removeFromWorld();
             enemy.removeFromWorld();
         });
+        
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
 	        @Override
 	        protected void onCollisionBegin(Entity player, Entity wall) {
-	           //TODO: Add behavior to stop player movement
+	        	player.translateTowards(wall.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+	          
 	        }
 	    });
 	    
@@ -110,7 +114,7 @@ public class DawnseekerApp extends GameApplication {
 	    	
 	        @Override
 	        protected void onCollisionBegin(Entity enemy, Entity wall) {
-	           //TODO: Add behavior to stop enemy movement
+	        	enemy.translateTowards(wall.getCenter(), -Math.sqrt(enemy.getX() + enemy.getY()));
 	        }
 	    });
         
