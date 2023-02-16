@@ -32,7 +32,7 @@ import javafx.util.Duration;
 public class DawnseekerApp extends GameApplication {
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL
+        PLAYER, ENEMY, BULLET, WALL, COIN
     }
 	private AStarGrid grid;
 	
@@ -43,6 +43,7 @@ public class DawnseekerApp extends GameApplication {
 	private final simplefactory SF = new simplefactory(); 
 	
 	private Entity player;
+	private int speed = 3;
 	
     public static void main(String[] args) {
         launch(args);
@@ -60,10 +61,10 @@ public class DawnseekerApp extends GameApplication {
 
     @Override
     protected void initInput() {
-    	onKey(KeyCode.W, () -> this.player.translateY(-3));
-        onKey(KeyCode.S, () -> this.player.translateY(3));
-        onKey(KeyCode.A, () -> this.player.translateX(-3));
-        onKey(KeyCode.D, () -> this.player.translateX(3));
+    	onKey(KeyCode.W, () -> this.player.translateY(-speed));
+        onKey(KeyCode.S, () -> this.player.translateY(speed));
+        onKey(KeyCode.A, () -> this.player.translateX(-speed));
+        onKey(KeyCode.D, () -> this.player.translateX(speed));
         onBtnDown(MouseButton.PRIMARY, () -> spawn("bullet", this.player.getCenter()));
     }
     
@@ -98,9 +99,12 @@ public class DawnseekerApp extends GameApplication {
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
             bullet.removeFromWorld();
-            enemy.removeFromWorld();
+            killEnemy(enemy);
         });
-        
+        onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
+            coin.removeFromWorld();
+            
+        });
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
 	        @Override
@@ -118,6 +122,12 @@ public class DawnseekerApp extends GameApplication {
 	        }
 	    });
         
+    }
+    
+    private void killEnemy(Entity e) {
+    	Point2D cSpawnPoint = e.getCenter();
+    	spawn("coin", cSpawnPoint);
+    	e.removeFromWorld();
     }
 
 
