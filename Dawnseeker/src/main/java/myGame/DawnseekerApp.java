@@ -44,6 +44,10 @@ public class DawnseekerApp extends GameApplication {
 	
 	private Entity player;
 	
+	public Entity getPlayer() {
+		return player;
+	}
+	
     public static void main(String[] args) {
         launch(args);
     }
@@ -56,7 +60,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
-        settings.setIntroEnabled(false); //addition for showcase for Sprint 1 -- NArrowood
+//        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
@@ -107,10 +111,12 @@ public class DawnseekerApp extends GameApplication {
         });
         
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
-        	player.setProperty("helth", player.getInt("Helth")-enemy.getInt("Damage"));
+        	player.setProperty("Helth", player.getInt("Helth")-enemy.getInt("Dmg"));// ---- player takes damage from enemy -josh
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
-        	if(player.getInt("helth") == 0) {
-        		player.setPosition(getAppHeight(), getAppWidth());
+        	if(player.getInt("Helth") == 0) {
+        		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
+        		player.setProperty("Helth", 3);
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
         	}
         });
         
