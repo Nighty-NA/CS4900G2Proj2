@@ -44,6 +44,10 @@ public class DawnseekerApp extends GameApplication {
 	
 	private Entity player;
 	
+	public Entity getPlayer() {
+		return player;
+	}
+	
     public static void main(String[] args) {
         launch(args);
     }
@@ -55,7 +59,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
-        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
+//        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
