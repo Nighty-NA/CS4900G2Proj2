@@ -176,7 +176,14 @@ public class simplefactory implements EntityFactory {
 				.buildAndAttach();
 	}
 	
-	
+	@Spawns("coin")
+	public Entity coin(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.COIN)
+				.viewWithBBox(new Circle(3,3,4, Color.YELLOW))
+				.build();
+	}
 	
 }
 

@@ -32,7 +32,7 @@ import javafx.util.Duration;
 public class DawnseekerApp extends GameApplication {
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL
+        PLAYER, ENEMY, BULLET, WALL, COIN
     }
 	private AStarGrid grid;
 	
@@ -105,7 +105,7 @@ public class DawnseekerApp extends GameApplication {
         	bullet.removeFromWorld();
         	enemy.setProperty("Helth", enemy.getInt("Helth")-5);
             if(enemy.getInt("Helth") == 0) {
-            	enemy.removeFromWorld();
+            	killEnemy(enemy);
             }
         		
         });
@@ -116,8 +116,19 @@ public class DawnseekerApp extends GameApplication {
         	if(player.getInt("Helth") == 0) {
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
         		player.setProperty("Helth", 3);
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
         	}
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
+            coin.removeFromWorld();
+            
+        });
+        
+        onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
+            bullet.removeFromWorld();
+            
         });
         
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
@@ -137,6 +148,13 @@ public class DawnseekerApp extends GameApplication {
 	        }
 	    });
         
+	    
+    }
+    
+    private void killEnemy(Entity e) {
+    	Point2D cSpawnPoint = e.getCenter();
+    	spawn("coin", cSpawnPoint);
+    	e.removeFromWorld();
     }
 
 
