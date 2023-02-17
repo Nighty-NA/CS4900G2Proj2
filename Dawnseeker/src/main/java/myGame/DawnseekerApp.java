@@ -75,10 +75,10 @@ public class DawnseekerApp extends GameApplication {
     	getGameWorld().addEntityFactory(this.SF);
     	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
         spawn("BG");
-        spawn("BWH");
-		spawn("BWV");
-		spawn("BWH2");
-		spawn("BWV2");
+//      spawn("BWH");  //--- not needed right now, also will be replaced with small walls for more usable collision-josh
+//		spawn("BWV");
+//		spawn("BWH2");
+//		spawn("BWV2");
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
@@ -89,7 +89,7 @@ public class DawnseekerApp extends GameApplication {
 
             return CellState.WALKABLE;
         });
-    	run(() -> spawn("enemy"), Duration.seconds(.35));
+    	run(() -> spawn("enemy"), Duration.seconds(.5));
         
     }
     
@@ -99,13 +99,19 @@ public class DawnseekerApp extends GameApplication {
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
         	bullet.removeFromWorld();
-//        	enemy.setProperty("Health", Integer.valueOf(String.valueOf(enemy.getPropertyOptional("Health")))-5);
-        	enemy.setProperty("Health", enemy.getInt("Health")-5);
-
-            if(enemy.getInt("Health") == 0) {
+        	enemy.setProperty("Helth", enemy.getInt("Helth")-5);
+            if(enemy.getInt("Helth") == 0) {
             	enemy.removeFromWorld();
             }
         		
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
+        	player.setProperty("helth", player.getInt("Helth")-enemy.getInt("Damage"));
+        	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+        	if(player.getInt("helth") == 0) {
+        		player.setPosition(getAppHeight(), getAppWidth());
+        	}
         });
         
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {

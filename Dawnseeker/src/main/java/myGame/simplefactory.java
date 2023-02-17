@@ -37,6 +37,7 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
                 .at(500,500)
                 .collidable()
+                .with("Helth", 3)
                 .build();
     }
     
@@ -51,7 +52,8 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.ENEMY)
                 .viewWithBBox(circle)
                 .collidable()
-                .with("Health", 10)
+                .with("Helth", 10)
+                .with("Damage", 1)
                 //.at(Math.random(),Math.random())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new RandomMoveComponent(new Rectangle2D(0, 0, getAppWidth(), getAppHeight()), 100))
