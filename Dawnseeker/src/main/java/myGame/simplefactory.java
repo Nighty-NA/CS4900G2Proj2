@@ -42,8 +42,12 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
-     
-
+    	Circle circle = new Circle(20, 20, 20, Color.RED);
+        circle.setStroke(Color.BROWN);
+        circle.setStrokeWidth(2.0);
+//        int moveSpeed = (int) Math.floor(Math.random() * 101);
+        int moveSpeed = 100;
+        
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
@@ -63,7 +67,7 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
-                .viewWithBBox(new Rectangle(10, 2, Color.BLACK))
+                .viewWithBBox("FireBallProjectile.png")
                 .collidable()
                 .with(new ProjectileComponent(direction, 1000))
                 .with(new OffscreenCleanComponent())
