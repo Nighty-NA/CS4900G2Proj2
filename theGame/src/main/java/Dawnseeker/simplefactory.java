@@ -167,6 +167,14 @@ public class simplefactory implements EntityFactory {
 				.build();
 	}
 	
+	@Spawns("spower")
+	public Entity spow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.SPOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
+				.build();
+	}
 	
 	
 	

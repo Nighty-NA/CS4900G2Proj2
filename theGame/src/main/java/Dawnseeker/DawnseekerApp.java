@@ -11,6 +11,8 @@ import static com.almasb.fxgl.dsl.FXGL.run;
 import static com.almasb.fxgl.dsl.FXGL.showMessage;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
+import java.util.Map;
+
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
@@ -24,15 +26,19 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 
 import Dawnseeker.simplefactory;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 
 public class DawnseekerApp extends GameApplication {
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
     }
 	private AStarGrid grid;
 	
@@ -43,20 +49,32 @@ public class DawnseekerApp extends GameApplication {
 	private final simplefactory SF = new simplefactory(); 
 	
 	private Entity player;
-	private int speed = 3;
+	public double speed = 2;
 	
     public static void main(String[] args) {
         launch(args);
     }
-	
+    
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("Coins", 0);
+    }
+    @Override
+    protected void initUI() {
+        Label scoreLabel = new Label();
+        scoreLabel.setTextFill(Color.BLACK);
+        scoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        scoreLabel.textProperty().bind(FXGL.getip("Coins").asString("Coins: %d"));
+        FXGL.addUINode(scoreLabel, 40, 35);
+    }
     @Override
     protected void initSettings(GameSettings settings) {
 		settings.setWidth(1024);
 		settings.setHeight(1024);
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
-		settings.setMainMenuEnabled(true);
-        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
+	//	settings.setMainMenuEnabled(true);
+     //   settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
@@ -103,7 +121,14 @@ public class DawnseekerApp extends GameApplication {
         });
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
-            
+            FXGL.inc("Coins", 1);
+           // speed = speed+.1;
+
+        });
+        onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
+            spower.removeFromWorld();
+            speed = speed+(speed*.01);
+
         });
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
@@ -126,7 +151,13 @@ public class DawnseekerApp extends GameApplication {
     
     private void killEnemy(Entity e) {
     	Point2D cSpawnPoint = e.getCenter();
-    	spawn("coin", cSpawnPoint);
+    	double rng = Math.random()*10;
+    	if(rng < 8) {
+    		spawn("coin", cSpawnPoint);
+    	}
+    	else {
+    		spawn("spower", cSpawnPoint);
+    	}
     	e.removeFromWorld();
     }
 
