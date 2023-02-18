@@ -6,6 +6,7 @@ import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.dsl.components.RandomMoveComponent;
@@ -18,6 +19,7 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+
 
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -46,7 +48,8 @@ public class simplefactory implements EntityFactory {
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
 //        int moveSpeed = (int) Math.floor(Math.random() * 101);
-        int moveSpeed = 100;  
+        int moveSpeed = 100; 
+        
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
