@@ -32,7 +32,7 @@ import javafx.util.Duration;
 public class DawnseekerApp extends GameApplication {
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL
+        PLAYER, ENEMY, BULLET, WALL, COIN
     }
 	private AStarGrid grid;
 	
@@ -44,10 +44,15 @@ public class DawnseekerApp extends GameApplication {
 	
 	private Entity player;
 	
+	public Entity getPlayer() {
+		return player;
+	}
+	
     public static void main(String[] args) {
         launch(args);
     }
-	
+	//stuff
+    
     @Override
     protected void initSettings(GameSettings settings) {
 		settings.setWidth(1024);
@@ -55,7 +60,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
-        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
+//        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
@@ -74,10 +79,10 @@ public class DawnseekerApp extends GameApplication {
     	getGameWorld().addEntityFactory(this.SF);
     	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
         spawn("BG");
-        spawn("BWH");
-		spawn("BWV");
-		spawn("BWH2");
-		spawn("BWV2");
+//      spawn("BWH");  //--- not needed right now, also will be replaced with small walls for more usable collision-josh
+//		spawn("BWV");
+//		spawn("BWH2");
+//		spawn("BWV2");
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
@@ -88,7 +93,7 @@ public class DawnseekerApp extends GameApplication {
 
             return CellState.WALKABLE;
         });
-    	run(() -> spawn("enemy"), Duration.seconds(.35));
+    	run(() -> spawn("enemy"), Duration.seconds(.5));
         
     }
     
@@ -97,8 +102,33 @@ public class DawnseekerApp extends GameApplication {
     @Override
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
+        	bullet.removeFromWorld();
+        	enemy.setProperty("Helth", enemy.getInt("Helth")-5);
+            if(enemy.getInt("Helth") == 0) {
+            	killEnemy(enemy);
+            }
+        		
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
+        	player.setProperty("Helth", player.getInt("Helth")-enemy.getInt("Dmg"));// ---- player takes damage from enemy -josh
+        	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+        	if(player.getInt("Helth") == 0) {
+        		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
+        		player.setProperty("Helth", 3);
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
+        	}
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
+            coin.removeFromWorld();
+            
+        });
+        
+        onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
             bullet.removeFromWorld();
-            enemy.removeFromWorld();
+            
         });
         
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
@@ -118,6 +148,13 @@ public class DawnseekerApp extends GameApplication {
 	        }
 	    });
         
+	    
+    }
+    
+    private void killEnemy(Entity e) {
+    	Point2D cSpawnPoint = e.getCenter();
+    	spawn("coin", cSpawnPoint);
+    	e.removeFromWorld();
     }
 
 

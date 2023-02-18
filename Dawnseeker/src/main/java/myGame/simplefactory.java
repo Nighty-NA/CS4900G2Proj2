@@ -21,6 +21,7 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 
 
+import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -39,6 +40,7 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .collidable()
+                .with("Helth", 3)
                 .build();
     }
     
@@ -48,16 +50,18 @@ public class simplefactory implements EntityFactory {
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
 //        int moveSpeed = (int) Math.floor(Math.random() * 101);
-        int moveSpeed = 100; 
-        
+        int moveSpeed = 100;
+
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
                 .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
+                .with("Helth", 10)
+                .with("Dmg", 1)
                 //.at(Math.random(),Math.random())
                 .at(Math.random() *1000,Math.random() *1000)
-                .with(new RandomMoveComponent(new Rectangle2D(0, 0, getAppWidth(), getAppHeight()), 100))
+                .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
 
@@ -173,7 +177,14 @@ public class simplefactory implements EntityFactory {
 				.buildAndAttach();
 	}
 	
-	
+	@Spawns("coin")
+	public Entity coin(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.COIN)
+				.viewWithBBox(new Circle(3,3,4, Color.YELLOW))
+				.build();
+	}
 	
 }
 
