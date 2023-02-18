@@ -46,8 +46,7 @@ public class simplefactory implements EntityFactory {
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
 //        int moveSpeed = (int) Math.floor(Math.random() * 101);
-        int moveSpeed = 100;
-        
+        int moveSpeed = 100;  
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
