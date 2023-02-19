@@ -79,7 +79,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setWidth(1024);
 		settings.setHeight(1024);
 		settings.setTitle("Dawnseeker");
-		settings.setVersion("0.1");
+		settings.setVersion("0.2");
 		settings.setMainMenuEnabled(true);
     }
 
