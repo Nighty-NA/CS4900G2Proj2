@@ -11,6 +11,8 @@ import static com.almasb.fxgl.dsl.FXGL.run;
 import static com.almasb.fxgl.dsl.FXGL.showMessage;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
+import java.util.Map;
+
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
@@ -24,15 +26,19 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 
 public class DawnseekerApp extends GameApplication {
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
     }
 	private AStarGrid grid;
 	
@@ -44,6 +50,8 @@ public class DawnseekerApp extends GameApplication {
 	
 	private Entity player;
 	
+	public double speed = 2;
+
 	public Entity getPlayer() {
 		return player;
 	}
@@ -51,7 +59,20 @@ public class DawnseekerApp extends GameApplication {
     public static void main(String[] args) {
         launch(args);
     }
-	//stuff
+	
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("Coins", 0);
+    }
+    
+    @Override
+    protected void initUI() {
+        Label scoreLabel = new Label();
+        scoreLabel.setTextFill(Color.BLACK);
+        scoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        scoreLabel.textProperty().bind(FXGL.getip("Coins").asString("Coins: %d"));
+        FXGL.addUINode(scoreLabel, 40, 35);
+    }
     
     @Override
     protected void initSettings(GameSettings settings) {
@@ -60,15 +81,14 @@ public class DawnseekerApp extends GameApplication {
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.1");
 		settings.setMainMenuEnabled(true);
-//        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
     protected void initInput() {
-    	onKey(KeyCode.W, () -> this.player.translateY(-3));
-        onKey(KeyCode.S, () -> this.player.translateY(3));
-        onKey(KeyCode.A, () -> this.player.translateX(-3));
-        onKey(KeyCode.D, () -> this.player.translateX(3));
+    	onKey(KeyCode.W, () -> this.player.translateY(-speed));
+        onKey(KeyCode.S, () -> this.player.translateY(speed));
+        onKey(KeyCode.A, () -> this.player.translateX(-speed));
+        onKey(KeyCode.D, () -> this.player.translateX(speed));
         onBtnDown(MouseButton.PRIMARY, () -> spawn("bullet", this.player.getCenter()));
     }
     
@@ -79,10 +99,6 @@ public class DawnseekerApp extends GameApplication {
     	getGameWorld().addEntityFactory(this.SF);
     	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
         spawn("BG");
-//      spawn("BWH");  //--- not needed right now, also will be replaced with small walls for more usable collision-josh
-//		spawn("BWV");
-//		spawn("BWH2");
-//		spawn("BWV2");
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
@@ -123,7 +139,13 @@ public class DawnseekerApp extends GameApplication {
         
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
-            
+            FXGL.inc("Coins", 1);
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
+            spower.removeFromWorld();
+            speed = speed+(speed*.01);
+
         });
         
         onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
@@ -153,9 +175,16 @@ public class DawnseekerApp extends GameApplication {
     
     private void killEnemy(Entity e) {
     	Point2D cSpawnPoint = e.getCenter();
-    	spawn("coin", cSpawnPoint);
+    	double rng = Math.random()*10;
+    	if(rng < 8) {
+    		spawn("coin", cSpawnPoint);
+    	}
+    	else {
+    		spawn("spower", cSpawnPoint);
+    	}
     	e.removeFromWorld();
     }
+    
 
 
 }
