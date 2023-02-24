@@ -18,12 +18,15 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 
+import enemyComponent.AIChaseComponent;
+import enemyComponent.PlayerComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
@@ -47,7 +50,8 @@ public class DawnseekerApp extends GameApplication {
 		return grid;
 	}
     
-	private final aiChaseComponent ai = new aiChaseComponent();
+	private PlayerComponent playerComponent;
+	private final AIChaseComponent ai = new AIChaseComponent();
 	private final simplefactory SF = new simplefactory(); 
 	
 	private Entity player;
@@ -85,37 +89,84 @@ public class DawnseekerApp extends GameApplication {
 		settings.setMainMenuEnabled(true);
     }
 
-    @Override
-    protected void initInput() {
-    	onKey(KeyCode.W, () -> this.player.translateY(-speed));
-        onKey(KeyCode.S, () -> this.player.translateY(speed));
-        onKey(KeyCode.A, () -> this.player.translateX(-speed));
-        onKey(KeyCode.D, () -> this.player.translateX(speed));
-        onBtnDown(MouseButton.PRIMARY, () -> spawn("bullet", this.player.getCenter()));
-    }
+//    @Override
+//    protected void initInput() {
+//    	onKey(KeyCode.W, () -> this.player.translateY(-speed));
+//        onKey(KeyCode.S, () -> this.player.translateY(speed));
+//        onKey(KeyCode.A, () -> this.player.translateX(-speed));
+//        onKey(KeyCode.D, () -> this.player.translateX(speed));
+//        onBtnDown(MouseButton.PRIMARY, () -> spawn("bullet", this.player.getCenter()));
+//    }
     
-    
+//    @Override
+//    protected void initInput() {
+//        getInput().addAction(new UserAction("Move Up") {
+//            @Override
+//            protected void onActionBegin() {
+//                playerComponent.moveUp();
+//            }
+//        }, KeyCode.W);
+//
+//        getInput().addAction(new UserAction("Move Left") {
+//            @Override
+//            protected void onActionBegin() {
+//                playerComponent.moveLeft();
+//            }
+//        }, KeyCode.A);
+//
+//        getInput().addAction(new UserAction("Move Down") {
+//            @Override
+//            protected void onActionBegin() {
+//                playerComponent.moveDown();
+//            }
+//        }, KeyCode.S);
+//
+//        getInput().addAction(new UserAction("Move Right") {
+//            @Override
+//            protected void onActionBegin() {
+//                playerComponent.moveRight();
+//            }
+//        }, KeyCode.D);
+//    }
 
-    @Override
+    
     protected void initGame() {
-    	getGameWorld().addEntityFactory(this.SF);
-    	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
+        getGameWorld().addEntityFactory(new simplefactory());
+
+        //Level level = getAssetLoader().loadLevel("0.txt", new TextLevelLoader(40, 40, '0'));
+        //getGameWorld().setLevel(level);
+
         spawn("BG");
-		spawn("W");
-		spawn("W2");
-		spawn("W3");
-		spawn("W4");
+
         grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
-            if (type.equals(EntityType.WALL))//was set to type was changed to entitytype
+            if (type.equals(WALL) || type.equals(BRICK))
                 return CellState.NOT_WALKABLE;
 
             return CellState.WALKABLE;
         });
-    	run(() -> spawn("enemy"), Duration.seconds(.5));
-        
+
+        player = spawn("Player");
+        playerComponent = player.getComponent(PlayerComponent.class);
     }
-    
- 
+
+//    @Override
+//    protected void initGame() {
+//    	getGameWorld().addEntityFactory(this.SF);
+//    	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
+//        spawn("BG");
+//		spawn("W");
+//		spawn("W2");
+//		spawn("W3");
+//		spawn("W4");
+//        grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
+//            if (type.equals(EntityType.WALL))//was set to type was changed to entitytype
+//                return CellState.NOT_WALKABLE;
+//
+//            return CellState.WALKABLE;
+//        });
+//    	run(() -> spawn("enemy"), Duration.seconds(.5));
+//        
+//    }
     
     @Override
     protected void initPhysics() {

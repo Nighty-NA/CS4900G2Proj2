@@ -7,8 +7,10 @@ import javafx.util.Duration;
 
 
 /**
- * @author Almas Baimagambetov (almaslvl@gmail.com)
+ * with the help of Almas Baimagambetov (almaslvl@gmail.com)
  */
+
+//this class allows the player to move along the grid
 public class PlayerComponent extends Component {
 
     private CellMoveComponent cell;

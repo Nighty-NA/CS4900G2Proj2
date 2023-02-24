@@ -39,36 +39,6 @@ public class AIChaseComponent extends Component {
 	private Entity enemy;
 	
 	private AStarCell moveToCell = null;
-	
-	protected void onUpdate(double tpf) {
-		if(astar.get().isAtDestination()) {
-			Entity closestEnemy;
-			
-			if(entity.isType()) {
-				
-			}
-		}
-	private void clearMoveCell() {
-		if(moveToCell != null) {
-			MOVE_TO_CELLS.remove(moveToCell);
-			moveToCell = null;
-		}
-	}
-	
-	private AStarCell getCell(Entity entity) {
-
-        int x = (int) ((entity.getX() + 30 / 2) / 30);
-        int y = (int) ((entity.getY() + 30 / 2) / 30);
-
-        return astar.get().getGrid().get(x, y);
-	}
-}
-			
-			
-			
-			
-			
-			
-			
 
 }
+			
