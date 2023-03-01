@@ -201,6 +201,7 @@ public class DawnseekerApp extends GameApplication{
     	else {
     		spawn("spower", cSpawnPoint);
     	}
+    	FXGL.play("bong.wav");
     	e.removeFromWorld();
     }
     
