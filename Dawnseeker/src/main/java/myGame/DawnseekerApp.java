@@ -15,6 +15,7 @@ import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
@@ -35,7 +36,7 @@ import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 
-public class DawnseekerApp extends GameApplication {
+public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
         PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
@@ -97,6 +98,12 @@ public class DawnseekerApp extends GameApplication {
     @Override
     protected void initGame() {
     	getGameWorld().addEntityFactory(this.SF);
+    	
+    	//Background music ----- Arrowood
+    	String BGM = new String("heartache.mp3");
+    	Music gameMusic = FXGL.getAssetLoader().loadMusic(BGM);
+    	FXGL.getAudioPlayer().loopMusic(gameMusic);
+    	
     	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
         spawn("BG");
 		spawn("W");
@@ -129,16 +136,28 @@ public class DawnseekerApp extends GameApplication {
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
         	player.setProperty("Helth", player.getInt("Helth")-enemy.getInt("Dmg"));// ---- player takes damage from enemy -josh
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+        	FXGL.play("player_oof.wav"); // ----- ADDS SOUND PER ENEMY COLLISION
+        	
+        	//If player dies...
         	if(player.getInt("Helth") == 0) {
+        		FXGL.getAudioPlayer().stopAllSounds();
+        		FXGL.play("yoda_death.wav");
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
         		player.setProperty("Helth", 3);
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
+//        		try {
+//        			FXGL.play("yoda_death.wav");
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
         	}
         });
         
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
+            FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
         
@@ -182,6 +201,7 @@ public class DawnseekerApp extends GameApplication {
     	else {
     		spawn("spower", cSpawnPoint);
     	}
+    	FXGL.play("bong.wav");
     	e.removeFromWorld();
     }
     

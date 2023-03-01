@@ -68,6 +68,7 @@ public class simplefactory implements EntityFactory {
         Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
         Point2D direction = getInput().getMousePositionWorld().subtract(player.getCenter());
 
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
