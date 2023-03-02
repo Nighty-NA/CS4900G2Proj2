@@ -39,7 +39,7 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
                 .at(500,500)
                 .collidable()
-                .with("Helth", 3)
+                .with("Health", DawnseekerApp.getPHP())
                 .build();
     }
     
@@ -55,9 +55,8 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.ENEMY)
                 .viewWithBBox(circle)
                 .collidable()
-                //.with("Health", 10)
-                .with("Health", DawnseekerApp.getHP())
-                .with("Dmg", 1)
+                .with("Health", DawnseekerApp.getEHP())
+                .with("Dmg", DawnseekerApp.getEDMG())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -73,6 +72,7 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.BULLET)
                 .viewWithBBox(new Rectangle(10, 2, Color.BLACK))
                 .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
                 .with(new ProjectileComponent(direction, 1000))
                 .with(new OffscreenCleanComponent())
                 .build();
