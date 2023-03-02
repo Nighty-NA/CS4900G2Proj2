@@ -33,12 +33,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
-
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class DawnseekerApp extends GameApplication {
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER
     }
 	private AStarGrid grid;
 	
@@ -51,7 +51,11 @@ public class DawnseekerApp extends GameApplication {
 	private Entity player;
 	
 	public double speed = 2;
-
+	public static int EHP = 10;
+	public double PHP = 10;
+	public double EDMG = 10;
+	public int PDMG = 10;
+	
 	public Entity getPlayer() {
 		return player;
 	}
@@ -109,8 +113,8 @@ public class DawnseekerApp extends GameApplication {
 
             return CellState.WALKABLE;
         });
-    	run(() -> spawn("enemy"), Duration.seconds(.5));
-        
+    	run(() -> spawn("enemy"), Duration.seconds(.5) );
+    	getGameTimer().runAtInterval(() -> { EHP=EHP*2; }, Duration.seconds(10));
     }
     
  
@@ -119,8 +123,8 @@ public class DawnseekerApp extends GameApplication {
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
         	bullet.removeFromWorld();
-        	enemy.setProperty("Helth", enemy.getInt("Helth")-5);
-            if(enemy.getInt("Helth") == 0) {
+        	enemy.setProperty("Health", enemy.getInt("Health")-PDMG);
+            if(enemy.getInt("Health") == 0) {
             	killEnemy(enemy);
             }
         		
@@ -132,8 +136,7 @@ public class DawnseekerApp extends GameApplication {
         	if(player.getInt("Helth") == 0) {
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
         		player.setProperty("Helth", 3);
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER));
         	}
         });
         
@@ -172,6 +175,9 @@ public class DawnseekerApp extends GameApplication {
         
 	    
     }
+    public static int getHP() {
+    	return EHP;
+    }
     
     private void killEnemy(Entity e) {
     	Point2D cSpawnPoint = e.getCenter();
@@ -180,7 +186,15 @@ public class DawnseekerApp extends GameApplication {
     		spawn("coin", cSpawnPoint);
     	}
     	else {
-    		spawn("spower", cSpawnPoint);
+    		if(rng >= 8 && rng < 8.7 ) {
+    			spawn("spower", cSpawnPoint);	
+    		}
+    		if(rng >= 8.7 && rng < 9.4 ) {
+    			spawn("apower", cSpawnPoint);	
+    		}
+    		if(rng >= 9.4) {
+    			spawn("hpower", cSpawnPoint);	
+    		}
     	}
     	e.removeFromWorld();
     }
