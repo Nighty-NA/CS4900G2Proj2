@@ -54,7 +54,6 @@ public class simplefactory implements EntityFactory {
     	Circle circle = new Circle(20, 20, 20, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
-//        int moveSpeed = (int) Math.floor(Math.random() * 101);
         int moveSpeed = 100;
 
         return entityBuilder()
@@ -64,7 +63,6 @@ public class simplefactory implements EntityFactory {
                 .collidable()
                 .with("Helth", 10)
                 .with("Dmg", 1)
-                //.at(Math.random(),Math.random())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -75,6 +73,7 @@ public class simplefactory implements EntityFactory {
         Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
         Point2D direction = getInput().getMousePositionWorld().subtract(player.getCenter());
 
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
@@ -191,5 +190,13 @@ public class simplefactory implements EntityFactory {
 				.build();
 	}
 	
+	@Spawns("spower")
+	public Entity spow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.SPOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
+				.build();
+	}
 }
 

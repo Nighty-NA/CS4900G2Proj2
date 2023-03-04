@@ -11,8 +11,11 @@ import static com.almasb.fxgl.dsl.FXGL.run;
 import static com.almasb.fxgl.dsl.FXGL.showMessage;
 import static com.almasb.fxgl.dsl.FXGL.spawn;
 
+import java.util.Map;
+
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
@@ -26,15 +29,19 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import animationComponent.AnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
 
-public class DawnseekerApp extends GameApplication {
+public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
     }
 	private AStarGrid grid;
 	
@@ -46,6 +53,8 @@ public class DawnseekerApp extends GameApplication {
 	
 	private Entity player;
 	
+	public double speed = 2;
+
 	public Entity getPlayer() {
 		return player;
 	}
@@ -53,16 +62,28 @@ public class DawnseekerApp extends GameApplication {
     public static void main(String[] args) {
         launch(args);
     }
-	//stuff
+	
+    @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("Coins", 0);
+    }
+    
+    @Override
+    protected void initUI() {
+        Label scoreLabel = new Label();
+        scoreLabel.setTextFill(Color.BLACK);
+        scoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        scoreLabel.textProperty().bind(FXGL.getip("Coins").asString("Coins: %d"));
+        FXGL.addUINode(scoreLabel, 40, 35);
+    }
     
     @Override
     protected void initSettings(GameSettings settings) {
 		settings.setWidth(1024);
 		settings.setHeight(1024);
 		settings.setTitle("Dawnseeker");
-		settings.setVersion("0.1");
+		settings.setVersion("0.2");
 		settings.setMainMenuEnabled(true);
-//        settings.setIntroEnabled(true); //addition for showcase for Sprint 1 -- NArrowood
     }
 
     @Override
@@ -111,12 +132,14 @@ public class DawnseekerApp extends GameApplication {
     @Override
     protected void initGame() {
     	getGameWorld().addEntityFactory(this.SF);
+    	
+    	//Background music ----- Arrowood
+    	String BGM = new String("heartache.mp3");
+    	Music gameMusic = FXGL.getAssetLoader().loadMusic(BGM);
+    	FXGL.getAudioPlayer().loopMusic(gameMusic);
+    	
     	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
         spawn("BG");
-//      spawn("BWH");  //--- not needed right now, also will be replaced with small walls for more usable collision-josh
-//		spawn("BWV");
-//		spawn("BWH2");
-//		spawn("BWV2");
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
@@ -147,17 +170,35 @@ public class DawnseekerApp extends GameApplication {
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
         	player.setProperty("Helth", player.getInt("Helth")-enemy.getInt("Dmg"));// ---- player takes damage from enemy -josh
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+        	FXGL.play("player_oof.wav"); // ----- ADDS SOUND PER ENEMY COLLISION
+        	
+        	//If player dies...
         	if(player.getInt("Helth") == 0) {
+        		FXGL.getAudioPlayer().stopAllSounds();
+        		FXGL.play("yoda_death.wav");
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
         		player.setProperty("Helth", 3);
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
+//        		try {
+//        			FXGL.play("yoda_death.wav");
+//					Thread.sleep(1000);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
         	}
         });
         
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
-            
+            FXGL.play("coin_pickup.wav");
+            FXGL.inc("Coins", 1);
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
+            spower.removeFromWorld();
+            speed = speed+(speed*.01);
+
         });
         
         onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
@@ -187,9 +228,17 @@ public class DawnseekerApp extends GameApplication {
     
     private void killEnemy(Entity e) {
     	Point2D cSpawnPoint = e.getCenter();
-    	spawn("coin", cSpawnPoint);
+    	double rng = Math.random()*10;
+    	if(rng < 8) {
+    		spawn("coin", cSpawnPoint);
+    	}
+    	else {
+    		spawn("spower", cSpawnPoint);
+    	}
+    	FXGL.play("bong.wav");
     	e.removeFromWorld();
     }
+    
 
 
 }
