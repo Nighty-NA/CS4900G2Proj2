@@ -184,7 +184,8 @@ public class DawnseekerApp extends GameApplication{
         		FXGL.play("yoda_death.wav");
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
         		player.setProperty("Health", PHP);
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER));
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(
+        				EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER,EntityType.BULLET));
 
         	}
         });
