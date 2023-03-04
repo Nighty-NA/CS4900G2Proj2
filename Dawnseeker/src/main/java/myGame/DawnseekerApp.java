@@ -15,6 +15,9 @@ import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.FXGLMenu;
+import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.app.scene.SimpleGameMenu;
 import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -88,6 +91,17 @@ public class DawnseekerApp extends GameApplication{
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.2");
 		settings.setMainMenuEnabled(true);
+		
+		//Custom main menu
+//		settings.setSceneFactory(new DawnseekerScene());
+		
+		//WORKING DO NOT ERASE PLEASE ----- Arrowood
+//		settings.setSceneFactory(new SceneFactory() {
+//            @Override
+//            public FXGLMenu newMainMenu() {
+//                return new DawnseekerMenu();
+//            }
+//        });
     }
 
     @Override
@@ -186,7 +200,7 @@ public class DawnseekerApp extends GameApplication{
         		player.setProperty("Health", PHP);
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(
         				EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER,EntityType.BULLET));
-
+//        		gameOver();
         	}
         });
         
@@ -272,6 +286,8 @@ public class DawnseekerApp extends GameApplication{
     	e.removeFromWorld();
     }
     
-
+    private void gameOver() {
+    	getGameController().gotoMainMenu();
+    }
 
 }
