@@ -19,12 +19,14 @@ import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 
+import animationComponent.AnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
@@ -90,11 +92,43 @@ public class DawnseekerApp extends GameApplication{
 
     @Override
     protected void initInput() {
-    	onKey(KeyCode.W, () -> this.player.translateY(-speed));
-        onKey(KeyCode.S, () -> this.player.translateY(speed));
-        onKey(KeyCode.A, () -> this.player.translateX(-speed));
-        onKey(KeyCode.D, () -> this.player.translateX(speed));
+    	//onKey(KeyCode.W, () -> this.player.translateY(-3));
+        //onKey(KeyCode.S, () -> this.player.translateY(3));
+        //onKey(KeyCode.A, () -> this.player.translateX(-3));
+        //onKey(KeyCode.D, () -> this.player.translateX(3));
         onBtnDown(MouseButton.PRIMARY, () -> spawn("bullet", this.player.getCenter()));
+        
+        FXGL.getInput().addAction(new UserAction("Up") {
+            @Override
+            protected void onAction() {
+                player.getComponent(AnimationComponent.class).moveUp();
+                player.translateY(-3);
+            }
+        }, KeyCode.W);
+        
+        FXGL.getInput().addAction(new UserAction("Down") {
+            @Override
+            protected void onAction() {
+                player.getComponent(AnimationComponent.class).moveDown();
+                player.translateY(3);
+            }
+        }, KeyCode.S);
+        
+        FXGL.getInput().addAction(new UserAction("Right") {
+            @Override
+            protected void onAction() {
+                player.getComponent(AnimationComponent.class).moveRight();
+                player.translateX(3);
+            }
+        }, KeyCode.D);
+        
+        FXGL.getInput().addAction(new UserAction("Left") {
+            @Override
+            protected void onAction() {
+                player.getComponent(AnimationComponent.class).moveLeft();
+                player.translateX(-3);
+            }
+        }, KeyCode.A);
     }
     
 
