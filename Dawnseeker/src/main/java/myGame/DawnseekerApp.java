@@ -121,9 +121,7 @@ public class DawnseekerApp extends GameApplication{
             return CellState.WALKABLE;
         });
         
-        
-        
-        
+        //Enemies spawn every half a second, and their damage is increased by ??? every 10 in-game seconds.
     	run(() -> spawn("enemy"), Duration.seconds(.5) );
     	getGameTimer().runAtInterval(() -> { EHP=EHP*2;EDMG=EDMG*2; }, Duration.seconds(10));
     }
@@ -139,35 +137,13 @@ public class DawnseekerApp extends GameApplication{
             	killEnemy(enemy);
             }
         		
-        });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        }); 
         
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
         	player.setProperty("Health", player.getInt("Health")-enemy.getInt("Dmg"));
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
         	FXGL.play("player_oof.wav"); // ----- ADDS SOUND PER ENEMY COLLISION
-        	
-        	
 
-
-        	
         	//If player dies...
         	if(player.getInt("Health") <= 0) {
         		FXGL.getAudioPlayer().stopAllSounds();
@@ -178,28 +154,6 @@ public class DawnseekerApp extends GameApplication{
 
         	}
         });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
