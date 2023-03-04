@@ -40,7 +40,7 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .collidable()
-                .with("Helth", 3)
+                .with("Health", DawnseekerApp.getPHP())
                 .build();
     }
     
@@ -56,8 +56,8 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.ENEMY)
                 .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
-                .with("Helth", 10)
-                .with("Dmg", 1)
+                .with("Health", DawnseekerApp.getEHP())
+                .with("Dmg", DawnseekerApp.getEDMG())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -74,6 +74,7 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.BULLET)
                 .viewWithBBox("FireBallProjectile.png")
                 .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
                 .with(new ProjectileComponent(direction, 1000))
                 .with(new OffscreenCleanComponent())
                 .build();
@@ -190,6 +191,24 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.SPOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.BLUE))
+				.build();
+	}
+	
+	@Spawns("apower")
+	public Entity apow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.APOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.RED))
+				.build();
+	}
+	
+	@Spawns("hpower")
+	public Entity hpow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.HPOWER)
 				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
 				.build();
 	}

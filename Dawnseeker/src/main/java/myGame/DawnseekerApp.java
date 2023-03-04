@@ -34,12 +34,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
-
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER
     }
 	private AStarGrid grid;
 	
@@ -52,7 +52,11 @@ public class DawnseekerApp extends GameApplication{
 	private Entity player;
 	
 	public double speed = 2;
-
+	public static int EHP = 10;
+	public static int PHP = 20;
+	public static int EDMG = 10;
+	public static int PDMG = 20;
+	
 	public Entity getPlayer() {
 		return player;
 	}
@@ -116,8 +120,12 @@ public class DawnseekerApp extends GameApplication{
 
             return CellState.WALKABLE;
         });
-    	run(() -> spawn("enemy"), Duration.seconds(.5));
         
+        
+        
+        
+    	run(() -> spawn("enemy"), Duration.seconds(.5) );
+    	getGameTimer().runAtInterval(() -> { EHP=EHP*2;EDMG=EDMG*2; }, Duration.seconds(10));
     }
     
  
@@ -126,34 +134,72 @@ public class DawnseekerApp extends GameApplication{
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
         	bullet.removeFromWorld();
-        	enemy.setProperty("Helth", enemy.getInt("Helth")-5);
-            if(enemy.getInt("Helth") == 0) {
+        	enemy.setProperty("Health", enemy.getInt("Health")-bullet.getInt("Dmg"));
+            if(enemy.getInt("Health") <= 0) {
             	killEnemy(enemy);
             }
         		
         });
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
-        	player.setProperty("Helth", player.getInt("Helth")-enemy.getInt("Dmg"));// ---- player takes damage from enemy -josh
+        	player.setProperty("Health", player.getInt("Health")-enemy.getInt("Dmg"));
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
         	FXGL.play("player_oof.wav"); // ----- ADDS SOUND PER ENEMY COLLISION
         	
+        	
+
+
+        	
         	//If player dies...
-        	if(player.getInt("Helth") == 0) {
+        	if(player.getInt("Health") <= 0) {
         		FXGL.getAudioPlayer().stopAllSounds();
         		FXGL.play("yoda_death.wav");
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
-        		player.setProperty("Helth", 3);
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
-//        		try {
-//        			FXGL.play("yoda_death.wav");
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
+        		player.setProperty("Health", PHP);
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER));
+
         	}
         });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
@@ -164,6 +210,18 @@ public class DawnseekerApp extends GameApplication{
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
             speed = speed+(speed*.01);
+
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.APOWER, (player, apower) -> {
+            apower.removeFromWorld();
+            PDMG=PDMG+5;
+
+        });
+        
+        onCollisionBegin(EntityType.PLAYER, EntityType.HPOWER, (player, hpower) -> {
+            hpower.removeFromWorld();
+            PHP = PHP+10;
 
         });
         
@@ -191,6 +249,18 @@ public class DawnseekerApp extends GameApplication{
         
 	    
     }
+    public static int getEHP() {
+    	return EHP;
+    }
+    public static int getEDMG() {
+    	return EDMG;
+    }
+    public static int getPHP() {
+    	return PHP;
+    }
+    public static int getPDMG() {
+    	return PDMG;
+    }
     
     private void killEnemy(Entity e) {
     	Point2D cSpawnPoint = e.getCenter();
@@ -199,7 +269,15 @@ public class DawnseekerApp extends GameApplication{
     		spawn("coin", cSpawnPoint);
     	}
     	else {
-    		spawn("spower", cSpawnPoint);
+    		if(rng >= 8 && rng < 8.7 ) {
+    			spawn("spower", cSpawnPoint);	
+    		}
+    		if(rng >= 8.7 && rng < 9.4 ) {
+    			spawn("apower", cSpawnPoint);	
+    		}
+    		if(rng >= 9.4) {
+    			spawn("hpower", cSpawnPoint);	
+    		}
     	}
     	FXGL.play("bong.wav");
     	e.removeFromWorld();
