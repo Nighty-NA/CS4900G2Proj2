@@ -96,12 +96,12 @@ public class DawnseekerApp extends GameApplication{
 //		settings.setSceneFactory(new DawnseekerScene());
 		
 		//WORKING DO NOT ERASE PLEASE ----- Arrowood
-//		settings.setSceneFactory(new SceneFactory() {
-//            @Override
-//            public FXGLMenu newMainMenu() {
-//                return new DawnseekerMenu();
-//            }
-//        });
+		settings.setSceneFactory(new SceneFactory() {
+            @Override
+            public FXGLMenu newMainMenu() {
+                return new DawnseekerMenu();
+            }
+        });
     }
 
     @Override
@@ -200,7 +200,7 @@ public class DawnseekerApp extends GameApplication{
         		player.setProperty("Health", PHP);
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(
         				EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER,EntityType.BULLET));
-//        		gameOver();
+        		gameOver();
         	}
         });
         

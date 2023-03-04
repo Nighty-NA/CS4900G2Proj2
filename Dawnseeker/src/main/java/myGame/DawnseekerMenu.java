@@ -73,8 +73,10 @@ public class DawnseekerMenu extends FXGLMenu {
 			this.name = name;
 			this.action = action;
 			
-			text = getUIFactoryService().newText(name, Color.BLACK, 14.0);
+			text = getUIFactoryService().newText(name, Color.BLACK, 30.0);
 		
+			setOnMouseClicked(e -> action.run());
+			
 			setAlignment(Pos.CENTER_LEFT);
 			
 			getChildren().addAll(text);
