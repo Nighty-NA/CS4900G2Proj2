@@ -35,7 +35,7 @@ public class BadGuyOne extends Component {
 	@Override
     public void onUpdate(double tpf) {
         move(tpf);
-        rotate();
+//        rotate();
 
     }
 
