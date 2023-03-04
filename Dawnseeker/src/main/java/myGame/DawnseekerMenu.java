@@ -6,6 +6,7 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.dsl.FXGL;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -74,6 +75,12 @@ public class DawnseekerMenu extends FXGLMenu {
 			this.action = action;
 			
 			text = getUIFactoryService().newText(name, Color.BLACK, 30.0);
+			
+			text.fillProperty().bind(
+                    Bindings.when(hoverProperty())
+                            .then(Color.RED)
+                            .otherwise(Color.BLACK)
+            );
 		
 			setOnMouseClicked(e -> action.run());
 			

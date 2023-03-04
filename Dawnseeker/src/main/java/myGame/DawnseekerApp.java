@@ -92,10 +92,7 @@ public class DawnseekerApp extends GameApplication{
 		settings.setVersion("0.2");
 		settings.setMainMenuEnabled(true);
 		
-		//Custom main menu
-//		settings.setSceneFactory(new DawnseekerScene());
-		
-		//WORKING DO NOT ERASE PLEASE ----- Arrowood
+		//Custom main menu		
 		settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newMainMenu() {
