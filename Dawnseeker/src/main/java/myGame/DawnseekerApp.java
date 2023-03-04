@@ -15,6 +15,7 @@ import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
@@ -35,7 +36,7 @@ import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-public class DawnseekerApp extends GameApplication {
+public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
         PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER
@@ -83,7 +84,7 @@ public class DawnseekerApp extends GameApplication {
 		settings.setWidth(1024);
 		settings.setHeight(1024);
 		settings.setTitle("Dawnseeker");
-		settings.setVersion("0.1");
+		settings.setVersion("0.2");
 		settings.setMainMenuEnabled(true);
     }
 
@@ -101,6 +102,12 @@ public class DawnseekerApp extends GameApplication {
     @Override
     protected void initGame() {
     	getGameWorld().addEntityFactory(this.SF);
+    	
+    	//Background music ----- Arrowood
+    	String BGM = new String("heartache.mp3");
+    	Music gameMusic = FXGL.getAssetLoader().loadMusic(BGM);
+    	FXGL.getAudioPlayer().loopMusic(gameMusic);
+    	
     	this.player = spawn("player", getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);// getAppWidth() / 2 - 15, getAppHeight() / 2 - 15
         spawn("BG");
 		spawn("W");
@@ -134,19 +141,69 @@ public class DawnseekerApp extends GameApplication {
         		
         });
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
         	player.setProperty("Health", player.getInt("Health")-enemy.getInt("Dmg"));
-        	
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+        	FXGL.play("player_oof.wav"); // ----- ADDS SOUND PER ENEMY COLLISION
+        	
+        	
+
+
+        	
+        	//If player dies...
         	if(player.getInt("Health") <= 0) {
+        		FXGL.getAudioPlayer().stopAllSounds();
+        		FXGL.play("yoda_death.wav");
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
-        		player.setProperty("Health", 3);
+        		player.setProperty("Health", PHP);
         		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER));
+
         	}
         });
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
+            FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
         
@@ -222,6 +279,7 @@ public class DawnseekerApp extends GameApplication {
     			spawn("hpower", cSpawnPoint);	
     		}
     	}
+    	FXGL.play("bong.wav");
     	e.removeFromWorld();
     }
     

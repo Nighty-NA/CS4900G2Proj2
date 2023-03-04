@@ -24,12 +24,14 @@ public class BadGuyOne extends Component {
 		this.moveSpeed = moveSpeed;
 	}
 	
+	//When the enemy entity is added to the world, adjust it's velocity.
 	@Override
     public void onAdded() {
         enemy1 = entity;
         adjustVelocity(0.016);
 	}
 	
+	//As the game updates frame by frame. "tpf" = time per frame.
 	@Override
     public void onUpdate(double tpf) {
         move(tpf);
@@ -37,6 +39,7 @@ public class BadGuyOne extends Component {
 
     }
 
+	//This allows the enemies to move a certain speed and direction.
     private void move(double tpf) {
         if (adjustDirectionTimer.elapsed(adjustDelay)) {
             adjustVelocity(tpf);
@@ -45,7 +48,8 @@ public class BadGuyOne extends Component {
 
         enemy1.translate(velocity);
     }
-
+    
+    //This adjusts the velocity of the enemies, and points them to the center of the Player object.
     private void adjustVelocity(double tpf) {
         Point2D directionToPlayer = player.getCenter()
                 .subtract(enemy1.getCenter())
@@ -54,7 +58,8 @@ public class BadGuyOne extends Component {
 
         velocity = velocity.add(directionToPlayer).multiply(tpf);
     }
-
+    
+    //This rotates the enemies. We can take this out to make them not rotate.
     private void rotate() {
         if (!velocity.equals(Point2D.ZERO)) {
             enemy1.rotateToVector(velocity);

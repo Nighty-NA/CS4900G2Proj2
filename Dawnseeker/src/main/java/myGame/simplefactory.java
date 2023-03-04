@@ -20,6 +20,7 @@ import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 
+
 import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -36,7 +37,7 @@ public class simplefactory implements EntityFactory {
     	
         return entityBuilder()
                 .type(EntityType.PLAYER)
-                .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
+                .viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .collidable()
                 .with("Health", DawnseekerApp.getPHP())
@@ -45,7 +46,7 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
-        Circle circle = new Circle(20, 20, 20, Color.RED);
+    	Circle circle = new Circle(20, 20, 20, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
         int moveSpeed = 100;
@@ -53,7 +54,7 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
-                .viewWithBBox(circle)
+                .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
                 .with("Health", DawnseekerApp.getEHP())
                 .with("Dmg", DawnseekerApp.getEDMG())
@@ -67,10 +68,11 @@ public class simplefactory implements EntityFactory {
         Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
         Point2D direction = getInput().getMousePositionWorld().subtract(player.getCenter());
 
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
-                .viewWithBBox(new Rectangle(10, 2, Color.BLACK))
+                .viewWithBBox("FireBallProjectile.png")
                 .collidable()
                 .with("Dmg", DawnseekerApp.getPDMG())
                 .with(new ProjectileComponent(direction, 1000))
