@@ -15,11 +15,15 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import com.almasb.fxgl.entity.action.ActionComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 
+import animationComponent.AnimationComponent;
 import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -36,29 +40,29 @@ public class simplefactory implements EntityFactory {
     	
         return entityBuilder()
                 .type(EntityType.PLAYER)
-                .viewWithBBox(new Rectangle(30, 30, Color.BLUE))
+                .bbox(new HitBox(BoundingShape.box(64, 64)))
+                .with(new AnimationComponent())
+                //.viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .collidable()
-                .with("Helth", 3)
+                .with("Health", DawnseekerApp.getPHP())
                 .build();
     }
     
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
-        Circle circle = new Circle(20, 20, 20, Color.RED);
+    	Circle circle = new Circle(20, 20, 20, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
-//        int moveSpeed = (int) Math.floor(Math.random() * 101);
         int moveSpeed = 100;
 
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
-                .viewWithBBox(circle)
+                .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
-                .with("Helth", 10)
-                .with("Dmg", 1)
-                //.at(Math.random(),Math.random())
+                .with("Health", DawnseekerApp.getEHP())
+                .with("Dmg", DawnseekerApp.getEDMG())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -69,11 +73,13 @@ public class simplefactory implements EntityFactory {
         Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
         Point2D direction = getInput().getMousePositionWorld().subtract(player.getCenter());
 
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
-                .viewWithBBox(new Rectangle(10, 2, Color.BLACK))
+                .viewWithBBox("FireBallProjectile.png")
                 .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
                 .with(new ProjectileComponent(direction, 1000))
                 .with(new OffscreenCleanComponent())
                 .build();
@@ -185,5 +191,41 @@ public class simplefactory implements EntityFactory {
 				.build();
 	}
 	
+	@Spawns("spower")
+	public Entity spow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.SPOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.BLUE))
+				.build();
+	}
+	
+	@Spawns("apower")
+	public Entity apow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.APOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.RED))
+				.build();
+	}
+	
+	@Spawns("hpower")
+	public Entity hpow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.HPOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
+				.build();
+	}
+	
+	@Spawns("badWall")
+	public Entity badWall(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.BADWALL)
+				.at(300,450)
+				.viewWithBBox(new Rectangle(64,64, Color.RED))
+				.buildAndAttach();
+	}
 }
 
