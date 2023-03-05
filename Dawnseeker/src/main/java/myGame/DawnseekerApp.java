@@ -44,7 +44,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL
     }
 	private AStarGrid grid;
 	
@@ -61,6 +61,19 @@ public class DawnseekerApp extends GameApplication{
 	public static int PHP = 20;
 	public static int EDMG = 10;
 	public static int PDMG = 20;
+	
+    public static int getEHP() {
+    	return EHP;
+    }
+    public static int getEDMG() {
+    	return EDMG;
+    }
+    public static int getPHP() {
+    	return PHP;
+    }
+    public static int getPDMG() {
+    	return PDMG;
+    }
 	
 	public Entity getPlayer() {
 		return player;
@@ -159,6 +172,7 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W2");
 		spawn("W3");
 		spawn("W4");
+		spawn("badWall");
         grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
             if (type.equals(EntityType.WALL))//was set to type was changed to entitytype
                 return CellState.NOT_WALKABLE;
@@ -201,35 +215,46 @@ public class DawnseekerApp extends GameApplication{
         	}
         });
         
+        //When the player moves over a coin
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
             FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
         
+        //When the player moves over the speed power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
             speed = speed+(speed*.01);
 
         });
         
+        //When the player moves over the attack power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.APOWER, (player, apower) -> {
             apower.removeFromWorld();
             PDMG=PDMG+5;
 
         });
         
+        //When the player moves over the health power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.HPOWER, (player, hpower) -> {
             hpower.removeFromWorld();
             PHP = PHP+10;
 
         });
         
+        //When the bullet collides with a wall
         onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
             bullet.removeFromWorld();
             
         });
         
+        // On player collision with harmful wall ----- IN PROGRESS - Arrowood
+        onCollisionBegin(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
+        	FXGL.play("player_oof.wav");
+//        	gameOver();
+        });
+
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
 	        @Override
@@ -248,18 +273,6 @@ public class DawnseekerApp extends GameApplication{
 	    });
         
 	    
-    }
-    public static int getEHP() {
-    	return EHP;
-    }
-    public static int getEDMG() {
-    	return EDMG;
-    }
-    public static int getPHP() {
-    	return PHP;
-    }
-    public static int getPDMG() {
-    	return PDMG;
     }
     
     private void killEnemy(Entity e) {

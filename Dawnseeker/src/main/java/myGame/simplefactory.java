@@ -217,5 +217,15 @@ public class simplefactory implements EntityFactory {
 				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
 				.build();
 	}
+	
+	@Spawns("badWall")
+	public Entity badWall(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.BADWALL)
+				.at(300,450)
+				.viewWithBBox(new Rectangle(64,64, Color.RED))
+				.buildAndAttach();
+	}
 }
 
