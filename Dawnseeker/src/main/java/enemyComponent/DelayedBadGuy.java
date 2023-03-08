@@ -8,18 +8,18 @@ import com.almasb.fxgl.time.LocalTimer;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 
-public class BadGuyOne extends Component {
+public class DelayedBadGuy extends Component {
 	
 		private Point2D velocity = Point2D.ZERO;
 	    private Entity player;
 	    private Entity enemy1;
 	    
 	    private LocalTimer adjustDirectionTimer = FXGL.newLocalTimer();
-	    private Duration adjustDelay = Duration.seconds(0.15);
+	    private Duration adjustDelay = Duration.seconds(1);
 
 	    private int moveSpeed;
 	    
-	public BadGuyOne (Entity player, int moveSpeed) {
+	public DelayedBadGuy (Entity player, int moveSpeed) {
 		this.player = player;
 		this.moveSpeed = moveSpeed;
 	}

@@ -15,6 +15,9 @@ import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.FXGLMenu;
+import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.app.scene.SimpleGameMenu;
 import com.almasb.fxgl.audio.Music;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
@@ -36,12 +39,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
-
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER
+        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL
     }
 	private AStarGrid grid;
 	
@@ -54,7 +57,24 @@ public class DawnseekerApp extends GameApplication{
 	private Entity player;
 	
 	public double speed = 2;
-
+	public static int EHP = 10;
+	public static int PHP = 20;
+	public static int EDMG = 10;
+	public static int PDMG = 20;
+	
+    public static int getEHP() {
+    	return EHP;
+    }
+    public static int getEDMG() {
+    	return EDMG;
+    }
+    public static int getPHP() {
+    	return PHP;
+    }
+    public static int getPDMG() {
+    	return PDMG;
+    }
+	
 	public Entity getPlayer() {
 		return player;
 	}
@@ -84,6 +104,14 @@ public class DawnseekerApp extends GameApplication{
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.2");
 		settings.setMainMenuEnabled(true);
+		
+		//Custom main menu		
+		settings.setSceneFactory(new SceneFactory() {
+            @Override
+            public FXGLMenu newMainMenu() {
+                return new DawnseekerMenu();
+            }
+        });
     }
 
     @Override
@@ -144,14 +172,17 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W2");
 		spawn("W3");
 		spawn("W4");
+		spawn("badWall");
         grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
             if (type.equals(EntityType.WALL))//was set to type was changed to entitytype
                 return CellState.NOT_WALKABLE;
 
             return CellState.WALKABLE;
         });
-    	run(() -> spawn("enemy"), Duration.seconds(.5));
         
+        //Enemies spawn every half a second, and their damage is increased by ??? every 10 in-game seconds.
+    	run(() -> spawn("enemy"), Duration.seconds(.5) );
+    	getGameTimer().runAtInterval(() -> { EHP=EHP*2;EDMG=EDMG*2; }, Duration.seconds(10));
     }
     
  
@@ -160,52 +191,70 @@ public class DawnseekerApp extends GameApplication{
     protected void initPhysics() {
         onCollisionBegin(EntityType.BULLET, EntityType.ENEMY, (bullet, enemy) -> {
         	bullet.removeFromWorld();
-        	enemy.setProperty("Helth", enemy.getInt("Helth")-5);
-            if(enemy.getInt("Helth") == 0) {
+        	enemy.setProperty("Health", enemy.getInt("Health")-bullet.getInt("Dmg"));
+            if(enemy.getInt("Health") <= 0) {
             	killEnemy(enemy);
             }
         		
-        });
+        }); 
         
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
-        	player.setProperty("Helth", player.getInt("Helth")-enemy.getInt("Dmg"));// ---- player takes damage from enemy -josh
+        	player.setProperty("Health", player.getInt("Health")-enemy.getInt("Dmg"));
         	enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
         	FXGL.play("player_oof.wav"); // ----- ADDS SOUND PER ENEMY COLLISION
-        	
+
         	//If player dies...
-        	if(player.getInt("Helth") == 0) {
+        	if(player.getInt("Health") <= 0) {
         		FXGL.getAudioPlayer().stopAllSounds();
         		FXGL.play("yoda_death.wav");
         		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
-        		player.setProperty("Helth", 3);
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.COIN));
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(EntityType.ENEMY));// ----- upon death the enemies are cleared from board and player is reset to starting position and status -josh
-//        		try {
-//        			FXGL.play("yoda_death.wav");
-//					Thread.sleep(1000);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
+        		player.setProperty("Health", PHP);
+        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(
+        				EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER,EntityType.BULLET));
+        		gameOver();
         	}
         });
         
+        //When the player moves over a coin
         onCollisionBegin(EntityType.PLAYER, EntityType.COIN, (player, coin) -> {
             coin.removeFromWorld();
             FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
         
+        //When the player moves over the speed power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
             speed = speed+(speed*.01);
 
         });
         
+        //When the player moves over the attack power-up
+        onCollisionBegin(EntityType.PLAYER, EntityType.APOWER, (player, apower) -> {
+            apower.removeFromWorld();
+            PDMG=PDMG+5;
+
+        });
+        
+        //When the player moves over the health power-up
+        onCollisionBegin(EntityType.PLAYER, EntityType.HPOWER, (player, hpower) -> {
+            hpower.removeFromWorld();
+            PHP = PHP+10;
+
+        });
+        
+        //When the bullet collides with a wall
         onCollisionBegin(EntityType.BULLET, EntityType.WALL, (bullet, wall) -> {
             bullet.removeFromWorld();
             
         });
         
+        // On player collision with harmful wall ----- IN PROGRESS - Arrowood
+        onCollisionBegin(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
+        	FXGL.play("player_oof.wav");
+//        	gameOver();
+        });
+
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
 	        @Override
@@ -233,12 +282,22 @@ public class DawnseekerApp extends GameApplication{
     		spawn("coin", cSpawnPoint);
     	}
     	else {
-    		spawn("spower", cSpawnPoint);
+    		if(rng >= 8 && rng < 8.7 ) {
+    			spawn("spower", cSpawnPoint);	
+    		}
+    		if(rng >= 8.7 && rng < 9.4 ) {
+    			spawn("apower", cSpawnPoint);	
+    		}
+    		if(rng >= 9.4) {
+    			spawn("hpower", cSpawnPoint);	
+    		}
     	}
     	FXGL.play("bong.wav");
     	e.removeFromWorld();
     }
     
-
+    private void gameOver() {
+    	getGameController().gotoMainMenu();
+    }
 
 }
