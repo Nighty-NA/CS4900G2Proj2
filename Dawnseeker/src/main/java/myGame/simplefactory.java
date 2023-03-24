@@ -15,12 +15,15 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import com.almasb.fxgl.entity.action.ActionComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 
-
+import animationComponent.AnimationComponent;
 import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -37,7 +40,9 @@ public class simplefactory implements EntityFactory {
     	
         return entityBuilder()
                 .type(EntityType.PLAYER)
-                .viewWithBBox("PlayerCharacterDawnseeker.png")
+                .bbox(new HitBox(BoundingShape.box(64, 64)))
+                .with(new AnimationComponent())
+                //.viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .collidable()
                 .with("Health", DawnseekerApp.getPHP())
@@ -211,6 +216,16 @@ public class simplefactory implements EntityFactory {
 				.type(EntityType.HPOWER)
 				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
 				.build();
+	}
+	
+	@Spawns("badWall")
+	public Entity badWall(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.BADWALL)
+				.at(300,450)
+				.viewWithBBox(new Rectangle(64,64, Color.RED))
+				.buildAndAttach();
 	}
 }
 
