@@ -186,8 +186,9 @@ public class DawnseekerApp extends GameApplication{
 //            return CellState.WALKABLE;
 //        });
         
-        //Enemies spawn every half a second, and their damage is increased by ??? every 10 in-game seconds.
-    	run(() -> spawn("enemy"), Duration.seconds(.5) );
+        //Enemies spawn every second, and their damage is increased by x2 every 10 in-game seconds.
+    	run(() -> spawn("enemy"), Duration.seconds(1) );
+    	run(() -> spawn("enemy2"), Duration.seconds(1) );
     	getGameTimer().runAtInterval(() -> { EHP=EHP*2;EDMG=EDMG*2; }, Duration.seconds(10));
     }
     

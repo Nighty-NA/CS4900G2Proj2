@@ -6,6 +6,7 @@ import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
+import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
@@ -25,6 +26,7 @@ import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 
 import animationComponent.AnimationComponent;
 import enemyComponent.BadGuyOne;
+import enemyComponent.DelayedBadGuy;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -34,6 +36,8 @@ import myGame.DawnseekerApp.EntityType;
 
 
 public class simplefactory implements EntityFactory {
+	
+	private static final int SPAWN_DISTANCE = 50;
 	
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
@@ -65,6 +69,24 @@ public class simplefactory implements EntityFactory {
                 .with("Dmg", DawnseekerApp.getEDMG())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
+                .build();
+    }
+    
+    @Spawns("enemy2")
+    public Entity newEnemy2(SpawnData data) {
+    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
+        circle.setStroke(Color.BROWN);
+        circle.setStrokeWidth(2.0);
+        int moveSpeed = 100;
+
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.ENEMY)
+                .viewWithBBox("sussy.gif")
+                .with("Health", DawnseekerApp.getEHP())
+                .with("Dmg", DawnseekerApp.getEDMG())
+                .at(Math.random() *1000,Math.random() *1000)
+                .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
 
