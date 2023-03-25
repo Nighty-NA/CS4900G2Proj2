@@ -8,6 +8,8 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
 import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.dsl.components.RandomMoveComponent;
@@ -23,6 +25,7 @@ import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import com.almasb.fxgl.ui.ProgressBar;
 
 import animationComponent.AnimationComponent;
 import enemyComponent.BadGuyOne;
@@ -36,20 +39,46 @@ import myGame.DawnseekerApp.EntityType;
 
 
 public class simplefactory implements EntityFactory {
-	
-	private static final int SPAWN_DISTANCE = 50;
+		
+	//Implementing randomized spawns in the corners of the map
+	private static Point2D getRandomSpawnEnemy() {
+		int corner = FXGL.random(0, 3);
+		if(corner == 0) {
+			return new Point2D(50, 50);
+		}
+		else if (corner == 1) {
+			return new Point2D(getAppWidth() - 50, 50);
+		}
+		else if (corner == 2) {
+			return new Point2D(getAppWidth() - 50, getAppHeight() - 50);
+		}
+		else{
+			return new Point2D(50, getAppHeight() - 50);
+		}
+	}
 	
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
-    	
+        var hp1 = new HealthDoubleComponent( DawnseekerApp.getPHP());
+        var hp1View = new ProgressBar(false);
+        hp1View.setFill(Color.RED);
+        hp1View.setMaxValue(DawnseekerApp.getPHPM());
+        hp1View.setTranslateY(55);
+        hp1View.setTranslateX(-10);
+        hp1View.setWidth(85);
+
+        hp1View.currentValueProperty().bind(hp1.valueProperty());
+        
+        
         return entityBuilder()
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(64, 64)))
                 .with(new AnimationComponent())
-                //.viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
+                .view(hp1View)
+                .with(hp1)
                 .collidable()
-                .with("Health", DawnseekerApp.getPHP())
+                //.with("Health", DawnseekerApp.getPHP())
                 .build();
     }
     
@@ -59,13 +88,23 @@ public class simplefactory implements EntityFactory {
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
         int moveSpeed = 100;
-
+        var hp = new HealthDoubleComponent( DawnseekerApp.getEHP());
+        var hpView = new ProgressBar(false);
+        hpView.setFill(Color.LIGHTGREEN);
+        hpView.setMaxValue(DawnseekerApp.getEHP());
+        hpView.setWidth(85);
+        hpView.setTranslateY(45);
+        hpView.setTranslateX(-25);
+        hpView.currentValueProperty().bind(hp.valueProperty());
+        
+        
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
                 .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
-                .with("Health", DawnseekerApp.getEHP())
+                .view(hpView)
+                .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
@@ -85,7 +124,8 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox("sussy.gif")
                 .with("Health", DawnseekerApp.getEHP())
                 .with("Dmg", DawnseekerApp.getEDMG())
-                .at(Math.random() *1000,Math.random() *1000)
+//                .at(Math.random() *1000,Math.random() *1000)
+                .at(getRandomSpawnEnemy())
                 .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
