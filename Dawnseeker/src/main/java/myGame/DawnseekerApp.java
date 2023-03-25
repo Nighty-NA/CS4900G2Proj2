@@ -56,7 +56,7 @@ public class DawnseekerApp extends GameApplication{
 	
 	private Entity player;
 	
-	public double speed = 2;
+	public double speed = 3.0;
 	public static int EHP = 10;
 	public static int PHP = 20;
 	public static int EDMG = 10;
@@ -70,6 +70,10 @@ public class DawnseekerApp extends GameApplication{
     }
     public static int getPHP() {
     	return PHP;
+    }
+    public int setPHP(int x) {
+    	PHP = x;
+    	return x;
     }
     public static int getPDMG() {
     	return PDMG;
@@ -126,7 +130,7 @@ public class DawnseekerApp extends GameApplication{
             @Override
             protected void onAction() {
                 player.getComponent(AnimationComponent.class).moveUp();
-                player.translateY(-3);
+                player.translateY(-speed);
             }
         }, KeyCode.W);
         
@@ -134,7 +138,7 @@ public class DawnseekerApp extends GameApplication{
             @Override
             protected void onAction() {
                 player.getComponent(AnimationComponent.class).moveDown();
-                player.translateY(3);
+                player.translateY(speed);
             }
         }, KeyCode.S);
         
@@ -142,7 +146,7 @@ public class DawnseekerApp extends GameApplication{
             @Override
             protected void onAction() {
                 player.getComponent(AnimationComponent.class).moveRight();
-                player.translateX(3);
+                player.translateX(speed);
             }
         }, KeyCode.D);
         
@@ -150,7 +154,7 @@ public class DawnseekerApp extends GameApplication{
             @Override
             protected void onAction() {
                 player.getComponent(AnimationComponent.class).moveLeft();
-                player.translateX(-3);
+                player.translateX(-speed);
             }
         }, KeyCode.A);
     }
@@ -173,12 +177,14 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W3");
 		spawn("W4");
 		spawn("badWall");
-        grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
-            if (type.equals(EntityType.WALL))//was set to type was changed to entitytype
-                return CellState.NOT_WALKABLE;
-
-            return CellState.WALKABLE;
-        });
+		
+		//ASTAR IS LIKELY A DROPPED CONCEPT.
+//        grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
+//            if (type.equals(EntityType.WALL))
+//                return CellState.NOT_WALKABLE;
+//
+//            return CellState.WALKABLE;
+//        });
         
         //Enemies spawn every half a second, and their damage is increased by ??? every 10 in-game seconds.
     	run(() -> spawn("enemy"), Duration.seconds(.5) );
@@ -207,10 +213,10 @@ public class DawnseekerApp extends GameApplication{
         	if(player.getInt("Health") <= 0) {
         		FXGL.getAudioPlayer().stopAllSounds();
         		FXGL.play("yoda_death.wav");
-        		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
-        		player.setProperty("Health", PHP);
-        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(
-        				EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER,EntityType.BULLET));
+//        		player.setPosition(getAppWidth() / 2 - 15, getAppHeight() / 2 - 15);
+//        		player.setProperty("Health", PHP);
+//        		getGameWorld().removeEntities(getGameWorld().getEntitiesByType(
+//        				EntityType.COIN,EntityType.ENEMY,EntityType.SPOWER,EntityType.APOWER,EntityType.HPOWER,EntityType.BULLET));
         		gameOver();
         	}
         });
@@ -250,17 +256,19 @@ public class DawnseekerApp extends GameApplication{
         });
         
         // On player collision with harmful wall ----- IN PROGRESS - Arrowood
-        onCollisionBegin(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
+        onCollision(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
         	FXGL.play("player_oof.wav");
-//        	gameOver();
+        	player.setProperty("Health", player.getInt("Health")-1);
+        	if(player.getInt("Health") <= 0) {
+            	gameOver();
+        	}
         });
 
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
 	        @Override
-	        protected void onCollisionBegin(Entity player, Entity wall) {
+	        protected void onCollision(Entity player, Entity wall) {
 	        	player.translateTowards(wall.getCenter(), -Math.sqrt(player.getX() + player.getY()));
-	          
 	        }
 	    });
 	    
@@ -270,6 +278,8 @@ public class DawnseekerApp extends GameApplication{
 	        protected void onCollisionBegin(Entity enemy, Entity wall) {
 	        	enemy.translateTowards(wall.getCenter(), -Math.sqrt(enemy.getX() + enemy.getY()));
 	        }
+	        
+	        
 	    });
         
 	    
