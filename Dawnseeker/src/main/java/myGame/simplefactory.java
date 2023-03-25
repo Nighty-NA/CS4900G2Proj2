@@ -26,7 +26,8 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.ui.ProgressBar;
 
-import animationComponent.AnimationComponent;
+import animationComponent.FireballAnimationComponent;
+import animationComponent.PlayerAnimationComponent;
 import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -54,7 +55,12 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(64, 64)))
+<<<<<<< HEAD
                 .with(new AnimationComponent())
+=======
+                .with(new PlayerAnimationComponent())
+                //.viewWithBBox("PlayerCharacterDawnseeker.png")
+>>>>>>> refs/remotes/origin/Johnson
                 .at(500,500)
                 .view(hp1View)
                 .with(hp1)
@@ -106,7 +112,8 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
-                .viewWithBBox("FireBallProjectile.png")
+                .bbox(new HitBox(BoundingShape.box(64, 64)))
+                .with(new FireballAnimationComponent())
                 .collidable()
                 .with("Dmg", DawnseekerApp.getPDMG())
                 .with(new ProjectileComponent(direction, 1000))

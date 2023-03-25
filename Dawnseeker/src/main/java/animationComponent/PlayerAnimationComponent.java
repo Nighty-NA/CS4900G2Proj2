@@ -15,15 +15,15 @@ import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
 import myGame.simplefactory;
 
-public class AnimationComponent extends Component {
+public class PlayerAnimationComponent extends Component {
 	private int horiSpeed = 0;
 	private int vertSpeed = 0;
 	
 	private AnimatedTexture texture;
 	private AnimationChannel idle,walkDown,walkUp,walkRight,walkLeft;
-	public Runnable moveDown;
 	
-	public AnimationComponent() {
+	
+	public PlayerAnimationComponent() {
 		idle = new AnimationChannel(FXGL.image("DawnseekerPCV2.png"), 4, 64, 64, Duration.seconds(0.5), 0, 0);
 		walkDown = new AnimationChannel(FXGL.image("DawnseekerPCV2Down.png"), 4, 64, 64, Duration.seconds(1), 0, 3);
 		walkUp = new AnimationChannel(FXGL.image("DawnseekerPCV2Up.png"), 4, 64, 64, Duration.seconds(1), 0, 3);

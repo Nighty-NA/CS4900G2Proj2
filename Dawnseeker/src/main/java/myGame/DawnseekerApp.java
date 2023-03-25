@@ -33,7 +33,7 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.ui.Position;
 import com.almasb.fxgl.ui.ProgressBar;
 
-import animationComponent.AnimationComponent;
+import animationComponent.PlayerAnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
@@ -168,7 +168,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Up") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveUp();
+                player.getComponent(PlayerAnimationComponent.class).moveUp();
                 player.translateY(-3);
             }
         }, KeyCode.W);
@@ -176,7 +176,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Down") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveDown();
+                player.getComponent(PlayerAnimationComponent.class).moveDown();
                 player.translateY(3);
             }
         }, KeyCode.S);
@@ -184,7 +184,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Right") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveRight();
+                player.getComponent(PlayerAnimationComponent.class).moveRight();
                 player.translateX(3);
             }
         }, KeyCode.D);
@@ -192,7 +192,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Left") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveLeft();
+                player.getComponent(PlayerAnimationComponent.class).moveLeft();
                 player.translateX(-3);
             }
         }, KeyCode.A);
