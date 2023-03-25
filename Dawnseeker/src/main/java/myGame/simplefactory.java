@@ -7,6 +7,8 @@ import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
+import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.dsl.components.RandomMoveComponent;
@@ -15,12 +17,16 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
+import com.almasb.fxgl.entity.action.ActionComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import com.almasb.fxgl.ui.ProgressBar;
 
-
+import animationComponent.AnimationComponent;
 import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -34,13 +40,26 @@ public class simplefactory implements EntityFactory {
 	
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
-    	
+        var hp1 = new HealthDoubleComponent( DawnseekerApp.getPHP());
+        var hp1View = new ProgressBar(false);
+        hp1View.setFill(Color.RED);
+        hp1View.setMaxValue(DawnseekerApp.getPHPM());
+        hp1View.setTranslateY(55);
+        hp1View.setTranslateX(-10);
+        hp1View.setWidth(85);
+
+        hp1View.currentValueProperty().bind(hp1.valueProperty());
+        
+        
         return entityBuilder()
                 .type(EntityType.PLAYER)
-                .viewWithBBox("PlayerCharacterDawnseeker.png")
+                .bbox(new HitBox(BoundingShape.box(64, 64)))
+                .with(new AnimationComponent())
                 .at(500,500)
+                .view(hp1View)
+                .with(hp1)
                 .collidable()
-                .with("Health", DawnseekerApp.getPHP())
+                //.with("Health", DawnseekerApp.getPHP())
                 .build();
     }
     
@@ -50,18 +69,33 @@ public class simplefactory implements EntityFactory {
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
         int moveSpeed = 100;
-
+        var hp = new HealthDoubleComponent( DawnseekerApp.getEHP());
+        var hpView = new ProgressBar(false);
+        hpView.setFill(Color.LIGHTGREEN);
+        hpView.setMaxValue(DawnseekerApp.getEHP());
+        hpView.setWidth(85);
+        hpView.setTranslateY(45);
+        hpView.setTranslateX(-25);
+        hpView.currentValueProperty().bind(hp.valueProperty());
+        
+        
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
                 .viewWithBBox("EnemyDawnseeker.png")
                 .collidable()
-                .with("Health", DawnseekerApp.getEHP())
+                .view(hpView)
+                .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
                 .at(Math.random() *1000,Math.random() *1000)
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
+    
+    
+    
+        
+        
 
     @Spawns("bullet")
     public Entity newBullet(SpawnData data) {
@@ -211,6 +245,16 @@ public class simplefactory implements EntityFactory {
 				.type(EntityType.HPOWER)
 				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
 				.build();
+	}
+	
+	@Spawns("badWall")
+	public Entity badWall(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.BADWALL)
+				.at(300,450)
+				.viewWithBBox(new Rectangle(64,64, Color.RED))
+				.buildAndAttach();
 	}
 }
 
