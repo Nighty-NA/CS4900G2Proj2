@@ -79,12 +79,8 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(64, 64)))
-<<<<<<< HEAD
-                .with(new AnimationComponent())
-=======
                 .with(new PlayerAnimationComponent())
                 //.viewWithBBox("PlayerCharacterDawnseeker.png")
->>>>>>> refs/remotes/origin/Johnson
                 .at(500,500)
                 .view(hp1View)
                 .with(hp1)
