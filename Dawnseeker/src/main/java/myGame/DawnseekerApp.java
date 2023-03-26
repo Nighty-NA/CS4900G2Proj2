@@ -170,52 +170,33 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Up") {
             @Override
             protected void onAction() {
-<<<<<<< HEAD
-                player.getComponent(PlayerAnimationComponent.class).moveUp();
-                player.translateY(-3);
-=======
                 player.getComponent(AnimationComponent.class).moveUp();
                 player.translateY(-speed);
->>>>>>> branch 'main' of https://github.com/Nighty-NA/CS4900G2Proj2
             }
         }, KeyCode.W);
         
         FXGL.getInput().addAction(new UserAction("Down") {
             @Override
             protected void onAction() {
-<<<<<<< HEAD
-                player.getComponent(PlayerAnimationComponent.class).moveDown();
-                player.translateY(3);
-=======
+
                 player.getComponent(AnimationComponent.class).moveDown();
                 player.translateY(speed);
->>>>>>> branch 'main' of https://github.com/Nighty-NA/CS4900G2Proj2
             }
         }, KeyCode.S);
         
         FXGL.getInput().addAction(new UserAction("Right") {
             @Override
             protected void onAction() {
-<<<<<<< HEAD
-                player.getComponent(PlayerAnimationComponent.class).moveRight();
-                player.translateX(3);
-=======
                 player.getComponent(AnimationComponent.class).moveRight();
                 player.translateX(speed);
->>>>>>> branch 'main' of https://github.com/Nighty-NA/CS4900G2Proj2
             }
         }, KeyCode.D);
         
         FXGL.getInput().addAction(new UserAction("Left") {
             @Override
             protected void onAction() {
-<<<<<<< HEAD
-                player.getComponent(PlayerAnimationComponent.class).moveLeft();
-                player.translateX(-3);
-=======
                 player.getComponent(AnimationComponent.class).moveLeft();
                 player.translateX(-speed);
->>>>>>> branch 'main' of https://github.com/Nighty-NA/CS4900G2Proj2
             }
         }, KeyCode.A);
     }
