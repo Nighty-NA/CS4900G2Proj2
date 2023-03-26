@@ -26,8 +26,13 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.ui.ProgressBar;
 
+import animationComponent.CoinAnimationComponent;
+import animationComponent.EnemyAnimationComponent;
 import animationComponent.FireballAnimationComponent;
+import animationComponent.HealthAnimationComponent;
 import animationComponent.PlayerAnimationComponent;
+import animationComponent.PowerAnimationComponent;
+import animationComponent.SpeedAnimationComponent;
 import enemyComponent.BadGuyOne;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
@@ -88,7 +93,8 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
-                .viewWithBBox("EnemyDawnseeker.png")
+                .with(new EnemyAnimationComponent())
+                .bbox(new HitBox(BoundingShape.box(64, 64)))
                 .collidable()
                 .view(hpView)
                 .with(hp)
@@ -223,7 +229,8 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.COIN)
-				.viewWithBBox(new Circle(3,3,4, Color.YELLOW))
+				.with(new CoinAnimationComponent())
+				.bbox(new HitBox(BoundingShape.box(16, 16)))
 				.build();
 	}
 	
@@ -232,7 +239,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.SPOWER)
-				.viewWithBBox(new Rectangle(8,8, Color.BLUE))
+				.with(new SpeedAnimationComponent())
 				.build();
 	}
 	
@@ -241,7 +248,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.APOWER)
-				.viewWithBBox(new Rectangle(8,8, Color.RED))
+				.with(new PowerAnimationComponent())
 				.build();
 	}
 	
@@ -250,7 +257,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.HPOWER)
-				.viewWithBBox(new Rectangle(8,8, Color.GREEN))
+				.with(new HealthAnimationComponent())
 				.build();
 	}
 	
