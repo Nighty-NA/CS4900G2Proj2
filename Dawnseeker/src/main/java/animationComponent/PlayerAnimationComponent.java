@@ -24,7 +24,7 @@ public class PlayerAnimationComponent extends Component {
 	
 	
 	public PlayerAnimationComponent() {
-		idle = new AnimationChannel(FXGL.image("DawnseekerPCV2.png"), 4, 64, 64, Duration.seconds(0.5), 0, 0);
+		idle = new AnimationChannel(FXGL.image("DawnseekerPCV2.png"), 2, 64, 64, Duration.seconds(0.5), 0, 1);
 		walkDown = new AnimationChannel(FXGL.image("DawnseekerPCV2Down.png"), 4, 64, 64, Duration.seconds(1), 0, 3);
 		walkUp = new AnimationChannel(FXGL.image("DawnseekerPCV2Up.png"), 4, 64, 64, Duration.seconds(1), 0, 3);
 		walkRight = new AnimationChannel(FXGL.image("DawnseekerPCV2Right.png"), 4, 64, 64, Duration.seconds(1), 0, 3);
