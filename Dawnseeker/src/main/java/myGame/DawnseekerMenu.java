@@ -32,6 +32,8 @@ public class DawnseekerMenu extends FXGLMenu {
 		box.setTranslateX(100);
 		box.setTranslateY(450);
 		
+		//The background is created first before the box is generated. If reversed, the box will appear behind the .png.
+		getContentRoot().getChildren().add(createBackground(1024, 1024));
 		getContentRoot().getChildren().addAll(box);
 	}
 //	@Override
@@ -46,7 +48,8 @@ public class DawnseekerMenu extends FXGLMenu {
 	
 //	@Override
 	protected Node createBackground(double w, double h) {
-		return FXGL.texture("test_bg.png");
+		Node node = FXGL.texture("bg.png");
+		return node;
 	}
 	
 //	@Override
@@ -79,7 +82,7 @@ public class DawnseekerMenu extends FXGLMenu {
 			text.fillProperty().bind(
                     Bindings.when(hoverProperty())
                             .then(Color.RED)
-                            .otherwise(Color.BLACK)
+                            .otherwise(Color.WHITE)
             );
 		
 			setOnMouseClicked(e -> action.run());
