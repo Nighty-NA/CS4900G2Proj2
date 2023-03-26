@@ -6,6 +6,7 @@ import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
 import static com.almasb.fxgl.dsl.FXGL.getInput;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
+import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.dsl.components.HealthIntComponent;
@@ -34,6 +35,7 @@ import animationComponent.PlayerAnimationComponent;
 import animationComponent.PowerAnimationComponent;
 import animationComponent.SpeedAnimationComponent;
 import enemyComponent.BadGuyOne;
+import enemyComponent.DelayedBadGuy;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.paint.Color;
@@ -43,6 +45,23 @@ import myGame.DawnseekerApp.EntityType;
 
 
 public class simplefactory implements EntityFactory {
+		
+	//Implementing randomized spawns in the corners of the map
+	private static Point2D getRandomSpawnEnemy() {
+		int corner = FXGL.random(0, 3);
+		if(corner == 0) {
+			return new Point2D(50, 50);
+		}
+		else if (corner == 1) {
+			return new Point2D(getAppWidth() - 50, 50);
+		}
+		else if (corner == 2) {
+			return new Point2D(getAppWidth() - 50, getAppHeight() - 50);
+		}
+		else{
+			return new Point2D(50, getAppHeight() - 50);
+		}
+	}
 	
     @Spawns("player")
     public Entity newPlayer(SpawnData data) {
@@ -104,10 +123,24 @@ public class simplefactory implements EntityFactory {
                 .build();
     }
     
-    
-    
-        
-        
+    @Spawns("enemy2")
+    public Entity newEnemy2(SpawnData data) {
+    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
+        circle.setStroke(Color.BROWN);
+        circle.setStrokeWidth(2.0);
+        int moveSpeed = 100;
+
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.ENEMY)
+                .viewWithBBox("sussy.gif")
+                .with("Health", DawnseekerApp.getEHP())
+                .with("Dmg", DawnseekerApp.getEDMG())
+//                .at(Math.random() *1000,Math.random() *1000)
+                .at(getRandomSpawnEnemy())
+                .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
+                .build();
+    }
 
     @Spawns("bullet")
     public Entity newBullet(SpawnData data) {
