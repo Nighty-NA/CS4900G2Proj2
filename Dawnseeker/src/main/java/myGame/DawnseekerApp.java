@@ -34,6 +34,7 @@ import com.almasb.fxgl.ui.Position;
 import com.almasb.fxgl.ui.ProgressBar;
 
 import animationComponent.PlayerAnimationComponent;
+import animationComponent.PowerAnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;
@@ -170,7 +171,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Up") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveUp();
+                player.getComponent(PlayerAnimationComponent.class).moveUp();
                 player.translateY(-speed);
             }
         }, KeyCode.W);
@@ -179,7 +180,7 @@ public class DawnseekerApp extends GameApplication{
             @Override
             protected void onAction() {
 
-                player.getComponent(AnimationComponent.class).moveDown();
+                player.getComponent(PlayerAnimationComponent.class).moveDown();
                 player.translateY(speed);
             }
         }, KeyCode.S);
@@ -187,7 +188,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Right") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveRight();
+                player.getComponent(PlayerAnimationComponent.class).moveRight();
                 player.translateX(speed);
             }
         }, KeyCode.D);
@@ -195,7 +196,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Left") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveLeft();
+                player.getComponent(PlayerAnimationComponent.class).moveLeft();
                 player.translateX(-speed);
             }
         }, KeyCode.A);

@@ -13,7 +13,7 @@ public class HealthAnimationComponent extends Component{
 	private AnimatedTexture healtht;
 	
 	public HealthAnimationComponent(){
-		health = new AnimationChannel(FXGL.image("HealthPotion.png"), 2, 16, 16, Duration.seconds(0.25), 0, 4);
+		health = new AnimationChannel(FXGL.image("HealthPotion.png"), 5, 32, 32, Duration.seconds(0.25), 0, 4);
 		healtht = new AnimatedTexture(health);
 	}
 	

@@ -13,7 +13,7 @@ public class PowerAnimationComponent extends Component{
 	private AnimatedTexture powert;
 	
 	public PowerAnimationComponent() {
-		power = new AnimationChannel(FXGL.image("Power.png"), 2, 16, 16, Duration.seconds(0.25), 0, 4);
+		power = new AnimationChannel(FXGL.image("Power.png"), 5, 32, 32, Duration.seconds(0.25), 0, 4);
 		powert = new AnimatedTexture(power);
 	}
 	

@@ -13,7 +13,7 @@ public class CoinAnimationComponent extends Component {
 	private AnimatedTexture texture;
 	
 	public CoinAnimationComponent(){
-		coin = new AnimationChannel(FXGL.image("Coin.png"), 2, 16, 16, Duration.seconds(0.25), 0, 4);
+		coin = new AnimationChannel(FXGL.image("Coin.png"), 5, 16, 16, Duration.seconds(0.5), 0, 4);
 		texture = new AnimatedTexture(coin);
 	}
 	

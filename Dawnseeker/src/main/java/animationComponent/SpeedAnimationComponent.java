@@ -12,7 +12,7 @@ public class SpeedAnimationComponent extends Component{
 	private AnimatedTexture speedt;
 	
 	public SpeedAnimationComponent() {
-		speed = new AnimationChannel(FXGL.image("Speed.png"), 2, 16, 16, Duration.seconds(0.25), 0, 4);
+		speed = new AnimationChannel(FXGL.image("Speed.png"), 5, 32, 32, Duration.seconds(0.25), 0, 4);
 		speedt = new AnimatedTexture(speed);
 	}
 	

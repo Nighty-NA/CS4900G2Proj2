@@ -12,7 +12,7 @@ public class EnemyAnimationComponent extends Component{
 	private AnimatedTexture enemy1t;
 	
 	public EnemyAnimationComponent(){
-		enemy1 = new AnimationChannel(FXGL.image("EnemyDawnseeker.png"), 2, 16, 16, Duration.seconds(0.25), 0, 4);
+		enemy1 = new AnimationChannel(FXGL.image("EnemyDawnseeker.png"), 2, 64, 64, Duration.seconds(0.25), 0, 1);
 		enemy1t = new AnimatedTexture(enemy1);
 	}
 	
