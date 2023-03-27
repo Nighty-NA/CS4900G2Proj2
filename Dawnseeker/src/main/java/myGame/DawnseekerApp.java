@@ -151,14 +151,18 @@ public class DawnseekerApp extends GameApplication{
 		settings.setWidth(1024);
 		settings.setHeight(1024);
 		settings.setTitle("Dawnseeker");
-		settings.setVersion("0.2");
+		settings.setVersion("0.4");
 		settings.setMainMenuEnabled(true);
 		
 		//Custom main menu		
 		settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newMainMenu() {
+            	String BGM = new String("shop.mp3");
+            	Music gameMusic = FXGL.getAssetLoader().loadMusic(BGM);
+            	FXGL.getAudioPlayer().loopMusic(gameMusic);
                 return new DawnseekerMenu();
+                
             }
         });
     }
@@ -207,6 +211,7 @@ public class DawnseekerApp extends GameApplication{
     	getGameWorld().addEntityFactory(this.SF);
     	
     	//Background music ----- Arrowood
+    	FXGL.getAudioPlayer().stopAllMusic();
     	String BGM = new String("heartache.mp3");
     	Music gameMusic = FXGL.getAssetLoader().loadMusic(BGM);
     	FXGL.getAudioPlayer().loopMusic(gameMusic);
@@ -376,7 +381,16 @@ public class DawnseekerApp extends GameApplication{
     }
     
     private void gameOver() {
+    	FXGL.getAudioPlayer().stopAllMusic();
     	getGameController().gotoMainMenu();
+    	String BGM = new String("shop.mp3");
+    	Music menuMusic = FXGL.getAssetLoader().loadMusic(BGM);
+    	FXGL.getAudioPlayer().loopMusic(menuMusic);
+    	PHP=100;
+    	EDMG=10;
+    	EHP=10;
+//    	getGameController().startNewGame(); //This will reset the game state automatically!!
+//    	getGameController().gotoIntro();
     }
 
 }
