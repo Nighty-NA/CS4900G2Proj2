@@ -128,8 +128,9 @@ public class simplefactory implements EntityFactory {
 
         return entityBuilder()
         		.from(data)
-                .type(EntityType.ENEMY)
+                .type(EntityType.ENEMY2)
                 .viewWithBBox("sussy.gif")
+                .collidable()
                 .with("Health", DawnseekerApp.getEHP())
                 .with("Dmg", DawnseekerApp.getEDMG())
 //                .at(Math.random() *1000,Math.random() *1000)

@@ -49,7 +49,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL
+        PLAYER, ENEMY, ENEMY2, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL
     }
 	private AStarGrid grid;
 	public AStarGrid getGrid() {
@@ -316,7 +316,6 @@ public class DawnseekerApp extends GameApplication{
         // On player collision with harmful wall ----- IN PROGRESS - Arrowood
         onCollision(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
         	FXGL.play("player_oof.wav");
-//        	player.setProperty("Health", player.getInt("Health")-1);
         	var hp = player.getComponent(HealthDoubleComponent.class);
         	if (hp.getValue() > 0) {
                 hp.damage(1);
@@ -326,9 +325,7 @@ public class DawnseekerApp extends GameApplication{
                 	killPlayer(player);
                 }
         	}
-//        	if(player.getInt("Health") <= 0) {
-//            	gameOver();
-//        	}
+
         });
 
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
@@ -345,6 +342,7 @@ public class DawnseekerApp extends GameApplication{
 	        protected void onCollisionBegin(Entity enemy, Entity wall) {
 	        	enemy.translateTowards(wall.getCenter(), -Math.sqrt(enemy.getX() + enemy.getY()));
 	        }
+	        
 	    });
     }
     
