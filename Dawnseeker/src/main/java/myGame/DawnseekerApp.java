@@ -250,6 +250,22 @@ public class DawnseekerApp extends GameApplication{
             }
         }); 
         
+        //ENEMY 2 -- GHOST ENTITY
+        onCollisionBegin(EntityType.BULLET, EntityType.ENEMY2, (bullet, ghost) -> {
+        	bullet.removeFromWorld();
+        	var hp = ghost.getComponent(HealthDoubleComponent.class);
+        	if (hp.getValue() > 0) {
+                bullet.removeFromWorld();
+                hp.damage(PDMG);
+                if(hp.getValue() <= 0) {
+                	killEnemy(ghost);
+                }
+                return;
+            }else {
+            	killEnemy(ghost);
+            }
+        });
+        
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
         	var hp = player.getComponent(HealthDoubleComponent.class);
         	
@@ -265,13 +281,22 @@ public class DawnseekerApp extends GameApplication{
                 return;
             }
         	
-        	//If player dies...
-        	if(player.getInt("Health") <= 0) {
-        		FXGL.getAudioPlayer().stopAllSounds();
-        		FXGL.play("yoda_death.wav");
-        		gameOver();
-        	}
-  
+        });
+        
+        //GHOST ENEMY COLLISION WITH PLAYER
+        onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY2, (player, ghost) -> {
+        	var hp = player.getComponent(HealthDoubleComponent.class);
+        	
+        	if (hp.getValue() > 0) {
+                hp.damage(EDMG / 2);
+                initUI();
+                FXGL.inc("hp", -EDMG / 2);
+                if(hp.getValue() <= 0) {
+                	killPlayer(player);
+                }
+            	FXGL.play("player_oof.wav");
+            }
+        	
         });
         
         //When the player moves over a coin
