@@ -30,7 +30,7 @@ public class DawnseekerMenu extends FXGLMenu {
 		var box = new VBox(15, btnPlayGame, btnOptions, btnQuit);
 		box.setAlignment(Pos.CENTER_LEFT);
 		box.setTranslateX(100);
-		box.setTranslateY(450);
+		box.setTranslateY(550);
 		
 		//The background is created first before the box is generated. If reversed, the box will appear behind the .png.
 		getContentRoot().getChildren().add(createBackground(1024, 1024));

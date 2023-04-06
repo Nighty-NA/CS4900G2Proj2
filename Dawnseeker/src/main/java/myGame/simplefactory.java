@@ -290,5 +290,15 @@ public class simplefactory implements EntityFactory {
 				.viewWithBBox(new Rectangle(64,64, Color.RED))
 				.buildAndAttach();
 	}
+    
+    @Spawns("shop")
+	public Entity shop(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.SHOP)
+				.at(300, 600)
+				.viewWithBBox(new Rectangle(64,64, Color.FUCHSIA))
+				.buildAndAttach();
+	}
 }
 

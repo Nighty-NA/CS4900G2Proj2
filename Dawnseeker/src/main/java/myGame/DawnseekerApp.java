@@ -48,7 +48,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, ENEMY2, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL
+        PLAYER, ENEMY, ENEMY2, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL, SHOP
     }
 	private AStarGrid grid;
 	public AStarGrid getGrid() {
@@ -223,14 +223,7 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W3");
 		spawn("W4");
 		spawn("badWall");
-		
-		//ASTAR IS LIKELY A DROPPED CONCEPT.
-//        grid = AStarGrid.fromWorld(getGameWorld(), 15, 15, 40, 40, type -> {
-//            if (type.equals(EntityType.WALL))
-//                return CellState.NOT_WALKABLE;
-//
-//            return CellState.WALKABLE;
-//        });
+		spawn("shop");
         
         //Enemies spawn every second, and their damage is increased by x2 every 10 in-game seconds.
     	run(() -> spawn("enemy"), Duration.seconds(1) );
@@ -331,6 +324,11 @@ public class DawnseekerApp extends GameApplication{
 
         });
 
+      //When the player collides with the shop
+        onCollisionBegin(EntityType.PLAYER, EntityType.SHOP, (player, shop) -> {
+            FXGL.play("yoda_death.wav");
+        });
+        
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
 	    	
 	        @Override
