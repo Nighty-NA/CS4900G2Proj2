@@ -21,8 +21,9 @@ public class DawnseekerMenu extends FXGLMenu {
 
 	public DawnseekerMenu() {
 		super(MenuType.MAIN_MENU);
-
-		DSButton btnPlayGame = new DSButton("Play Game", () -> fireNewGame());
+		
+		//Moved the "stop all music" to happen on firing a new game. This subverts an error that immediately crashes the game.
+		DSButton btnPlayGame = new DSButton("Play Game", () -> {fireNewGame(); FXGL.getAudioPlayer().stopAllMusic();} );
 		DSButton btnOptions = new DSButton("Options", () -> {});
 		DSButton btnQuit = new DSButton("Quit", () -> fireExit());
 		
