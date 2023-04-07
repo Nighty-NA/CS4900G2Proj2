@@ -34,7 +34,6 @@ import com.almasb.fxgl.ui.Position;
 import com.almasb.fxgl.ui.ProgressBar;
 
 import animationComponent.PlayerAnimationComponent;
-import animationComponent.PowerAnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Label;

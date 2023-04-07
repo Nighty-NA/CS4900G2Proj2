@@ -27,13 +27,9 @@ import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
 import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
 import com.almasb.fxgl.ui.ProgressBar;
 
-import animationComponent.CoinAnimationComponent;
-import animationComponent.EnemyAnimationComponent;
-import animationComponent.FireballAnimationComponent;
-import animationComponent.HealthAnimationComponent;
+
 import animationComponent.PlayerAnimationComponent;
-import animationComponent.PowerAnimationComponent;
-import animationComponent.SpeedAnimationComponent;
+
 import enemyComponent.BadGuyOne;
 import enemyComponent.DelayedBadGuy;
 import javafx.geometry.Point2D;
@@ -108,7 +104,7 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
-                .with(new EnemyAnimationComponent())
+                .view("Skull.gif")
                 .bbox(new HitBox(BoundingShape.box(64, 64)))
                 .collidable()
                 .view(hpView)
@@ -260,7 +256,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.COIN)
-				.with(new CoinAnimationComponent())
+				.view("Coin.gif")
 				.bbox(new HitBox(BoundingShape.box(16, 16)))
 				.build();
 	}
@@ -270,7 +266,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.SPOWER)
-				.with(new SpeedAnimationComponent())
+				.view("SpeedPotion.gif")
 				.build();
 	}
 	
@@ -279,7 +275,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.APOWER)
-				.with(new PowerAnimationComponent())
+				.view("PowerPotion.gif")
 				.build();
 	}
 	
@@ -288,7 +284,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.HPOWER)
-				.with(new HealthAnimationComponent())
+				.view("HealthPotion.gif")
 				.build();
 	}
 	
