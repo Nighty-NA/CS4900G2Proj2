@@ -95,7 +95,7 @@ public class simplefactory implements EntityFactory {
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
         int moveSpeed = 100;
-        var hp = new HealthDoubleComponent( DawnseekerApp.getEHP());
+        var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
         var hpView = new ProgressBar(false);
         hpView.setFill(Color.LIGHTGREEN);
         hpView.setMaxValue(DawnseekerApp.getEHP());
@@ -114,7 +114,8 @@ public class simplefactory implements EntityFactory {
                 .view(hpView)
                 .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
-                .at(Math.random() *1000,Math.random() *1000)
+//                .at(Math.random() *1000,Math.random() *1000)
+                .at(getRandomSpawnEnemy())
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
@@ -124,16 +125,16 @@ public class simplefactory implements EntityFactory {
     	Circle circle = new Circle(20, 20, 20, Color.WHITE);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
-        int moveSpeed = 100;
+        int moveSpeed = 125;
+        var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
 
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY2)
                 .viewWithBBox("sussy.gif")
                 .collidable()
-                .with("Health", DawnseekerApp.getEHP())
+                .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
-//                .at(Math.random() *1000,Math.random() *1000)
                 .at(getRandomSpawnEnemy())
                 .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -298,6 +299,16 @@ public class simplefactory implements EntityFactory {
 				.type(EntityType.BADWALL)
 				.at(300,450)
 				.viewWithBBox(new Rectangle(64,64, Color.RED))
+				.buildAndAttach();
+	}
+    
+    @Spawns("shop")
+	public Entity shop(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.SHOP)
+				.at(300, 600)
+				.viewWithBBox(new Rectangle(64,64, Color.FUCHSIA))
 				.buildAndAttach();
 	}
 }
