@@ -91,9 +91,9 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
-    	Circle circle = new Circle(20, 20, 20, Color.RED);
-        circle.setStroke(Color.BROWN);
-        circle.setStrokeWidth(2.0);
+//    	Circle circle = new Circle(20, 20, 20, Color.RED);
+//        circle.setStroke(Color.BROWN);
+//        circle.setStrokeWidth(2.0);
         int moveSpeed = 100;
         var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
         var hpView = new ProgressBar(false);
@@ -122,16 +122,16 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy2")
     public Entity newEnemy2(SpawnData data) {
-    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
-        circle.setStroke(Color.BROWN);
-        circle.setStrokeWidth(2.0);
+//    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
+//        circle.setStroke(Color.BROWN);
+//        circle.setStrokeWidth(2.0);
         int moveSpeed = 125;
         var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
 
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY2)
-                .viewWithBBox("sussy.gif")
+                .viewWithBBox("Ghost.gif")
                 .collidable()
                 .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
@@ -149,8 +149,8 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.BULLET)
-                .bbox(new HitBox(BoundingShape.box(64, 64)))
-                .with(new FireballAnimationComponent())
+                .bbox(new HitBox(BoundingShape.box(15, 15)))
+                .view("Fireball.gif")
                 .collidable()
                 .with("Dmg", DawnseekerApp.getPDMG())
                 .with(new ProjectileComponent(direction, 1000))
