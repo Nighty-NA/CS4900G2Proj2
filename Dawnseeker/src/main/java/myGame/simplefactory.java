@@ -136,7 +136,6 @@ public class simplefactory implements EntityFactory {
     public Entity newBullet(SpawnData data) {
         Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
         Point2D direction = getInput().getMousePositionWorld().subtract(player.getCenter());
-
         FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
         return entityBuilder()
         		.from(data)
@@ -148,6 +147,70 @@ public class simplefactory implements EntityFactory {
                 .with(new OffscreenCleanComponent())
                 .build();
     }
+    
+    @Spawns("bullet2")
+    public Entity newBullet2(SpawnData data) {
+        Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
+        Point2D direction = getInput().getMousePositionWorld().subtract(player.getX()+10,player.getY()+10);
+      
+        
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.BULLET)
+                .viewWithBBox("FireBallProjectile.png")
+                .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
+                .with(new ProjectileComponent(direction, 1000))
+                .with(new OffscreenCleanComponent())
+                .build();
+    }
+    @Spawns("bullet3")
+    public Entity newBullet3(SpawnData data) {
+        Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
+        Point2D direction = getInput().getMousePositionWorld().subtract(player.getX()-10,player.getY()-10);
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.BULLET)
+                .viewWithBBox("FireBallProjectile.png")
+                .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
+                .with(new ProjectileComponent(direction, 1000))
+                .with(new OffscreenCleanComponent())
+                .build();
+    }
+    @Spawns("bullet4")
+    public Entity newBullet4(SpawnData data) {
+        Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
+        Point2D direction = getInput().getMousePositionWorld().subtract(player.getX()-20,player.getY()-20);
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.BULLET)
+                .viewWithBBox("FireBallProjectile.png")
+                .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
+                .with(new ProjectileComponent(direction, 1000))
+                .with(new OffscreenCleanComponent())
+                .build();
+    }
+    @Spawns("bullet5")
+    public Entity newBullet5(SpawnData data) {
+        Entity player = getGameWorld().getSingleton(EntityType.PLAYER);
+        Point2D direction = getInput().getMousePositionWorld().subtract(player.getX()+20,player.getY()+20);
+        FXGL.play("magic_missile.wav"); // ----- This plays a sound every time the fireball is created.
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.BULLET)
+                .viewWithBBox("FireBallProjectile.png")
+                .collidable()
+                .with("Dmg", DawnseekerApp.getPDMG())
+                .with(new ProjectileComponent(direction, 1000))
+                .with(new OffscreenCleanComponent())
+                .build();
+    }
+    
     
 	@Spawns("BG")
 	public Entity background(SpawnData data) {
@@ -270,6 +333,15 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.APOWER)
 				.viewWithBBox(new Rectangle(8,8, Color.RED))
+				.build();
+	}
+	
+	@Spawns("bpower")
+	public Entity bpow(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.BPOWER)
+				.viewWithBBox(new Rectangle(8,8, Color.PURPLE))
 				.build();
 	}
 	
