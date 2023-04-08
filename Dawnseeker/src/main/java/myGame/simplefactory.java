@@ -149,7 +149,7 @@ public class simplefactory implements EntityFactory {
                 .view("Fireball.gif")
                 .collidable()
                 .with("Dmg", DawnseekerApp.getPDMG())
-                .with(new ProjectileComponent(direction, 1000))
+                .with(new ProjectileComponent(direction, 10000))
                 .with(new OffscreenCleanComponent())
                 .build();
     }
@@ -158,7 +158,7 @@ public class simplefactory implements EntityFactory {
 	public Entity background(SpawnData data) {
 		return entityBuilder()
 				.at(0,0)
-				.view(new Rectangle(1024, 1024, Color.LIGHTGREEN))
+				.view("BackGroung.png")
 				.zIndex(-1)
 				.buildAndAttach();
 	}
@@ -168,8 +168,8 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.WALL)// was set to just set to type was changed to EntityType
-				.at(775, 782)
-				.viewWithBBox(new Rectangle(88,58, Color.GRAY))
+				.at(200, 800)
+				.viewWithBBox("Rock1.png")
 				.collidable()
 				.buildAndAttach();
 	}
@@ -179,8 +179,8 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.WALL)
-				.at(100,100)
-				.viewWithBBox(new Rectangle(64,64, Color.GRAY))
+				.at(800,500)
+				.viewWithBBox("Rock2.png")
 				.collidable()
 				.buildAndAttach();
 	}
@@ -190,66 +190,12 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.WALL)
-				.at(200,150)
-				.viewWithBBox(new Rectangle(64,128, Color.GRAY))
+				.at(1205,150)
+				.viewWithBBox("BigRock1.png")
 				.collidable()
 				.buildAndAttach();
 	}
 	
-	@Spawns("W4")
-	public Entity wall4(SpawnData data) {
-		return entityBuilder(data)
-				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)
-				.at(454,628)
-				.viewWithBBox(new Rectangle(16,85, Color.GRAY))
-				.collidable()
-				.buildAndAttach();
-	}
-	
-	@Spawns("BWH")
-	public Entity HBorder(SpawnData data) {
-		return entityBuilder(data)
-				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)
-				.at(992,0)
-				.viewWithBBox(new Rectangle(32,1024, Color.GRAY))
-				.collidable()
-				.buildAndAttach();
-	}
-	
-	@Spawns("BWH2")
-	public Entity HBorder2(SpawnData data) {
-		return entityBuilder(data)
-				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)
-				.at(0,0)
-				.viewWithBBox(new Rectangle(32,1024, Color.GRAY))
-				.collidable()
-				.buildAndAttach();
-	}
-	
-	@Spawns("BWV")
-	public Entity VBorder(SpawnData data) {
-		return entityBuilder(data)
-				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)
-				.at(0,992)
-				.viewWithBBox(new Rectangle(1024,32, Color.GRAY))
-				.collidable()
-				.buildAndAttach();
-	}
-	
-	@Spawns("BWV2")
-	public Entity VBorder2(SpawnData data) {
-		return entityBuilder(data)
-				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)
-				.at(0,0)
-				.viewWithBBox(new Rectangle(1024,32, Color.GRAY))
-				.collidable()
-				.buildAndAttach();
-	}
 	
 	@Spawns("coin")
 	public Entity coin(SpawnData data) {

@@ -148,8 +148,8 @@ public class DawnseekerApp extends GameApplication{
     
     @Override
     protected void initSettings(GameSettings settings) {
-		settings.setWidth(1024);
-		settings.setHeight(1024);
+		settings.setWidth(1920);
+		settings.setHeight(1080);
 		settings.setTitle("Dawnseeker");
 		settings.setVersion("0.4");
 		settings.setMainMenuEnabled(true);
@@ -222,7 +222,6 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
-		spawn("W4");
 		spawn("badWall");
 		spawn("shop");
         
