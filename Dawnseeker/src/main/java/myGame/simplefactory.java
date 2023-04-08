@@ -149,7 +149,7 @@ public class simplefactory implements EntityFactory {
                 .view("Fireball.gif")
                 .collidable()
                 .with("Dmg", DawnseekerApp.getPDMG())
-                .with(new ProjectileComponent(direction, 10000))
+                .with(new ProjectileComponent(direction, 1000))
                 .with(new OffscreenCleanComponent())
                 .build();
     }
@@ -240,7 +240,7 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.BADWALL)
 				.at(300,450)
-				.viewWithBBox(new Rectangle(64,64, Color.RED))
+				.viewWithBBox("Poison.gif")
 				.buildAndAttach();
 	}
     
@@ -250,7 +250,7 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.SHOP)
 				.at(300, 600)
-				.viewWithBBox(new Rectangle(64,64, Color.FUCHSIA))
+				.viewWithBBox("Shop.png")
 				.buildAndAttach();
 	}
 }
