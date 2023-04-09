@@ -49,7 +49,7 @@ public class DawnseekerMenu extends FXGLMenu {
 	
 //	@Override
 	protected Node createBackground(double w, double h) {
-		Node node = FXGL.texture("bg.png");
+		Node node = FXGL.texture("bg2.png");
 		return node;
 	}
 	

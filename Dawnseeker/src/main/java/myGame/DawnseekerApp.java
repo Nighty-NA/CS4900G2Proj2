@@ -25,7 +25,7 @@ import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.ui.Position;
 import com.almasb.fxgl.ui.ProgressBar;
 
-import animationComponent.AnimationComponent;
+import animationComponent.PlayerAnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
@@ -120,10 +120,10 @@ public class DawnseekerApp extends GameApplication{
  
     @Override
     protected void initSettings(GameSettings settings) {
-		settings.setWidth(1024);
-		settings.setHeight(1024);
+		settings.setWidth(1920);
+		settings.setHeight(1080);
 		settings.setTitle("Dawnseeker");
-		settings.setVersion("0.4");
+		settings.setVersion("0.5");
 		settings.setMainMenuEnabled(true);
 		
 		//Custom main menu		
@@ -174,7 +174,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Up") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveUp();
+                player.getComponent(PlayerAnimationComponent.class).moveUp();
                 player.translateY(-speed);
             }
         }, KeyCode.W);
@@ -182,7 +182,8 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Down") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveDown();
+
+                player.getComponent(PlayerAnimationComponent.class).moveDown();
                 player.translateY(speed);
             }
         }, KeyCode.S);
@@ -190,7 +191,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Right") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveRight();
+                player.getComponent(PlayerAnimationComponent.class).moveRight();
                 player.translateX(speed);
             }
         }, KeyCode.D);
@@ -198,7 +199,7 @@ public class DawnseekerApp extends GameApplication{
         FXGL.getInput().addAction(new UserAction("Left") {
             @Override
             protected void onAction() {
-                player.getComponent(AnimationComponent.class).moveLeft();
+                player.getComponent(PlayerAnimationComponent.class).moveLeft();
                 player.translateX(-speed);
             }
         }, KeyCode.A);
@@ -227,7 +228,6 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
-		spawn("W4");
 		spawn("badWall");
 		spawn("shop");
         
@@ -312,15 +312,17 @@ public class DawnseekerApp extends GameApplication{
             FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
+        
+        //When the player moves over the bullet power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.BPOWER, (player, bpower) -> {
             bpower.removeFromWorld();
             PBC++;
         });
+        
         //When the player moves over the speed power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
             speed = speed+(speed*.01);
-
         });
         
         //When the player moves over the attack power-up
