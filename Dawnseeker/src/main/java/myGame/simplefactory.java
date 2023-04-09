@@ -29,7 +29,7 @@ import com.almasb.fxgl.ui.ProgressBar;
 
 
 import animationComponent.PlayerAnimationComponent;
-
+import animationComponent.ShopAnimationComponent;
 import enemyComponent.BadGuyOne;
 import enemyComponent.DelayedBadGuy;
 import javafx.geometry.Point2D;
@@ -250,7 +250,8 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.SHOP)
 				.at(300, 600)
-				.viewWithBBox("Shop.png")
+				.bbox(new HitBox(BoundingShape.box(64, 64)))
+				.with(new ShopAnimationComponent())
 				.buildAndAttach();
 	}
 }

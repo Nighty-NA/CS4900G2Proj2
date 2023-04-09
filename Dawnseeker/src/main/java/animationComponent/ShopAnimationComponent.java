@@ -11,22 +11,33 @@ import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.geometry.Point2D;
 import javafx.scene.input.KeyCode;
 import javafx.util.Duration;
+import myGame.DawnseekerApp;
 import myGame.simplefactory;
+
 
 /* Currently Unfinished */
 
 public class ShopAnimationComponent extends Component{
-	private AnimationChannel shop;
+	private AnimationChannel flash;
+	private AnimatedTexture texture;
 
 	public ShopAnimationComponent(){
-		AnimationChannel anim =  new AnimationChannel(FXGL.image("AnimShop.png"), 2, 64, 64, Duration.seconds(0.5), 0, 1);
+		flash =  new AnimationChannel(FXGL.image("AnimShop.png"), 2, 64, 64, Duration.seconds(1), 0, 1);
+		texture = new AnimatedTexture(flash);
+	}
+	
+	public void onAdded() {
+		entity.getViewComponent().addChild(texture);
 	}
 	
 	@Override
 	public void onUpdate(double tpf) {
 		Input input = new Input();
-		Point2D mpos = input.getMousePositionUI();
-		
+		Point2D mpos = input.getMousePositionWorld();
+		if(((mpos.getX() >= 300) && (mpos.getY() <= 364)) && ((mpos.getY() >= 600) && (mpos.getY() <= 664))) 
+		{
+			texture.loopAnimationChannel(flash);
+		}
 	}
 	
 	
