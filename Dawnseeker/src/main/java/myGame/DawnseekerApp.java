@@ -1,16 +1,5 @@
 package myGame;
 
-import static com.almasb.fxgl.dsl.FXGL.getAppHeight;
-import static com.almasb.fxgl.dsl.FXGL.getAppWidth;
-import static com.almasb.fxgl.dsl.FXGL.getGameController;
-import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
-import static com.almasb.fxgl.dsl.FXGL.onBtnDown;
-import static com.almasb.fxgl.dsl.FXGL.onCollisionBegin;
-import static com.almasb.fxgl.dsl.FXGL.onKey;
-import static com.almasb.fxgl.dsl.FXGL.run;
-import static com.almasb.fxgl.dsl.FXGL.showMessage;
-import static com.almasb.fxgl.dsl.FXGL.spawn;
-
 import java.util.Map;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -25,18 +14,21 @@ import com.almasb.fxgl.dsl.components.HealthIntComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.inventory.Inventory;
+import com.almasb.fxgl.inventory.view.InventoryView;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.PhysicsComponent;
 import com.almasb.fxgl.physics.box2d.collision.ContactID.Type;
+import com.almasb.fxgl.scene.SubScene;
 import com.almasb.fxgl.ui.Position;
 import com.almasb.fxgl.ui.ProgressBar;
 
 import animationComponent.PlayerAnimationComponent;
-import animationComponent.PowerAnimationComponent;
 import myGame.simplefactory;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
@@ -49,12 +41,10 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, ENEMY2, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL, SHOP, BPOWER
+        PLAYER, ENEMY, ENEMY2, ENEMY3, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL, SHOP, BPOWER
     }
-	private AStarGrid grid;
-	public AStarGrid getGrid() {
-		return grid;
-	}
+	
+    private ShopTest shop;
     
 	private final simplefactory SF = new simplefactory(); 
 	
@@ -123,40 +113,17 @@ public class DawnseekerApp extends GameApplication{
         var w = player.getComponent(HealthDoubleComponent.class);
         hpBarr.setCurrentValue(w.getValue());
         hpBarr.setWidth(300);
-        //hpBarr.setLabelVisible(true); 
         hpBarr.setFill(Color.RED);
         FXGL.addUINode(hpBarr,400,35);
-        
-        
-        //hpBar();   enemy.getComponent(HealthIntComponent.class)
 
     }
-    
-    //protected void hpBar() {
-      //  ProgressBar hpBar = new ProgressBar();
-        //hpBar.setMinValue(0);
-        //hpBar.setMaxValue(PHPM);
-        
-        
-        //double d = FXGL.geti("hp");
-        //hpBar.setCurrentValue();
-        
-        
-       // hpBar.setWidth(300);
-        //hpBar.setLabelVisible(true);
-        
-       // hpBar.setFill(Color.GREEN);
-       
-     //   FXGL.addUINode(hpBar,60,35);
-    //}
-    
-    
+ 
     @Override
     protected void initSettings(GameSettings settings) {
-		settings.setWidth(1024);
-		settings.setHeight(1024);
+		settings.setWidth(1920);
+		settings.setHeight(1080);
 		settings.setTitle("Dawnseeker");
-		settings.setVersion("0.4");
+		settings.setVersion("0.5");
 		settings.setMainMenuEnabled(true);
 		
 		//Custom main menu		
@@ -201,21 +168,6 @@ public class DawnseekerApp extends GameApplication{
             	spawn("bullet4", this.player.getCenter());
         		spawn("bullet5", this.player.getCenter());
         	}
-        	
-        	
-        	
-        	
-        	
-        	
-        	
-        	//spawn("bullet", this.player.getCenter());
-        	//spawn("bullet2", this.player.getCenter());
-        	//spawn("bullet3", this.player.getCenter());
-        	//spawn("bullet4", this.player.getCenter());
-        	//spawn("bullet5", this.player.getCenter());
-        	
-        	//spawn("bullet2", this.player.getX()+65,this.player.getY()+65);
-        	//spawn("bullet3", this.player.getX()-65,this.player.getY()-65);
         });
 
         
@@ -251,16 +203,22 @@ public class DawnseekerApp extends GameApplication{
                 player.translateX(-speed);
             }
         }, KeyCode.A);
+        
+        //SHOP LOGIC =========================================== UNIVERSAL SHOP STUFF FOR TESTING
+//        shop = new ShopTest();
+//        shop.getInput().addAction(new UserAction("Close Shop") {
+//            @Override
+//            protected void onActionBegin() {
+//                getSceneService().popSubScene();
+//            }
+//        }, KeyCode.F);
+//
+//        onKeyDown(KeyCode.F, "Open Shop", () -> getSceneService().pushSubScene(shop));
     }
-    
-
 
     @Override
     protected void initGame() {
     	getGameWorld().addEntityFactory(this.SF);
-    	
-    	//Background music ----- Arrowood
-    	FXGL.getAudioPlayer().stopAllMusic();
     	String BGM = new String("heartache.mp3");
     	Music gameMusic = FXGL.getAssetLoader().loadMusic(BGM);
     	FXGL.getAudioPlayer().loopMusic(gameMusic);
@@ -270,13 +228,13 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
-		spawn("W4");
 		spawn("badWall");
 		spawn("shop");
         
         //Enemies spawn every second, and their damage is increased by x2 every 10 in-game seconds.
     	run(() -> spawn("enemy"), Duration.seconds(1) );
     	run(() -> spawn("enemy2"), Duration.seconds(1) );
+    	run(() -> spawn("enemy3"), Duration.seconds(5) );
     	getGameTimer().runAtInterval(() -> { EHP=EHP*2;EDMG=EDMG*2; }, Duration.seconds(10));
     }
     
@@ -354,15 +312,17 @@ public class DawnseekerApp extends GameApplication{
             FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
+        
+        //When the player moves over the bullet power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.BPOWER, (player, bpower) -> {
             bpower.removeFromWorld();
             PBC++;
         });
+        
         //When the player moves over the speed power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
             speed = speed+(speed*.01);
-
         });
         
         //When the player moves over the attack power-up
@@ -388,22 +348,28 @@ public class DawnseekerApp extends GameApplication{
         
         // On player collision with harmful wall ----- IN PROGRESS - Arrowood
         onCollision(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
-        	FXGL.play("player_oof.wav");
         	var hp = player.getComponent(HealthDoubleComponent.class);
-        	if (hp.getValue() > 0) {
+        	FXGL.play("player_oof.wav");
+        	if (hp.getValue() > 1) {
                 hp.damage(1);
                 initUI();
                 FXGL.inc("hp", -1);
-                if(hp.getValue() <= 0) {
-                	killPlayer(player);
-                }
         	}
-
+        	
         });
 
       //When the player collides with the shop
         onCollisionBegin(EntityType.PLAYER, EntityType.SHOP, (player, shop) -> {
-            FXGL.play("yoda_death.wav");
+            FXGL.play("store_jingle.wav");
+            ShopTest shopMenu = new ShopTest();
+            getSceneService().pushSubScene(shopMenu);
+            shopMenu.getInput().addAction(new UserAction("Close Shop") {
+                @Override
+                protected void onActionBegin() {
+                    getSceneService().popSubScene();
+                }
+            }, KeyCode.F);
+
         });
         
         FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(EntityType.PLAYER, EntityType.WALL) {
@@ -467,8 +433,77 @@ public class DawnseekerApp extends GameApplication{
     	PHP=100;
     	EDMG=10;
     	EHP=10;
+    	PBC = 0;
 //    	getGameController().startNewGame(); //This will reset the game state automatically!!
 //    	getGameController().gotoIntro();
+    }
+    
+    public void onUpdate(double tpf) { //Thank you to Nathan P. for this :)
+        // get the player's position
+        double x = player.getX();
+        double y = player.getY();
+
+        // get the width and height of the game window
+        double screenWidth = getAppWidth();
+        double screenHeight = getAppHeight();
+
+        // check if the player is outside the game window
+        if (x < 0) {
+            // teleport the player to the right side of the game window
+            player.setX(screenWidth);
+        } else if (x > screenWidth) {
+            // teleport the player to the left side of the game window
+            player.setX(0);
+        }
+
+        if (y < 0) {
+            // teleport the player to the bottom of the game window
+            player.setY(screenHeight);
+        } else if (y > screenHeight) {
+            // teleport the player to the top of the game window
+            player.setY(0);
+        }
+    }
+    
+    private class ShopTest extends SubScene{
+    	public ShopTest() {
+            getContentRoot().getChildren().addAll();
+            getContentRoot().setTranslateX(300);
+            getContentRoot().setTranslateY(0);
+
+            Button buyHP = getUIFactoryService().newButton("Buy Health");
+            buyHP.prefHeight(30.0);
+            buyHP.prefWidth(135.0);
+            buyHP.setTranslateX(35.0);
+            buyHP.setTranslateY(320.0);
+
+            buyHP.setOnAction(actionEvent -> {
+//            	String strCoin = String.valueOf(FXGL.getip("Coins").asString());
+//            	int coin = Integer.parseInt(strCoin);
+//            	if(Integer.parseInt(String.valueOf(FXGL.getip("Coins"))) > 0){
+//            		FXGL.play("player_oof.wav");
+//            	}
+            	var hp = player.getComponent(HealthDoubleComponent.class);
+            		hp.restore(10);
+            		FXGL.play("boom.wav");
+            		FXGL.inc("Coins", -1);
+            });
+
+            Button buySpeed = getUIFactoryService().newButton("Buy Speed");
+            buySpeed.prefHeight(30.0);
+            buySpeed.prefWidth(135.0);
+            buySpeed.setTranslateX(35.0);
+            buySpeed.setTranslateY(370.0);
+
+            buySpeed.setOnAction(actionEvent -> {
+            	speed++;
+        		FXGL.play("boom.wav");
+        		FXGL.inc("Coins", -1);
+            });
+
+            this.getContentRoot().getChildren().addAll(buyHP, buySpeed);
+        }
+    	
     }
 
 }
