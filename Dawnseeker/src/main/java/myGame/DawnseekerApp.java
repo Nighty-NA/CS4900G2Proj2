@@ -49,7 +49,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class DawnseekerApp extends GameApplication{
 	
     public enum EntityType {
-        PLAYER, ENEMY, ENEMY2, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL, SHOP
+        PLAYER, ENEMY, ENEMY2, BULLET, WALL, COIN, SPOWER, APOWER, HPOWER, BADWALL, SHOP, BPOWER
     }
 	private AStarGrid grid;
 	public AStarGrid getGrid() {
@@ -66,9 +66,13 @@ public class DawnseekerApp extends GameApplication{
 	public static int PHPM = 100;
 	public static int EDMG = 10;
 	public static int PDMG = 20;
+	public static int PBC = 0;
 	
     public static int getEHP() {
     	return EHP;
+    }
+    public static int getPBC() {
+    	return PBC;
     }
     public static int getEDMG() {
     	return EDMG;
@@ -170,7 +174,50 @@ public class DawnseekerApp extends GameApplication{
 
     @Override
     protected void initInput() {
-        onBtnDown(MouseButton.PRIMARY, () -> spawn("bullet", this.player.getCenter()));
+    	
+        onBtnDown(MouseButton.PRIMARY, () -> {
+        	if(PBC==0) {
+        		spawn("bullet", this.player.getCenter());
+        	}
+        	if(PBC==1) {
+        		spawn("bullet", this.player.getCenter());
+        		spawn("bullet2", this.player.getCenter());
+        	}
+        	if(PBC==2) {
+        		spawn("bullet", this.player.getCenter());
+            	spawn("bullet2", this.player.getCenter());
+            	spawn("bullet3", this.player.getCenter());
+        	}
+        	if(PBC==3) {
+            	spawn("bullet", this.player.getCenter());
+            	spawn("bullet2", this.player.getCenter());
+            	spawn("bullet3", this.player.getCenter());
+        		spawn("bullet4", this.player.getCenter());
+        	}
+        	if(PBC>=4) {
+            	spawn("bullet", this.player.getCenter());
+            	spawn("bullet2", this.player.getCenter());
+            	spawn("bullet3", this.player.getCenter());
+            	spawn("bullet4", this.player.getCenter());
+        		spawn("bullet5", this.player.getCenter());
+        	}
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	//spawn("bullet", this.player.getCenter());
+        	//spawn("bullet2", this.player.getCenter());
+        	//spawn("bullet3", this.player.getCenter());
+        	//spawn("bullet4", this.player.getCenter());
+        	//spawn("bullet5", this.player.getCenter());
+        	
+        	//spawn("bullet2", this.player.getX()+65,this.player.getY()+65);
+        	//spawn("bullet3", this.player.getX()-65,this.player.getY()-65);
+        });
+
         
         FXGL.getInput().addAction(new UserAction("Up") {
             @Override
@@ -307,7 +354,10 @@ public class DawnseekerApp extends GameApplication{
             FXGL.play("coin_pickup.wav");
             FXGL.inc("Coins", 1);
         });
-        
+        onCollisionBegin(EntityType.PLAYER, EntityType.BPOWER, (player, bpower) -> {
+            bpower.removeFromWorld();
+            PBC++;
+        });
         //When the player moves over the speed power-up
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
@@ -387,10 +437,13 @@ public class DawnseekerApp extends GameApplication{
     private void killEnemy(Entity e) {
     	Point2D cSpawnPoint = e.getCenter();
     	double rng = Math.random()*10;
-    	if(rng < 8) {
+    	if(rng < 7.5) {
     		spawn("coin", cSpawnPoint);
     	}
     	else {
+    		if(rng >= 7.5 && rng < 8 ) {
+    			spawn("bpower", cSpawnPoint);	
+    		}
     		if(rng >= 8 && rng < 8.7 ) {
     			spawn("spower", cSpawnPoint);	
     		}
