@@ -106,7 +106,6 @@ public class simplefactory implements EntityFactory {
                 .view(hpView)
                 .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
-//                .at(Math.random() *1000,Math.random() *1000)
                 .at(getRandomSpawnEnemy())
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -114,11 +113,18 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy2")
     public Entity newEnemy2(SpawnData data) {
-    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
+    	Circle circle = new Circle(20, 20, 20, Color.RED);
         circle.setStroke(Color.BROWN);
         circle.setStrokeWidth(2.0);
         int moveSpeed = 125;
         var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
+        var hpView = new ProgressBar(false);
+        hpView.setFill(Color.LIGHTGREEN);
+        hpView.setMaxValue(DawnseekerApp.getEHP());
+        hpView.setWidth(85);
+        hpView.setTranslateY(45);
+        hpView.setTranslateX(-25);
+        hpView.currentValueProperty().bind(hp.valueProperty());
 
         return entityBuilder()
         		.from(data)
@@ -126,9 +132,38 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox("sussy.gif")
                 .collidable()
                 .with(hp)
+                .view(hpView)
                 .with("Dmg", DawnseekerApp.getEDMG())
                 .at(getRandomSpawnEnemy())
                 .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
+                .build();
+    }
+    
+    @Spawns("enemy3")
+    public Entity newEnemy3(SpawnData data) {
+    	Circle circle = new Circle(20, 20, 20, Color.RED);
+        circle.setStroke(Color.BROWN);
+        circle.setStrokeWidth(2.0);
+        int moveSpeed = 50;
+        var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
+        var hpView = new ProgressBar(false);
+        hpView.setFill(Color.LIGHTGREEN);
+        hpView.setMaxValue(DawnseekerApp.getEHP());
+        hpView.setWidth(85);
+        hpView.setTranslateY(60);
+        hpView.setTranslateX(-12);
+        hpView.currentValueProperty().bind(hp.valueProperty());
+
+        return entityBuilder()
+        		.from(data)
+                .type(EntityType.ENEMY)
+                .viewWithBBox("slime.gif")
+                .collidable()
+                .with(hp)
+                .view(hpView)
+                .with("Dmg", DawnseekerApp.getEDMG())
+                .at(getRandomSpawnEnemy())
+                .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
 

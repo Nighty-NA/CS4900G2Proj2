@@ -168,21 +168,6 @@ public class DawnseekerApp extends GameApplication{
             	spawn("bullet4", this.player.getCenter());
         		spawn("bullet5", this.player.getCenter());
         	}
-        	
-        	
-        	
-        	
-        	
-        	
-        	
-        	//spawn("bullet", this.player.getCenter());
-        	//spawn("bullet2", this.player.getCenter());
-        	//spawn("bullet3", this.player.getCenter());
-        	//spawn("bullet4", this.player.getCenter());
-        	//spawn("bullet5", this.player.getCenter());
-        	
-        	//spawn("bullet2", this.player.getX()+65,this.player.getY()+65);
-        	//spawn("bullet3", this.player.getX()-65,this.player.getY()-65);
         });
 
         
@@ -249,6 +234,7 @@ public class DawnseekerApp extends GameApplication{
         //Enemies spawn every second, and their damage is increased by x2 every 10 in-game seconds.
     	run(() -> spawn("enemy"), Duration.seconds(1) );
     	run(() -> spawn("enemy2"), Duration.seconds(1) );
+    	run(() -> spawn("enemy3"), Duration.seconds(5) );
     	getGameTimer().runAtInterval(() -> { EHP=EHP*2;EDMG=EDMG*2; }, Duration.seconds(10));
     }
     
