@@ -438,6 +438,33 @@ public class DawnseekerApp extends GameApplication{
 //    	getGameController().gotoIntro();
     }
     
+    public void onUpdate(double tpf) { //Thank you to Nathan P. for this :)
+        // get the player's position
+        double x = player.getX();
+        double y = player.getY();
+
+        // get the width and height of the game window
+        double screenWidth = getAppWidth();
+        double screenHeight = getAppHeight();
+
+        // check if the player is outside the game window
+        if (x < 0) {
+            // teleport the player to the right side of the game window
+            player.setX(screenWidth);
+        } else if (x > screenWidth) {
+            // teleport the player to the left side of the game window
+            player.setX(0);
+        }
+
+        if (y < 0) {
+            // teleport the player to the bottom of the game window
+            player.setY(screenHeight);
+        } else if (y > screenHeight) {
+            // teleport the player to the top of the game window
+            player.setY(0);
+        }
+    }
+    
     private class ShopTest extends SubScene{
     	public ShopTest() {
             getContentRoot().getChildren().addAll();
