@@ -155,7 +155,7 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY)
-                .viewWithBBox("slime.gif")
+                .viewWithBBox("Bonker.gif")
                 .collidable()
                 .with(hp)
                 .view(hpView)
@@ -344,7 +344,7 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.BADWALL)
 				.at(300,450)
-				.viewWithBBox("Poison.gif")
+				.viewWithBBox("FIRE.gif")
 				.buildAndAttach();
 	}
     
