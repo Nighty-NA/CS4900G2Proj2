@@ -339,7 +339,7 @@ public class simplefactory implements EntityFactory {
 	
 	@Spawns("badWall")
 	public Entity badWall(SpawnData data) {
-        var hp = new HealthDoubleComponent(DawnseekerApp.getEHP() * 3);
+        var hp = new HealthDoubleComponent(DawnseekerApp.getEHP() * .5);
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.BADWALL)
