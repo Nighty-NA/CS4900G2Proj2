@@ -21,8 +21,9 @@ public class DawnseekerMenu extends FXGLMenu {
 
 	public DawnseekerMenu() {
 		super(MenuType.MAIN_MENU);
-
-		DSButton btnPlayGame = new DSButton("Play Game", () -> fireNewGame());
+		
+		//Moved the "stop all music" to happen on firing a new game. This subverts an error that immediately crashes the game.
+		DSButton btnPlayGame = new DSButton("Play Game", () -> {fireNewGame(); FXGL.getAudioPlayer().stopAllMusic();} );
 		DSButton btnOptions = new DSButton("Options", () -> {});
 		DSButton btnQuit = new DSButton("Quit", () -> fireExit());
 		
@@ -30,7 +31,7 @@ public class DawnseekerMenu extends FXGLMenu {
 		var box = new VBox(15, btnPlayGame, btnOptions, btnQuit);
 		box.setAlignment(Pos.CENTER_LEFT);
 		box.setTranslateX(100);
-		box.setTranslateY(450);
+		box.setTranslateY(550);
 		
 		//The background is created first before the box is generated. If reversed, the box will appear behind the .png.
 		getContentRoot().getChildren().add(createBackground(1024, 1024));
@@ -48,7 +49,7 @@ public class DawnseekerMenu extends FXGLMenu {
 	
 //	@Override
 	protected Node createBackground(double w, double h) {
-		Node node = FXGL.texture("bg.png");
+		Node node = FXGL.texture("bg2.png");
 		return node;
 	}
 	
