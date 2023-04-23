@@ -404,15 +404,12 @@ public class DawnseekerApp extends GameApplication{
             
         });
         
-        // On player collision with harmful wall ----- IN PROGRESS - Arrowood
+        // On player collision with harmful wall ----- COMPLETED - MOORE
         onCollision(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
         	var hp = player.getComponent(HealthDoubleComponent.class);
         	FXGL.play("player_oof.wav");
-        	if (hp.getValue() > 1) {
-                hp.damage(1);
-                initUI();
-                FXGL.inc("hp", -1);
-        	}
+        	hp.damagePercentageCurrent(5);//in theory this should never be the reason of the player's death
+        	badWall.removeFromWorld();
         	
         });
 
