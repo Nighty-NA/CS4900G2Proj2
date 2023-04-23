@@ -134,7 +134,6 @@ public class simplefactory implements EntityFactory {
                 .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
-<<<<<<< HEAD
     
     @Spawns("enemy3")
     public Entity newEnemy3(SpawnData data) {
@@ -163,8 +162,6 @@ public class simplefactory implements EntityFactory {
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
     }
-=======
->>>>>>> branch 'Johnson' of https://github.com/Nighty-NA/CS4900G2Proj2
 
     @Spawns("bullet")
     public Entity newBullet(SpawnData data) {
