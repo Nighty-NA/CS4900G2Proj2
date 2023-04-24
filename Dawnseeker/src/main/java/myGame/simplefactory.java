@@ -113,9 +113,6 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy2")
     public Entity newEnemy2(SpawnData data) {
-//    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
-//        circle.setStroke(Color.BROWN);
-//        circle.setStrokeWidth(2.0);
         int moveSpeed = 125;
         var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
         var hpView = new ProgressBar(false);
@@ -261,7 +258,7 @@ public class simplefactory implements EntityFactory {
 	public Entity wall(SpawnData data) {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)// was set to just set to type was changed to EntityType
+				.type(EntityType.WALL)
 				.at(200, 800)
 				.viewWithBBox("Rock1.png")
 				.collidable()
