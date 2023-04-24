@@ -75,7 +75,6 @@ public class simplefactory implements EntityFactory {
                 .type(EntityType.PLAYER)
                 .bbox(new HitBox(BoundingShape.box(64, 64)))
                 .with(new PlayerAnimationComponent())
-                //.viewWithBBox("PlayerCharacterDawnseeker.png")
                 .at(500,500)
                 .view(hp1View)
                 .with(hp1)
@@ -154,6 +153,7 @@ public class simplefactory implements EntityFactory {
         		.from(data)
                 .type(EntityType.ENEMY)
                 .viewWithBBox("Bonker.gif")
+
                 .collidable()
                 .with(hp)
                 .view(hpView)
@@ -389,11 +389,17 @@ public class simplefactory implements EntityFactory {
 	
 	@Spawns("badWall")
 	public Entity badWall(SpawnData data) {
+        var hp = new HealthDoubleComponent(DawnseekerApp.getEHP() * .5);
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.BADWALL)
+
 				.at(300,450)
 				.viewWithBBox("FIRE.gif")
+//				.at(300,450)
+				.viewWithBBox("Poison.gif")
+				.with(hp)
+
 				.buildAndAttach();
 	}
     

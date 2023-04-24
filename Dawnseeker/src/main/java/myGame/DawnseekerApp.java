@@ -27,6 +27,7 @@ import com.almasb.fxgl.ui.ProgressBar;
 
 import animationComponent.PlayerAnimationComponent;
 import myGame.simplefactory;
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -100,6 +101,12 @@ public class DawnseekerApp extends GameApplication{
         scoreLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
         scoreLabel.textProperty().bind(FXGL.getip("Coins").asString("Coins: %d"));
         FXGL.addUINode(scoreLabel, 40, 35);
+        
+        Label speedLabel = new Label();
+        speedLabel.setTextFill(Color.BLACK);
+        speedLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        speedLabel.textProperty().bind(Bindings.format("Speed: %.2f", speed));
+        FXGL.addUINode(speedLabel, 800, 35);
         
         Label HPLabel = new Label();
         HPLabel.setTextFill(Color.BLACK);
@@ -228,7 +235,6 @@ public class DawnseekerApp extends GameApplication{
 		spawn("W");
 		spawn("W2");
 		spawn("W3");
-		spawn("badWall");
 		spawn("shop");
         
         //Enemies spawn every second, and their damage is increased by x2 every 10 in-game seconds.
@@ -273,6 +279,40 @@ public class DawnseekerApp extends GameApplication{
             }
         });
         
+      //ENEMY 3 -- BONK HAMMER
+        onCollisionBegin(EntityType.BULLET, EntityType.ENEMY3, (bullet, baddie) -> {
+        	bullet.removeFromWorld();
+        	var hp = baddie.getComponent(HealthDoubleComponent.class);
+        	if (hp.getValue() > 0) {
+                bullet.removeFromWorld();
+                hp.damage(PDMG);
+                if(hp.getValue() <= 0) {
+                	killEnemy3(baddie);
+                }
+                return;
+            }else {
+            	killEnemy3(baddie);
+            }
+        });
+        
+      //ENEMY 2 -- GHOST ENTITY
+        onCollisionBegin(EntityType.BULLET, EntityType.BADWALL, (bullet, badwall) -> {
+        	bullet.removeFromWorld();
+        	var hp = badwall.getComponent(HealthDoubleComponent.class);
+        	if (hp.getValue() > 0) {
+                bullet.removeFromWorld();
+                hp.damage(PDMG);
+                if(hp.getValue() <= 0) {
+                	badwall.removeFromWorld();
+                	FXGL.play("metal_pipe_fall.wav");
+                }
+                return;
+            }else {
+            	badwall.removeFromWorld();
+            	FXGL.play("metal_pipe_fall.wav");
+            }
+        });
+        
         onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY, (player, enemy) -> {
         	var hp = player.getComponent(HealthDoubleComponent.class);
         	
@@ -302,6 +342,24 @@ public class DawnseekerApp extends GameApplication{
                 	killPlayer(player);
                 }
             	FXGL.play("player_oof.wav");
+            }
+        	
+        });
+        
+        //ENEMY3 COLLISION WITH PLAYER
+        onCollisionBegin(EntityType.PLAYER, EntityType.ENEMY3, (player, enemy) -> {
+        	var hp = player.getComponent(HealthDoubleComponent.class);
+        	
+        	if (hp.getValue() > 0) {
+                hp.damage(EDMG);
+                initUI();
+                FXGL.inc("hp", -EDMG);
+                if(hp.getValue() <= 0) {
+                	killPlayer(player);
+                }
+                enemy.translateTowards(player.getCenter(), -Math.sqrt(player.getX() + player.getY()));
+            	FXGL.play("bonk.wav");
+                return;
             }
         	
         });
@@ -346,15 +404,12 @@ public class DawnseekerApp extends GameApplication{
             
         });
         
-        // On player collision with harmful wall ----- IN PROGRESS - Arrowood
+        // On player collision with harmful wall ----- COMPLETED - MOORE
         onCollision(EntityType.PLAYER, EntityType.BADWALL, (player, badWall) -> {
         	var hp = player.getComponent(HealthDoubleComponent.class);
         	FXGL.play("player_oof.wav");
-        	if (hp.getValue() > 1) {
-                hp.damage(1);
-                initUI();
-                FXGL.inc("hp", -1);
-        	}
+        	hp.damagePercentageCurrent(5);//in theory this should never be the reason of the player's death
+        	badWall.removeFromWorld();
         	
         });
 
@@ -424,6 +479,31 @@ public class DawnseekerApp extends GameApplication{
     	e.removeFromWorld();
     }
     
+    private void killEnemy3(Entity e) {
+    	Point2D cSpawnPoint = e.getCenter();
+    	double rng = Math.random()*10;
+    	spawn("badWall", cSpawnPoint);
+    	if(rng < 7.5) {
+    		spawn("coin", cSpawnPoint);
+    	}
+    	else {
+    		if(rng >= 7.5 && rng < 8 ) {
+    			spawn("bpower", cSpawnPoint);	
+    		}
+    		if(rng >= 8 && rng < 8.7 ) {
+    			spawn("spower", cSpawnPoint);	
+    		}
+    		if(rng >= 8.7 && rng < 9.4 ) {
+    			spawn("apower", cSpawnPoint);	
+    		}
+    		if(rng >= 9.4) {
+    			spawn("hpower", cSpawnPoint);	
+    		}
+    	}
+    	FXGL.play("tom_scream.wav");
+    	e.removeFromWorld();
+    }
+    
     private void gameOver() {
     	FXGL.getAudioPlayer().stopAllMusic();
     	getGameController().gotoMainMenu();
@@ -433,6 +513,7 @@ public class DawnseekerApp extends GameApplication{
     	PHP=100;
     	EDMG=10;
     	EHP=10;
+    	speed = 3;
     	PBC = 0;
 //    	getGameController().startNewGame(); //This will reset the game state automatically!!
 //    	getGameController().gotoIntro();
