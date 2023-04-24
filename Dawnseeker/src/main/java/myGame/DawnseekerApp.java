@@ -201,20 +201,7 @@ public class DawnseekerApp extends GameApplication{
         		spawn("bullet5", this.player.getCenter());
         	}
         	
-        	
-        	
-        	
-        	
-        	
-        	
-        	//spawn("bullet", this.player.getCenter());
-        	//spawn("bullet2", this.player.getCenter());
-        	//spawn("bullet3", this.player.getCenter());
-        	//spawn("bullet4", this.player.getCenter());
-        	//spawn("bullet5", this.player.getCenter());
-        	
-        	//spawn("bullet2", this.player.getX()+65,this.player.getY()+65);
-        	//spawn("bullet3", this.player.getX()-65,this.player.getY()-65);
+
         });
 
         
