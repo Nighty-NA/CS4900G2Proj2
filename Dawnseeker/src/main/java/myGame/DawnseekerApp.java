@@ -582,6 +582,7 @@ public class DawnseekerApp extends GameApplication{
             	speed++;
             	initUI();
         		FXGL.play("boom.wav");
+        		FXGL.inc("Coins", -1);
             	}
 
             });
