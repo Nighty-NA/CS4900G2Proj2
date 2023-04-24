@@ -29,7 +29,6 @@ import com.almasb.fxgl.ui.ProgressBar;
 
 
 import animationComponent.PlayerAnimationComponent;
-import animationComponent.ShopAnimationComponent;
 import enemyComponent.BadGuyOne;
 import enemyComponent.DelayedBadGuy;
 import javafx.geometry.Point2D;
@@ -86,14 +85,17 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy")
     public Entity newEnemy(SpawnData data) {
+//    	Circle circle = new Circle(20, 20, 20, Color.RED);
+//        circle.setStroke(Color.BROWN);
+//        circle.setStrokeWidth(2.0);
         int moveSpeed = 100;
         var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
         var hpView = new ProgressBar(false);
         hpView.setFill(Color.LIGHTGREEN);
         hpView.setMaxValue(DawnseekerApp.getEHP());
         hpView.setWidth(85);
-        hpView.setTranslateY(55);
-        hpView.setTranslateX(-10);
+        hpView.setTranslateY(45);
+        hpView.setTranslateX(-25);
         hpView.currentValueProperty().bind(hp.valueProperty());
         
         
@@ -106,6 +108,7 @@ public class simplefactory implements EntityFactory {
                 .view(hpView)
                 .with(hp)
                 .with("Dmg", DawnseekerApp.getEDMG())
+//                .at(Math.random() *1000,Math.random() *1000)
                 .at(getRandomSpawnEnemy())
                 .with(new BadGuyOne(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
                 .build();
@@ -113,15 +116,11 @@ public class simplefactory implements EntityFactory {
     
     @Spawns("enemy2")
     public Entity newEnemy2(SpawnData data) {
+//    	Circle circle = new Circle(20, 20, 20, Color.WHITE);
+//        circle.setStroke(Color.BROWN);
+//        circle.setStrokeWidth(2.0);
         int moveSpeed = 125;
         var hp = new HealthDoubleComponent(DawnseekerApp.getEHP());
-        var hpView = new ProgressBar(false);
-        hpView.setFill(Color.LIGHTGREEN);
-        hpView.setMaxValue(DawnseekerApp.getEHP());
-        hpView.setWidth(85);
-        hpView.setTranslateY(45);
-        hpView.setTranslateX(-15);
-        hpView.currentValueProperty().bind(hp.valueProperty());
 
         return entityBuilder()
         		.from(data)
@@ -129,7 +128,6 @@ public class simplefactory implements EntityFactory {
                 .viewWithBBox("Ghost.gif")
                 .collidable()
                 .with(hp)
-                .view(hpView)
                 .with("Dmg", DawnseekerApp.getEDMG())
                 .at(getRandomSpawnEnemy())
                 .with(new DelayedBadGuy(FXGL.<DawnseekerApp>getAppCast().getPlayer(), moveSpeed))
@@ -153,8 +151,9 @@ public class simplefactory implements EntityFactory {
 
         return entityBuilder()
         		.from(data)
-                .type(EntityType.ENEMY3)
-                .viewWithBBox("slime.gif")
+                .type(EntityType.ENEMY)
+                .viewWithBBox("Bonker.gif")
+
                 .collidable()
                 .with(hp)
                 .view(hpView)
@@ -258,8 +257,8 @@ public class simplefactory implements EntityFactory {
 	public Entity wall(SpawnData data) {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
-				.type(EntityType.WALL)
-				.at(200, 800)
+				.type(EntityType.WALL)// was set to just set to type was changed to EntityType
+				.at(775, 782)
 				.viewWithBBox("Rock1.png")
 				.collidable()
 				.buildAndAttach();
@@ -270,7 +269,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.WALL)
-				.at(800,500)
+				.at(100,100)
 				.viewWithBBox("Rock2.png")
 				.collidable()
 				.buildAndAttach();
@@ -281,12 +280,66 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.WALL)
-				.at(1205,150)
+				.at(200,150)
 				.viewWithBBox("BigRock1.png")
 				.collidable()
 				.buildAndAttach();
 	}
 	
+	@Spawns("W4")
+	public Entity wall4(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.WALL)
+				.at(454,628)
+				.viewWithBBox("Rock2.png")
+				.collidable()
+				.buildAndAttach();
+	}
+	
+	@Spawns("BWH")
+	public Entity HBorder(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.WALL)
+				.at(992,0)
+				.viewWithBBox(new Rectangle(32,1024, Color.GRAY))
+				.collidable()
+				.buildAndAttach();
+	}
+	
+	@Spawns("BWH2")
+	public Entity HBorder2(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.WALL)
+				.at(0,0)
+				.viewWithBBox(new Rectangle(32,1024, Color.GRAY))
+				.collidable()
+				.buildAndAttach();
+	}
+	
+	@Spawns("BWV")
+	public Entity VBorder(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.WALL)
+				.at(0,992)
+				.viewWithBBox(new Rectangle(1024,32, Color.GRAY))
+				.collidable()
+				.buildAndAttach();
+	}
+	
+	@Spawns("BWV2")
+	public Entity VBorder2(SpawnData data) {
+		return entityBuilder(data)
+				.with(new CollidableComponent(true))
+				.type(EntityType.WALL)
+				.at(0,0)
+				.viewWithBBox(new Rectangle(1024,32, Color.GRAY))
+				.collidable()
+				.buildAndAttach();
+	}
 	
 	@Spawns("coin")
 	public Entity coin(SpawnData data) {
@@ -304,7 +357,6 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.SPOWER)
 				.view("SpeedPotion.gif")
-				.bbox(new HitBox(BoundingShape.box(16, 16)))
 				.build();
 	}
 	
@@ -314,7 +366,6 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.APOWER)
 				.view("PowerPotion.gif")
-				.bbox(new HitBox(BoundingShape.box(16, 16)))
 				.build();
 	}
 	
@@ -333,7 +384,6 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.HPOWER)
 				.view("HealthPotion.gif")
-				.bbox(new HitBox(BoundingShape.box(16, 16)))
 				.build();
 	}
 	
@@ -343,9 +393,13 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.BADWALL)
+
+				.at(300,450)
+				.viewWithBBox("FIRE.gif")
 //				.at(300,450)
 				.viewWithBBox("Poison.gif")
 				.with(hp)
+
 				.buildAndAttach();
 	}
     
@@ -355,8 +409,7 @@ public class simplefactory implements EntityFactory {
 				.with(new CollidableComponent(true))
 				.type(EntityType.SHOP)
 				.at(300, 600)
-				.bbox(new HitBox(BoundingShape.box(64, 64)))
-				.with(new ShopAnimationComponent())
+				.viewWithBBox("Shop.png")
 				.buildAndAttach();
 	}
 }
