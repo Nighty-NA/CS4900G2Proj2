@@ -175,6 +175,7 @@ public class DawnseekerApp extends GameApplication{
             	spawn("bullet4", this.player.getCenter());
         		spawn("bullet5", this.player.getCenter());
         	}
+
         });
 
         
@@ -559,16 +560,16 @@ public class DawnseekerApp extends GameApplication{
             buyHP.setTranslateY(320.0);
 
             buyHP.setOnAction(actionEvent -> {
-//            	String strCoin = String.valueOf(FXGL.getip("Coins").asString());
-//            	int coin = Integer.parseInt(strCoin);
-//            	if(Integer.parseInt(String.valueOf(FXGL.getip("Coins"))) > 0){
-//            		FXGL.play("player_oof.wav");
-//            	}
+            	if(FXGL.getip("Coins").intValue() > 0 ) {
+
             	var hp = player.getComponent(HealthDoubleComponent.class);
             		hp.restore(10);
+            		initUI();
+            		FXGL.inc("hp", 10);
             		FXGL.play("boom.wav");
             		FXGL.inc("Coins", -1);
-            });
+            	}
+            	});
 
             Button buySpeed = getUIFactoryService().newButton("Buy Speed");
             buySpeed.prefHeight(30.0);
@@ -577,9 +578,12 @@ public class DawnseekerApp extends GameApplication{
             buySpeed.setTranslateY(370.0);
 
             buySpeed.setOnAction(actionEvent -> {
+            	if(FXGL.getip("Coins").intValue() > 0) {
             	speed++;
+            	initUI();
         		FXGL.play("boom.wav");
-        		FXGL.inc("Coins", -1);
+            	}
+
             });
 
             this.getContentRoot().getChildren().addAll(buyHP, buySpeed);
