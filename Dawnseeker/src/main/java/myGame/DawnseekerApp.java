@@ -580,6 +580,7 @@ public class DawnseekerApp extends GameApplication{
             buySpeed.setOnAction(actionEvent -> {
             	if(FXGL.getip("Coins").intValue() > 0) {
             	speed++;
+            	initUI();
         		FXGL.play("boom.wav");
             	}
 
