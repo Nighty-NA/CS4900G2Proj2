@@ -1,0 +1,332 @@
+11:27:49.310 [main                     ] DEBUG Logger               - Configured Logger
+11:27:49.330 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Dawnseeker
+Version: 0.5
+Width: 1920
+Height: 1080
+Fullscreen: false
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class myGame.DawnseekerApp$1
+
+11:27:49.615 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+11:27:49.621 [JavaFX Application Thread] INFO  Engine               - FXGL-17.2 (20.08.2022 16.50) on WINDOWS (J:19.0.2 FX:18)
+11:27:49.621 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Oracle Corporation
+11:27:49.621 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+11:27:49.622 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+11:27:49.622 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+11:27:49.622 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+11:27:49.622 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+11:27:49.721 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+11:27:49.721 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target size > screen size
+11:27:49.757 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 1920.0 x 1080.0
+11:27:49.757 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    1439.0 x 823.0
+11:27:49.757 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (0.7494791666666667, 0.7620370370370371)
+11:27:49.758 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+11:27:49.763 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+11:27:49.853 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (14.5999755859375, 37.79998779296875)
+11:27:49.853 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 1439.0 x 823.0
+11:27:49.854 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (0.7494791666666667, 0.7620370370370371)
+11:27:49.854 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 1439.0 x 823.0
+11:27:49.854 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 1453.5999755859375 x 860.7999877929688
+11:27:49.868 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+11:27:49.936 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class myGame.DawnseekerApp
+11:27:49.936 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+11:27:49.938 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/css/fxgl_dark.css
+11:27:49.985 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+11:27:50.035 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+11:27:50.103 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=1080, physics.ppm=50.0
+11:27:50.103 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+11:27:50.107 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1920x1080
+11:27:50.107 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/music/shop.mp3
+11:27:50.226 [FXGL Background Thread 1 ] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@94955f5
+11:27:50.238 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/bg2.png
+11:27:50.297 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+11:27:50.308 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+11:27:50.313 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/particles/smoke.png
+11:27:50.385 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/particles/trace_horizontal.png
+11:27:50.405 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+11:27:50.417 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+11:27:50.422 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Users\narro\git\CS4900G2Proj2\Dawnseeker\system\fxgl.bundle
+11:27:50.431 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+11:27:50.431 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+11:27:50.435 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+11:27:50.435 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+11:27:50.435 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+11:27:50.436 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/languages/english.lang
+11:27:50.464 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.595 sec
+11:27:50.470 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action0 - LMB
+11:27:50.476 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Up - W
+11:27:50.476 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Down - S
+11:27:50.477 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+11:27:50.477 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - A
+11:27:50.477 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/fxgl_icon.png
+11:27:50.496 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/fxgl_default_cursor.png
+11:27:50.500 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+11:27:50.500 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+11:27:50.500 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+11:27:50.501 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+11:27:50.504 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+11:27:50.504 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+11:27:50.507 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:27:50.510 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+11:27:50.518 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to FXGLMainMenuDummyScene
+11:27:50.519 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> FXGLMainMenuDummyScene
+11:27:50.519 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DawnseekerMenu
+11:27:50.519 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:27:50.521 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+11:27:50.524 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to DawnseekerMenu
+11:27:50.524 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> DawnseekerMenu
+11:27:50.533 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/narro/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+11:27:50.547 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+11:27:50.943 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  17.2
+11:27:50.944 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: 17.3
+11:27:52.039 [JavaFX Application Thread] DEBUG Menu                 - fireNewGame()
+11:27:52.039 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+11:27:52.039 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: DawnseekerMenu
+11:27:52.039 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:27:52.040 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DawnseekerMenu and adding to FXGLMainMenuDummyScene
+11:27:52.041 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene <- DawnseekerMenu
+11:27:52.041 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:27:52.046 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to FXGLLoadingScene
+11:27:52.046 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> FXGLLoadingScene
+11:27:52.046 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+11:27:52.046 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+11:27:52.046 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+11:27:52.046 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+11:27:52.049 [FXGL Background Thread 2 ] DEBUG FXGLApplication      - Initializing game
+11:27:52.049 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@94955f5
+11:27:52.053 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/music/heartache.mp3
+11:27:52.055 [FXGL Background Thread 2 ] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4f82fd2f
+11:27:52.066 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2.png
+11:27:52.068 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Down.png
+11:27:52.068 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Up.png
+11:27:52.069 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Right.png
+11:27:52.070 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Left.png
+11:27:52.081 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/background.png
+11:27:52.086 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4f82fd2f
+11:27:52.113 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+11:27:52.114 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Rock1.png
+11:27:52.116 [FXGL Background Thread 2 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+11:27:52.116 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+11:27:52.117 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Rock2.png
+11:27:52.118 [FXGL Background Thread 2 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+11:27:52.118 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+11:27:52.119 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/BigRock1.png
+11:27:52.121 [FXGL Background Thread 2 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+11:27:52.121 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+11:27:52.122 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/AnimShop.png
+11:27:52.123 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+11:27:52.140 [FXGL Background Thread 2 ] INFO  FXGLApplication      - Game initialization took: 0.091 sec
+11:27:52.163 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:27:52.175 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+11:27:52.175 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+11:27:53.012 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Skull.gif
+11:27:53.023 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Ghost.gif
+11:27:53.435 [FXGL Background Thread 3 ] DEBUG Engine               - Logging environment variables
+11:27:53.435 [FXGL Background Thread 3 ] DEBUG Engine               - achievements: []
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - actualHeight: 823.0
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - actualHeightProperty: ReadOnlyDoubleProperty [value: 823.0]
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - actualWidth: 1439.0
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - actualWidthProperty: ReadOnlyDoubleProperty [value: 1439.0]
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - appIcon: fxgl_icon.png
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - applicationMode: DEVELOPER
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - cSSList: [fxgl_dark.css]
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - collisionDetectionStrategy: BRUTE_FORCE
+11:27:53.436 [FXGL Background Thread 3 ] DEBUG Engine               - configClass: Optional.empty
+11:27:53.437 [FXGL Background Thread 3 ] DEBUG Engine               - credits: []
+11:27:53.438 [FXGL Background Thread 3 ] DEBUG Engine               - defaultCursor: CursorInfo(imageName=fxgl_default_cursor.png, hotspotX=7.0, hotspotY=6.0)
+11:27:53.438 [FXGL Background Thread 3 ] DEBUG Engine               - devBBoxColorProperty: ObjectProperty [value: 0xff0000ff]
+11:27:53.438 [FXGL Background Thread 3 ] DEBUG Engine               - devEnableDebugCameraProperty: BooleanProperty [value: false]
+11:27:53.438 [FXGL Background Thread 3 ] DEBUG Engine               - devSensorColorProperty: ObjectProperty [value: 0xffff00ff]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - devShowBBoxProperty: BooleanProperty [value: false]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - devShowPositionProperty: BooleanProperty [value: false]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - enabledMenuItems: []
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - engineServices: [class com.almasb.fxgl.app.services.FXGLAssetLoaderService, class com.almasb.fxgl.app.FXGLApplication$GameApplicationService, class com.almasb.fxgl.app.services.FXGLDialogService, class com.almasb.fxgl.app.services.IOTaskExecutorService, class com.almasb.fxgl.io.FileSystemService, class com.almasb.fxgl.localization.LocalizationService, class com.almasb.fxgl.app.services.SystemBundleService, class com.almasb.fxgl.profile.SaveLoadService, class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider, class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider, class com.almasb.fxgl.audio.AudioPlayer, class com.almasb.fxgl.notification.impl.NotificationServiceProvider, class com.almasb.fxgl.achievement.AchievementService, class com.almasb.fxgl.cutscene.CutsceneService, class com.almasb.fxgl.minigames.MiniGameService, class com.almasb.fxgl.net.NetService, class com.almasb.fxgl.app.services.UpdaterService, class com.almasb.fxgl.dev.DevService]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - fontGame: Abel-Regular.ttf
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - fontMono: TerminalLandMono-Regular.otf
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - fontText: Courier-Prime.ttf
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - fontUI: VarelaRound-Regular.ttf
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - fullScreen: BooleanProperty [value: false]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficulty: MEDIUM
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficultyProperty: ObjectProperty [value: MEDIUM]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolume: 0.5
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolumeProperty: DoubleProperty [value: 0.5]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolume: 0.5
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolumeProperty: DoubleProperty [value: 0.5]
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - height: 1080
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - is3D: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isAndroid: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isBrowser: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isClickFeedbackEnabled: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isCloseConfirmation: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isDesktop: true
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isDeveloperMenuEnabled: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isEmbedded: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isEntityPreloadEnabled: true
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalTiledLargeMap: false
+11:27:53.439 [FXGL Background Thread 3 ] DEBUG Engine               - isFileSystemWriteAllowed: true
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenAllowed: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenFromStart: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isGameMenuEnabled: true
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isIOS: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isIntroEnabled: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isLinux: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isMac: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isMainMenuEnabled: true
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isManualResizeEnabled: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isMobile: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isNative: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isPauseMusicWhenMinimized: true
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isPreserveResizeRatio: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isProfilingEnabled: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isScaleAffectedOnResize: true
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isSingleStep: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isUserProfileEnabled: false
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - isWindows: true
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - language: ObjectProperty [value: ENGLISH]
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - menuKey: ESCAPE
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - mouseSensitivity: 0.2
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - notificationViewClass: class com.almasb.fxgl.notification.view.XboxNotificationView
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - pixelsPerMeter: 50.0
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - platform: WINDOWS
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - prefHeightProperty: ReadOnlyDoubleProperty [value: 1080.0]
+11:27:53.440 [FXGL Background Thread 3 ] DEBUG Engine               - prefWidthProperty: ReadOnlyDoubleProperty [value: 1920.0]
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - profileDir: profiles/
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - profileName: StringProperty [value: DEFAULT]
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - randomSeed: -1
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - runtimeInfo: RuntimeInfo(platform=WINDOWS, version=17.2, build=20.08.2022 16.50)
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - saveFileExt: sav
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - scaledHeightProp$fxgl: DoubleProperty [bound, value: 823.0]
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - scaledWidthProp$fxgl: DoubleProperty [bound, value: 1439.0]
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - sceneFactory: myGame.DawnseekerApp$1@360ecfa8
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - secondsIn24h: 60
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuBack: menu/back.wav
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuPress: menu/press.wav
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuSelect: menu/select.wav
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - soundNotification: core/notification.wav
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - stageStyle: DECORATED
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - supportedLanguages: [ENGLISH, FRENCH, GERMAN, HUNGARIAN, RUSSIAN]
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - ticksPerSecond: -1
+11:27:53.441 [FXGL Background Thread 3 ] DEBUG Engine               - title: Dawnseeker
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/release/README.md
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - userAppClass: class myGame.DawnseekerApp
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - version: 0.5
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - versionCheckDays: 7
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - width: 1920
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - Logging services
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLAssetLoaderService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.FXGLApplication$GameApplicationService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLDialogService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.IOTaskExecutorService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.io.FileSystemService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.localization.LocalizationService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.SystemBundleService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.profile.SaveLoadService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.audio.AudioPlayer
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.notification.impl.NotificationServiceProvider
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.achievement.AchievementService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.cutscene.CutsceneService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.minigames.MiniGameService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.net.NetService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.UpdaterService
+11:27:53.442 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.dev.DevService
+11:27:55.669 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/magic_missile.wav
+11:27:55.680 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Fireball.gif
+11:27:56.308 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:27:56.309 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/HealthPotion.gif
+11:27:56.312 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/bong.wav
+11:27:56.459 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Bonker.gif
+11:27:57.411 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:27:57.412 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/SpeedPotion.gif
+11:27:57.557 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:27:57.558 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Coin.gif
+11:27:57.747 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:27:57.861 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:27:59.988 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:27:59.991 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/PowerPotion.gif
+11:28:00.659 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:01.027 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:01.476 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:01.477 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/FIRE.gif
+11:28:01.478 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+11:28:01.480 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/tom_scream.wav
+11:28:01.924 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/player_oof.wav
+11:28:02.004 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/coin_pickup.wav
+11:28:07.942 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/FireBallProjectile.png
+11:28:08.083 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:08.147 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:08.515 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:08.627 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:08.746 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:08.819 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:08.931 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:09.108 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:10.131 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:10.163 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:10.308 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:11.046 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:11.267 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:11.990 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:12.147 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:12.515 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:12.662 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:12.803 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:12.806 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+11:28:13.779 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:14.275 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:14.387 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:14.867 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/store_jingle.wav
+11:28:14.870 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: ShopTest
+11:28:14.870 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:28:14.871 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to ShopTest
+11:28:14.871 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> ShopTest
+11:28:14.871 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Close Shop - F
+11:28:16.950 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/boom.wav
+11:28:29.217 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: ShopTest
+11:28:29.217 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:28:29.219 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from ShopTest and adding to GameScene
+11:28:29.219 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene <- ShopTest
+11:28:29.427 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:29.891 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:29.892 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/metal_pipe_fall.wav
+11:28:32.405 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:32.499 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:32.723 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:32.724 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:32.931 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:34.821 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:34.851 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:35.203 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:35.427 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:35.827 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:36.435 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:36.435 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:36.819 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:36.836 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+11:28:37.703 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Users/narro/git/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/yoda_death.wav
+11:28:37.705 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@94955f5
+11:28:37.706 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4f82fd2f
+11:28:37.706 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:28:37.710 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to FXGLMainMenuDummyScene
+11:28:37.710 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> FXGLMainMenuDummyScene
+11:28:37.710 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DawnseekerMenu
+11:28:37.710 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+11:28:37.710 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to DawnseekerMenu
+11:28:37.710 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> DawnseekerMenu
+11:28:37.711 [JavaFX Application Thread] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@94955f5
+11:28:39.233 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+11:28:39.233 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+11:28:39.234 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+11:28:39.235 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Users\narro\git\CS4900G2Proj2\Dawnseeker\system\fxgl.bundle
+11:28:39.236 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+11:28:39.236 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+11:28:39.242 [JavaFX Application Thread] DEBUG Logger               - Closing Logger

@@ -382,6 +382,7 @@ public class DawnseekerApp extends GameApplication{
         onCollisionBegin(EntityType.PLAYER, EntityType.SPOWER, (player, spower) -> {
             spower.removeFromWorld();
             speed = speed+(speed*.01);
+            initUI();
         });
         
         //When the player moves over the attack power-up
@@ -411,7 +412,7 @@ public class DawnseekerApp extends GameApplication{
         	FXGL.play("player_oof.wav");
         	hp.damagePercentageCurrent(5);//in theory this should never be the reason of the player's death
         	badWall.removeFromWorld();
-        	
+        	initUI();
         });
 
       //When the player collides with the shop
@@ -582,6 +583,7 @@ public class DawnseekerApp extends GameApplication{
             	speed++;
             	initUI();
         		FXGL.play("boom.wav");
+        		FXGL.inc("Coins", -1);
             	}
 
             });

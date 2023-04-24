@@ -122,7 +122,7 @@ public class simplefactory implements EntityFactory {
         hpView.setTranslateY(45);
         hpView.setTranslateX(-15);
         hpView.currentValueProperty().bind(hp.valueProperty());
-
+        
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY2)
@@ -154,7 +154,7 @@ public class simplefactory implements EntityFactory {
         return entityBuilder()
         		.from(data)
                 .type(EntityType.ENEMY3)
-                .viewWithBBox("slime.gif")
+                .viewWithBBox("Bonker.gif")
                 .collidable()
                 .with(hp)
                 .view(hpView)
@@ -287,7 +287,6 @@ public class simplefactory implements EntityFactory {
 				.buildAndAttach();
 	}
 	
-	
 	@Spawns("coin")
 	public Entity coin(SpawnData data) {
 		return entityBuilder(data)
@@ -343,8 +342,7 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.BADWALL)
-//				.at(300,450)
-				.viewWithBBox("Poison.gif")
+				.viewWithBBox("FIRE.gif")
 				.with(hp)
 				.buildAndAttach();
 	}
