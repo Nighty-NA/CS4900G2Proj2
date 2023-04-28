@@ -322,7 +322,9 @@ public class simplefactory implements EntityFactory {
 		return entityBuilder(data)
 				.with(new CollidableComponent(true))
 				.type(EntityType.BPOWER)
-				.viewWithBBox(new Rectangle(8,8, Color.PURPLE))
+				.view("Fireball.gif")
+				.bbox(new HitBox(BoundingShape.box(16, 16)))
+//				.viewWithBBox(new Rectangle(8,8, Color.PURPLE))
 				.build();
 	}
 	
