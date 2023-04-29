@@ -33,6 +33,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -92,6 +93,9 @@ public class DawnseekerApp extends GameApplication{
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("Coins", 0);
         vars.put("hp",getPHP());
+        vars.put("APower", 0);
+        vars.put("BPower", 0);
+        vars.put("HPower", 0);
     }
     
     @Override
@@ -121,8 +125,25 @@ public class DawnseekerApp extends GameApplication{
         hpBarr.setCurrentValue(w.getValue());
         hpBarr.setWidth(300);
         hpBarr.setFill(Color.RED);
-        FXGL.addUINode(hpBarr,400,35);
-
+        FXGL.addUINode(hpBarr,300,35);
+        
+        Label apowerLabel = new Label();
+        apowerLabel.setTextFill(Color.BLACK);
+        apowerLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        apowerLabel.textProperty().bind(FXGL.getip("APower").asString("APower: %d"));
+        FXGL.addUINode(apowerLabel, 600, 35);
+        
+        Label bpowerLabel = new Label();
+        bpowerLabel.setTextFill(Color.BLACK);
+        bpowerLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        bpowerLabel.textProperty().bind(FXGL.getip("BPower").asString("BPower: %d"));
+        FXGL.addUINode(bpowerLabel, 800, 35);
+        
+        Label hpowerLabel = new Label();
+        hpowerLabel.setTextFill(Color.BLACK);
+        hpowerLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        hpowerLabel.textProperty().bind(FXGL.getip("HPower").asString("HPower: %d"));
+        FXGL.addUINode(hpowerLabel, 1000, 35);
     }
  
     @Override
@@ -376,6 +397,7 @@ public class DawnseekerApp extends GameApplication{
         onCollisionBegin(EntityType.PLAYER, EntityType.BPOWER, (player, bpower) -> {
             bpower.removeFromWorld();
             PBC++;
+            FXGL.inc("BPower", 1);
         });
         
         //When the player moves over the speed power-up
@@ -389,7 +411,7 @@ public class DawnseekerApp extends GameApplication{
         onCollisionBegin(EntityType.PLAYER, EntityType.APOWER, (player, apower) -> {
             apower.removeFromWorld();
             PDMG=PDMG+5;
-
+            FXGL.inc("APower",1);
         });
         
         //When the player moves over the health power-up
@@ -397,7 +419,7 @@ public class DawnseekerApp extends GameApplication{
             hpower.removeFromWorld();
             PHP = PHP+10;
             FXGL.inc("hp", 10);
-
+            FXGL.inc("HPower",1);
         });
         
         //When the bullet collides with a wall
@@ -553,7 +575,8 @@ public class DawnseekerApp extends GameApplication{
             getContentRoot().getChildren().addAll();
             getContentRoot().setTranslateX(300);
             getContentRoot().setTranslateY(0);
-
+            
+            
             Button buyHP = getUIFactoryService().newButton("Buy Health");
             buyHP.prefHeight(30.0);
             buyHP.prefWidth(135.0);
