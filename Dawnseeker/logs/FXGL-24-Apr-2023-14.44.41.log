@@ -1,0 +1,767 @@
+14:39:23.317 [main                     ] DEBUG Logger               - Configured Logger
+14:39:23.338 [main                     ] DEBUG GameApplication      - Logging settings
+Title: Dawnseeker
+Version: 0.5
+Width: 1920
+Height: 1080
+Fullscreen: false
+Intro: false
+Profiling: false
+Single step:false
+App Mode: DEVELOPER
+Menu Key: ESCAPE
+Stage Style: DECORATED
+Scene Factory: class myGame.DawnseekerApp$1
+
+14:39:23.712 [JavaFX Application Thread] DEBUG FXGLApplication      - Initializing FXGL
+14:39:23.716 [JavaFX Application Thread] INFO  Engine               - FXGL-17.2 (20.08.2022 16.50) on WINDOWS (J:19.0.2 FX:18)
+14:39:23.716 [JavaFX Application Thread] DEBUG Engine               - JRE Vendor Name: Eclipse Adoptium
+14:39:23.716 [JavaFX Application Thread] DEBUG Engine               - Running on OS: Windows 10 version 10.0
+14:39:23.716 [JavaFX Application Thread] DEBUG Engine               - Architecture: amd64
+14:39:23.717 [JavaFX Application Thread] INFO  Engine               - Source code and latest versions at: https://github.com/AlmasB/FXGL
+14:39:23.717 [JavaFX Application Thread] INFO  Engine               -       Ask questions and discuss at: https://github.com/AlmasB/FXGL/discussions
+14:39:23.717 [JavaFX Application Thread] INFO  Engine               -              Join the FXGL chat at: https://gitter.im/AlmasB/FXGL
+14:39:23.817 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Creating a JavaFX scene
+14:39:23.818 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target size > screen size
+14:39:23.879 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Target settings size: 1920.0 x 1080.0
+14:39:23.879 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled scene size:    1511.0 x 864.0
+14:39:23.879 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (0.7869791666666667, 0.8)
+14:39:23.880 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Set initial scene to FXGLStartupScene
+14:39:23.889 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Opening main window
+14:39:23.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Window border size: (14.5999755859375, 37.5999755859375)
+14:39:23.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled size: 1511.0 x 864.0
+14:39:23.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scaled ratio: (0.7869791666666667, 0.8)
+14:39:23.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Scene size: 1511.0 x 864.0
+14:39:23.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Stage size: 1525.5999755859375 x 901.5999755859375
+14:39:23.982 [FXGL Background Thread 1 ] DEBUG Engine               - Initializing environment variables
+14:39:24.042 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - User app class for loading assets: class myGame.DawnseekerApp
+14:39:24.043 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Applying CSS: fxgl_dark.css
+14:39:24.043 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/css/fxgl_dark.css
+14:39:24.082 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Initializing application scenes
+14:39:24.119 [FXGL Background Thread 1 ] DEBUG GameWorld            - Game world initialized
+14:39:24.172 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Physics world initialized: appHeight=1080, physics.ppm=50.0
+14:39:24.172 [FXGL Background Thread 1 ] DEBUG PhysicsWorld         - Using strategy: BRUTE_FORCE
+14:39:24.175 [FXGL Background Thread 1 ] DEBUG GameScene            - Game scene initialized: 1920x1080
+14:39:24.175 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/music/shop.mp3
+14:39:24.365 [FXGL Background Thread 1 ] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4fd4d821
+14:39:24.378 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/bg2.png
+14:39:24.435 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createMenuBodyGameMenu()
+14:39:24.447 [FXGL Background Thread 1 ] DEBUG FXGL.DefaultMenu     - createOptionsMenu()
+14:39:24.452 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/particles/smoke.png
+14:39:24.529 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/particles/trace_horizontal.png
+14:39:24.559 [FXGL Background Thread 1 ] DEBUG GameApplicationServi - Application scenes initialized
+14:39:24.571 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Loading FXGL system data
+14:39:24.576 [FXGL Background Thread 1 ] DEBUG FileSystemAccess     - Reading from: C:\Games\CS4900 Workspace\CS4900G2Proj2\CS4900G2Proj2\Dawnseeker\system\fxgl.bundle
+14:39:24.587 [FXGL Background Thread 1 ] DEBUG SystemBundleService  - Bundle FXGL: {}
+14:39:24.587 [FXGL Background Thread 1 ] DEBUG UpdaterService       - Checking for updates
+14:39:24.591 [FXGL Background Thread 4 ] DEBUG FXGLApplication      - Loading fonts
+14:39:24.591 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/VarelaRound-Regular.ttf
+14:39:24.592 [FXGL Background Thread 1 ] DEBUG FXGLApplication      - Loading default localization
+14:39:24.592 [FXGL Background Thread 1 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/languages/english.lang
+14:39:24.612 [FXGL Background Thread 1 ] INFO  FXGLApplication      - FXGL initialization took: 0.630 sec
+14:39:24.656 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/Abel-Regular.ttf
+14:39:24.666 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/TerminalLandMono-Regular.otf
+14:39:24.675 [FXGL Background Thread 4 ] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/ui/fonts/Courier-Prime.ttf
+14:39:24.737 [JavaFX Application Thread] DEBUG Input                - Registered new binding: action0 - LMB
+14:39:24.742 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Up - W
+14:39:24.742 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Down - S
+14:39:24.742 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Right - D
+14:39:24.742 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Left - A
+14:39:24.742 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/fxgl_icon.png
+14:39:24.758 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: jar:file:/C:/Users/Eartm/.m2/repository/com/github/almasb/fxgl/17.2/fxgl-17.2.jar!/fxglassets/textures/fxgl_default_cursor.png
+14:39:24.760 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Screenshot - CTRL+8
+14:39:24.760 [JavaFX Application Thread] DEBUG Input                - Registered new binding: System info dump - CTRL+9
+14:39:24.761 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Restart - CTRL+R
+14:39:24.762 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Toggle Debug Camera - CTRL+7
+14:39:24.764 [JavaFX Application Thread] DEBUG LoopRunner           - Starting loop
+14:39:24.764 [JavaFX Application Thread] DEBUG LoopRunner           - Initializing JavaFX AnimationTimerLoop
+14:39:24.766 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:39:24.774 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLStartupScene and adding to FXGLMainMenuDummyScene
+14:39:24.775 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLStartupScene -> FXGLMainMenuDummyScene
+14:39:24.775 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DawnseekerMenu
+14:39:24.775 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:39:24.779 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to DawnseekerMenu
+14:39:24.779 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> DawnseekerMenu
+14:39:24.781 [JavaFX Application Thread] DEBUG FXGLApplication      - Registering font factories with UI factory
+14:39:24.935 [FXGL Background Thread 2 ] INFO  UpdaterService       - Your current version:  17.2
+14:39:24.936 [FXGL Background Thread 2 ] INFO  UpdaterService       - Latest stable version: 17.3
+14:39:26.168 [JavaFX Application Thread] DEBUG Menu                 - fireNewGame()
+14:39:26.168 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+14:39:26.168 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: DawnseekerMenu
+14:39:26.168 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:39:26.169 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DawnseekerMenu and adding to FXGLMainMenuDummyScene
+14:39:26.169 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene <- DawnseekerMenu
+14:39:26.169 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:39:26.174 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to FXGLLoadingScene
+14:39:26.174 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> FXGLLoadingScene
+14:39:26.174 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+14:39:26.174 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+14:39:26.174 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+14:39:26.174 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+14:39:26.175 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4fd4d821
+14:39:26.175 [FXGL Background Thread 2 ] DEBUG FXGLApplication      - Initializing game
+14:39:26.183 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/music/heartache.mp3
+14:39:26.186 [FXGL Background Thread 2 ] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4874dbfd
+14:39:26.201 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2.png
+14:39:26.202 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Down.png
+14:39:26.204 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Up.png
+14:39:26.205 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Right.png
+14:39:26.206 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/DawnseekerPCV2Left.png
+14:39:26.217 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/background.png
+14:39:26.247 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+14:39:26.248 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Rock1.png
+14:39:26.249 [FXGL Background Thread 2 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+14:39:26.250 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+14:39:26.251 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Rock2.png
+14:39:26.252 [FXGL Background Thread 2 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+14:39:26.252 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+14:39:26.253 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/BigRock1.png
+14:39:26.255 [FXGL Background Thread 2 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+14:39:26.255 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+14:39:26.258 [FXGL Background Thread 2 ] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/AnimShop.png
+14:39:26.260 [FXGL Background Thread 2 ] WARN  GameWorld            - Entity is already attached to world
+14:39:26.280 [FXGL Background Thread 2 ] INFO  FXGLApplication      - Game initialization took: 0.105 sec
+14:39:26.282 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:39:26.291 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+14:39:26.291 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+14:39:27.315 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Skull.gif
+14:39:27.325 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Ghost.gif
+14:39:27.590 [FXGL Background Thread 3 ] DEBUG Engine               - Logging environment variables
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - achievements: []
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - actualHeight: 864.0
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - actualHeightProperty: ReadOnlyDoubleProperty [value: 864.0]
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - actualWidth: 1511.0
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - actualWidthProperty: ReadOnlyDoubleProperty [value: 1511.0]
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - appIcon: fxgl_icon.png
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - applicationMode: DEVELOPER
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - cSSList: [fxgl_dark.css]
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - collisionDetectionStrategy: BRUTE_FORCE
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - configClass: Optional.empty
+14:39:27.591 [FXGL Background Thread 3 ] DEBUG Engine               - credits: []
+14:39:27.592 [FXGL Background Thread 3 ] DEBUG Engine               - defaultCursor: CursorInfo(imageName=fxgl_default_cursor.png, hotspotX=7.0, hotspotY=6.0)
+14:39:27.592 [FXGL Background Thread 3 ] DEBUG Engine               - devBBoxColorProperty: ObjectProperty [value: 0xff0000ff]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - devEnableDebugCameraProperty: BooleanProperty [value: false]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - devSensorColorProperty: ObjectProperty [value: 0xffff00ff]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - devShowBBoxProperty: BooleanProperty [value: false]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - devShowPositionProperty: BooleanProperty [value: false]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - enabledMenuItems: []
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - engineServices: [class com.almasb.fxgl.app.services.FXGLAssetLoaderService, class com.almasb.fxgl.app.FXGLApplication$GameApplicationService, class com.almasb.fxgl.app.services.FXGLDialogService, class com.almasb.fxgl.app.services.IOTaskExecutorService, class com.almasb.fxgl.io.FileSystemService, class com.almasb.fxgl.localization.LocalizationService, class com.almasb.fxgl.app.services.SystemBundleService, class com.almasb.fxgl.profile.SaveLoadService, class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider, class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider, class com.almasb.fxgl.audio.AudioPlayer, class com.almasb.fxgl.notification.impl.NotificationServiceProvider, class com.almasb.fxgl.achievement.AchievementService, class com.almasb.fxgl.cutscene.CutsceneService, class com.almasb.fxgl.minigames.MiniGameService, class com.almasb.fxgl.net.NetService, class com.almasb.fxgl.app.services.UpdaterService, class com.almasb.fxgl.dev.DevService]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - fontGame: Abel-Regular.ttf
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - fontMono: TerminalLandMono-Regular.otf
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - fontText: Courier-Prime.ttf
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - fontUI: VarelaRound-Regular.ttf
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - fullScreen: BooleanProperty [value: false]
+14:39:27.594 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficulty: MEDIUM
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - gameDifficultyProperty: ObjectProperty [value: MEDIUM]
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolume: 0.5
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - globalMusicVolumeProperty: DoubleProperty [value: 0.5]
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolume: 0.5
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - globalSoundVolumeProperty: DoubleProperty [value: 0.5]
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - height: 1080
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - is3D: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isAndroid: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isBrowser: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isClickFeedbackEnabled: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isCloseConfirmation: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isDesktop: true
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isDeveloperMenuEnabled: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isEmbedded: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isEntityPreloadEnabled: true
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isExperimentalTiledLargeMap: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isFileSystemWriteAllowed: true
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenAllowed: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isFullScreenFromStart: false
+14:39:27.595 [FXGL Background Thread 3 ] DEBUG Engine               - isGameMenuEnabled: true
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isIOS: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isIntroEnabled: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isLinux: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isMac: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isMainMenuEnabled: true
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isManualResizeEnabled: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isMobile: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isNative: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isPauseMusicWhenMinimized: true
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isPreserveResizeRatio: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isProfilingEnabled: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isScaleAffectedOnResize: true
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isSingleStep: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isUserProfileEnabled: false
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - isWindows: true
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - language: ObjectProperty [value: ENGLISH]
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - menuKey: ESCAPE
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - mouseSensitivity: 0.2
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - notificationViewClass: class com.almasb.fxgl.notification.view.XboxNotificationView
+14:39:27.596 [FXGL Background Thread 3 ] DEBUG Engine               - pixelsPerMeter: 50.0
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - platform: WINDOWS
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - prefHeightProperty: ReadOnlyDoubleProperty [value: 1080.0]
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - prefWidthProperty: ReadOnlyDoubleProperty [value: 1920.0]
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - profileDir: profiles/
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - profileName: StringProperty [value: DEFAULT]
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - randomSeed: -1
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - runtimeInfo: RuntimeInfo(platform=WINDOWS, version=17.2, build=20.08.2022 16.50)
+14:39:27.597 [FXGL Background Thread 3 ] DEBUG Engine               - saveFileExt: sav
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - scaledHeightProp$fxgl: DoubleProperty [bound, value: 864.0]
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - scaledWidthProp$fxgl: DoubleProperty [bound, value: 1511.0]
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - sceneFactory: myGame.DawnseekerApp$1@3493ec89
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - secondsIn24h: 60
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuBack: menu/back.wav
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuPress: menu/press.wav
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - soundMenuSelect: menu/select.wav
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - soundNotification: core/notification.wav
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - stageStyle: DECORATED
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - supportedLanguages: [ENGLISH, FRENCH, GERMAN, HUNGARIAN, RUSSIAN]
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - ticksPerSecond: -1
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - title: Dawnseeker
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - urlGithub: https://github.com/AlmasB/FXGL
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - urlLeaderboard: http://fxgl-top.herokuapp.com/
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - urlPOM: https://raw.githubusercontent.com/AlmasB/FXGL/release/README.md
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - userAppClass: class myGame.DawnseekerApp
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - version: 0.5
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - versionCheckDays: 7
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - width: 1920
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - Logging services
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLAssetLoaderService
+14:39:27.598 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.FXGLApplication$GameApplicationService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.FXGLDialogService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.IOTaskExecutorService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.io.FileSystemService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.localization.LocalizationService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.SystemBundleService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.profile.SaveLoadService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.audio.AudioPlayer
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.notification.impl.NotificationServiceProvider
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.achievement.AchievementService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.cutscene.CutsceneService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.minigames.MiniGameService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.net.NetService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.app.services.UpdaterService
+14:39:27.599 [FXGL Background Thread 3 ] DEBUG Engine               - class com.almasb.fxgl.dev.DevService
+14:39:28.008 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/magic_missile.wav
+14:39:28.016 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Fireball.gif
+14:39:29.874 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:29.875 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/PowerPotion.gif
+14:39:29.877 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/bong.wav
+14:39:30.098 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:31.281 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:31.282 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Coin.gif
+14:39:31.298 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/Bonker.gif
+14:39:33.426 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:33.762 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:34.807 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/FireBallProjectile.png
+14:39:35.107 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:35.330 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:35.604 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:36.082 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:36.209 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:36.977 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/coin_pickup.wav
+14:39:37.810 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:37.922 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:38.358 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:38.359 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/SpeedPotion.gif
+14:39:39.654 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/player_oof.wav
+14:39:40.290 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:41.299 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/bonk.wav
+14:39:41.634 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:41.842 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:42.882 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:42.962 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:43.204 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:43.745 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:43.810 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:44.225 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:44.306 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:44.562 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:45.620 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:45.622 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/HealthPotion.gif
+14:39:45.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:46.273 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:46.467 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:46.468 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/textures/FIRE.gif
+14:39:46.472 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:39:46.473 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/tom_scream.wav
+14:39:46.898 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.010 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.122 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.123 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:39:47.217 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.266 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.266 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/metal_pipe_fall.wav
+14:39:47.378 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.394 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.507 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.603 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:47.794 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:48.065 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:48.162 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:49.539 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:50.210 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:50.355 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:50.690 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:50.690 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:50.691 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:39:50.898 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:50.930 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:52.610 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:53.585 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:53.586 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:53.810 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:53.810 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.273 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.290 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.515 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.657 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.658 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:39:54.771 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.833 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:54.836 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:55.010 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:55.010 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:55.604 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:55.841 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:55.842 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:39:56.066 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:57.220 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:57.362 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:57.634 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:57.778 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:58.450 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:58.627 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/store_jingle.wav
+14:39:58.630 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: ShopTest
+14:39:58.630 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:39:58.631 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to ShopTest
+14:39:58.631 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> ShopTest
+14:39:58.631 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Close Shop - F
+14:39:58.631 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:39:59.669 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/boom.wav
+14:40:31.959 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: ShopTest
+14:40:31.960 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:40:31.960 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from ShopTest and adding to GameScene
+14:40:31.960 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene <- ShopTest
+14:40:31.969 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:32.306 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:32.307 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:32.323 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:32.338 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.298 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.299 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.314 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.394 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.650 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.746 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:33.762 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:34.003 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:34.659 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:34.674 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:34.787 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:34.930 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.249 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.265 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.458 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.666 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.714 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.810 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:35.921 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.065 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.097 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.306 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.322 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.322 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.420 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.562 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.594 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.677 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.755 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.946 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.977 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:36.994 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:37.170 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:37.250 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:37.522 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:37.650 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:37.988 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:38.035 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:38.226 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:38.290 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:38.595 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.042 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.043 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:40:39.058 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.058 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.137 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.330 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.538 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.682 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.746 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:39.971 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.114 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.114 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.242 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.290 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.338 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.355 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.498 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.514 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.755 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:40.914 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:41.060 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:41.235 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:41.794 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:41.857 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:41.873 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:41.873 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.035 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.036 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.036 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.210 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.578 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.594 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.834 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:42.962 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.010 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.187 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.314 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.314 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.698 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.714 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.714 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.730 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.746 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:43.858 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.098 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.098 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.113 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.178 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.806 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.806 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.898 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.914 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:44.931 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: ShopTest
+14:40:44.931 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:40:44.931 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to ShopTest
+14:40:44.931 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> ShopTest
+14:40:44.931 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Close Shop - F
+14:40:52.856 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: ShopTest
+14:40:52.856 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:40:52.856 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from ShopTest and adding to GameScene
+14:40:52.856 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene <- ShopTest
+14:40:53.521 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:53.629 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:53.629 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:53.650 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:53.922 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.050 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.210 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.226 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.337 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.338 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:40:54.354 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.354 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:54.354 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.138 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.236 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.236 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.236 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.237 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.282 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.298 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.298 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:55.458 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:56.578 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:56.578 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:56.786 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:56.865 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:56.865 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:56.865 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.042 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.667 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.714 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.779 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.842 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.874 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.874 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.898 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.898 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:40:57.924 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.938 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:57.939 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:58.002 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:40:58.203 [JavaFX Application Thread] DEBUG FXGLAssetLoaderServi - Loading from file system: file:/C:/Games/CS4900%20Workspace/CS4900G2Proj2/CS4900G2Proj2/Dawnseeker/target/classes/assets/sounds/yoda_death.wav
+14:40:58.205 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4fd4d821
+14:40:58.206 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4874dbfd
+14:40:58.245 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:40:58.251 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to FXGLMainMenuDummyScene
+14:40:58.251 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> FXGLMainMenuDummyScene
+14:40:58.251 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DawnseekerMenu
+14:40:58.251 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:40:58.251 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to DawnseekerMenu
+14:40:58.251 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> DawnseekerMenu
+14:40:58.251 [JavaFX Application Thread] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4fd4d821
+14:43:27.644 [JavaFX Application Thread] DEBUG Menu                 - fireNewGame()
+14:43:27.644 [JavaFX Application Thread] DEBUG GameApplicationServi - Starting new game
+14:43:27.645 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: DawnseekerMenu
+14:43:27.645 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:43:27.645 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DawnseekerMenu and adding to FXGLMainMenuDummyScene
+14:43:27.645 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene <- DawnseekerMenu
+14:43:27.645 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:43:27.649 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to FXGLLoadingScene
+14:43:27.649 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> FXGLLoadingScene
+14:43:27.649 [JavaFX Application Thread] DEBUG GameApplicationServi - Clearing previous game
+14:43:27.649 [JavaFX Application Thread] DEBUG GameScene            - Clearing game scene
+14:43:27.649 [JavaFX Application Thread] DEBUG GameWorld            - Clearing game world
+14:43:27.650 [JavaFX Application Thread] DEBUG PhysicsWorld         - Clearing physics world
+14:43:27.651 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4fd4d821
+14:43:27.651 [FXGL Background Thread 5 ] DEBUG FXGLApplication      - Initializing game
+14:43:27.651 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4874dbfd
+14:43:27.652 [FXGL Background Thread 5 ] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4874dbfd
+14:43:27.653 [FXGL Background Thread 5 ] WARN  GameWorld            - Entity is already attached to world
+14:43:27.653 [FXGL Background Thread 5 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+14:43:27.654 [FXGL Background Thread 5 ] WARN  GameWorld            - Entity is already attached to world
+14:43:27.654 [FXGL Background Thread 5 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+14:43:27.654 [FXGL Background Thread 5 ] WARN  GameWorld            - Entity is already attached to world
+14:43:27.655 [FXGL Background Thread 5 ] WARN  Entity               - Entity already has component: com.almasb.fxgl.entity.components.CollidableComponent
+14:43:27.655 [FXGL Background Thread 5 ] WARN  GameWorld            - Entity is already attached to world
+14:43:27.655 [FXGL Background Thread 5 ] WARN  GameWorld            - Entity is already attached to world
+14:43:27.656 [FXGL Background Thread 5 ] INFO  FXGLApplication      - Game initialization took: 0.005 sec
+14:43:27.657 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:43:27.661 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLLoadingScene and adding to GameScene
+14:43:27.661 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLLoadingScene -> GameScene
+14:43:30.578 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:30.801 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:31.794 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:32.818 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:32.994 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:35.682 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:35.778 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:37.425 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: ShopTest
+14:43:37.425 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:43:37.425 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to ShopTest
+14:43:37.426 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> ShopTest
+14:43:37.426 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Close Shop - F
+14:43:40.411 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: ShopTest
+14:43:40.411 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:43:40.411 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from ShopTest and adding to GameScene
+14:43:40.411 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene <- ShopTest
+14:43:41.346 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:41.778 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:42.065 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:42.530 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:43.122 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:43.345 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:43.345 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:43:43.474 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:43.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:45.332 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:46.067 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:46.274 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:47.138 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:47.985 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:48.258 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:48.434 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:48.545 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:48.546 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:43:48.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:51.074 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:51.138 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:51.986 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:52.098 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:53.554 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:53.906 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:53.907 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:43:54.018 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:54.516 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:55.602 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:55.794 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:55.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:55.954 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:56.322 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:56.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:57.074 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:57.298 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:57.569 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:57.858 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:58.658 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:58.898 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:59.793 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:43:59.922 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:00.754 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:00.818 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:00.882 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:01.026 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:01.732 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:01.733 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:44:01.906 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:02.531 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:03.857 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:04.067 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:04.531 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:04.834 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:06.515 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:06.658 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:06.994 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:07.218 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:07.458 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:07.650 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:08.242 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:08.484 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:08.595 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:08.690 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:08.722 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:08.851 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:09.762 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:09.778 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:09.794 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.002 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.099 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.484 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.642 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.642 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:44:10.658 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:10.786 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:11.074 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:11.186 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:11.490 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:12.034 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:12.530 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:12.562 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.299 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.332 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.377 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.538 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.618 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.731 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:13.794 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.002 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.130 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.132 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:44:14.194 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.273 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.451 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.930 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:14.994 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:15.074 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:15.170 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:15.362 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:15.458 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.369 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.531 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.594 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.658 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.658 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.690 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:16.993 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.057 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.170 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.186 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.202 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.282 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.283 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.378 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.554 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.700 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:17.970 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.145 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.145 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.306 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.322 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.370 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.386 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.386 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.500 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.642 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.658 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.706 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.722 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:18.754 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:20.561 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:20.626 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:20.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:20.786 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:20.786 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:20.994 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:21.010 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:21.138 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:21.153 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:21.490 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:21.491 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:44:21.748 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:22.083 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:22.210 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:22.210 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:23.154 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:23.155 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:23.155 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:23.234 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:23.378 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:23.938 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.002 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.017 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.194 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.231 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.233 [JavaFX Application Thread] WARN  GameWorld            - Entity is already attached to world
+14:44:24.242 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.466 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.466 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.978 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.978 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:24.994 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.138 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.218 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.266 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.731 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.826 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.906 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:25.970 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.019 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.131 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.146 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.162 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.305 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.386 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.450 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.738 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.754 [JavaFX Application Thread] WARN  GameWorld            - Attempted to remove entity which is not active
+14:44:26.851 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: ShopTest
+14:44:26.851 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:44:26.851 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to ShopTest
+14:44:26.851 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> ShopTest
+14:44:26.851 [JavaFX Application Thread] DEBUG Input                - Registered new binding: Close Shop - F
+14:44:38.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: ShopTest
+14:44:38.975 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:44:38.975 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from ShopTest and adding to GameScene
+14:44:38.975 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene <- ShopTest
+14:44:39.367 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4fd4d821
+14:44:39.367 [JavaFX Application Thread] DEBUG AudioPlayer          - Stopping music com.almasb.fxgl.audio.Music@4874dbfd
+14:44:39.367 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:44:39.370 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from GameScene and adding to FXGLMainMenuDummyScene
+14:44:39.370 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - GameScene -> FXGLMainMenuDummyScene
+14:44:39.370 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DawnseekerMenu
+14:44:39.370 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:44:39.370 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from FXGLMainMenuDummyScene and adding to DawnseekerMenu
+14:44:39.370 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - FXGLMainMenuDummyScene -> DawnseekerMenu
+14:44:39.370 [JavaFX Application Thread] DEBUG AudioPlayer          - Playing music com.almasb.fxgl.audio.Music@4fd4d821
+14:44:40.534 [JavaFX Application Thread] DEBUG Menu                 - fireExit()
+14:44:40.536 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Push state: DialogSubScene
+14:44:40.536 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:44:40.536 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DawnseekerMenu and adding to DialogSubScene
+14:44:40.536 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - DawnseekerMenu -> DialogSubScene
+14:44:41.678 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Pop state: DialogSubScene
+14:44:41.678 [JavaFX Application Thread] DEBUG Input                - Clearing active input actions
+14:44:41.678 [JavaFX Application Thread] DEBUG GameApplicationServi - Removing overlay from DialogSubScene and adding to DawnseekerMenu
+14:44:41.678 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - DawnseekerMenu <- DialogSubScene
+14:44:41.678 [JavaFX Application Thread] DEBUG FXGLApplication      - Exiting FXGL
+14:44:41.678 [JavaFX Application Thread] DEBUG LoopRunner           - Stopping loop
+14:44:41.678 [JavaFX Application Thread] DEBUG SystemBundleService  - Saving FXGL system data
+14:44:41.680 [JavaFX Application Thread] DEBUG FileSystemAccess     - Writing to: C:\Games\CS4900 Workspace\CS4900G2Proj2\CS4900G2Proj2\Dawnseeker\system\fxgl.bundle
+14:44:41.682 [JavaFX Application Thread] DEBUG Async                - Shutting down background threads
+14:44:41.683 [JavaFX Application Thread] DEBUG PrimaryStageWindow   - Closing main window
+14:44:41.693 [JavaFX Application Thread] DEBUG Logger               - Closing Logger
